@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('price');
             $table->boolean('visible');
             $table->date('aviability');
+            $table->integer('quantity');
             $table->foreignId('brand_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
