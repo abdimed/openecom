@@ -53,7 +53,7 @@ class ProductResource extends Resource
                                         $set('slug', Str::slug($state));
                                     })->required(),
 
-                                TextInput::make('slug')->required()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
 
                                 MarkdownEditor::make('description')->columnSpan(['lg' => 2])->required(),
 
@@ -70,22 +70,28 @@ class ProductResource extends Resource
                         Section::make('Variations')
                             ->schema([
 
-                                Repeater::make('variations')->label('')
+                                Repeater::make('variations')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('ref')->columnSpan(['lg'=> 2]),
-                                        TextInput::make('name')->columnSpan(['lg' => 3]),
-                                        TextInput::make('quantity')->columnSpan(['lg' => 2]),
-                                        TextInput::make('price')->hint('DA')->integer()->columnSpan(['lg' => 3]),
-                                    ])->columns(['lg' => 10])->columnSpan(['lg' => 2])
+                                        TextInput::make('ref'),
+                                        TextInput::make('name'),
+                                        TextInput::make('quantity'),
+                                        TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')
+
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
 
                             ])->columns(['lg' => 2]),
 
                         Section::make('Specifications')
                             ->schema([
-                                KeyValue::make('specifications')->label('')
-                                    ->keyPlaceholder('Property name')
-                                    ->valuePlaceholder('Property value')
+
+                                Repeater::make('specifications')
+                                    ->relationship()
+                                    ->schema([
+                                        TextInput::make('name'),
+                                        TextInput::make('value'),
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
+
                             ]),
 
                     ])->columnSpan(['lg' => 2]),
@@ -98,7 +104,6 @@ class ProductResource extends Resource
 
                                 Toggle::make('visible')->helperText('Ce produit sera visible dans la page des ventes'),
 
-
                             ]),
 
                         Section::make('Associations')
@@ -108,7 +113,10 @@ class ProductResource extends Resource
                                     ->relationship('brand', 'name'),
 
                                 MultiSelect::make('categories')
-                                    ->relationship('categories', 'name'),
+                                    ->relationship('categories', 'name')
+                                    ->createOptionForm([
+                                        TextInput::make('name')->required()->maxLength(255),
+                                    ])->maxWidth('xl'),
 
                             ]),
 

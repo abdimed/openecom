@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Specification extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function getRouteKeyName()
+    public function product()
     {
-        return 'slug';
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

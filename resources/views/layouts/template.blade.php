@@ -13,7 +13,21 @@
         @vite('resources/css/app.css')
 
     </head>
+
     <body class="antialiased">
+        <header>
+
+        </header>
+
+        <main>
+
+            @yield('main')
+
+        </main>
+
+        <footer>
+
+        </footer>
 
     </body>
 </html>

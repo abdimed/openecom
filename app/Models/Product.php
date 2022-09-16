@@ -12,6 +12,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
@@ -27,8 +32,12 @@ class Product extends Model
         return $this->hasMany(Variation::class);
     }
 
+    public function specifications()
+    {
+        return $this->hasMany(Specification::class);
+    }
+
     protected $casts = [
         'specifications' => 'array',
     ];
-
 }

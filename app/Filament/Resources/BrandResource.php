@@ -16,6 +16,8 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+use Closure;
 
 class BrandResource extends Resource
 {
@@ -27,8 +29,14 @@ class BrandResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('logo')->required()->avatar()->columnSpan(['lg'=>2]),
-                TextInput::make('name')->required(),
+                FileUpload::make('logo')->required()->avatar()->columnSpan(['lg' => 2]),
+                TextInput::make('name')
+                    ->reactive()
+                    ->afterStateUpdated(function (Closure $set, $state) {
+                        $set('slug', Str::slug($state));
+                    })->required(),
+
+                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
                 TextInput::make('Website')->url(),
             ]);
     }
