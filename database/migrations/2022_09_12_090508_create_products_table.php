@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('brand_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('slug');
             $table->string('img');
             $table->longText('description');
             $table->boolean('visible');
-            $table->foreignId('brand_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->longText('specifications');
             $table->timestamps();
             $table->softDeletes();
         });

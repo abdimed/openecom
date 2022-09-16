@@ -77,16 +77,16 @@ class ProductResource extends Resource
                                         TextInput::make('name')->columnSpan(['lg' => 3]),
                                         TextInput::make('quantity')->columnSpan(['lg' => 2]),
                                         TextInput::make('price')->hint('DA')->integer()->columnSpan(['lg' => 3]),
-                                    ])->columns(['lg' => 5])->columnSpan(['lg' => 2])
+                                    ])->columns(['lg' => 10])->columnSpan(['lg' => 2])
 
                             ])->columns(['lg' => 2]),
 
-                        // Section::make('Specifications')
-                        //     ->schema([
-                        //         KeyValue::make('specifications')->label('')
-                        //             ->keyPlaceholder('Property name')
-                        //             ->valuePlaceholder('Property value')
-                        //     ]),
+                        Section::make('Specifications')
+                            ->schema([
+                                KeyValue::make('specifications')->label('')
+                                    ->keyPlaceholder('Property name')
+                                    ->valuePlaceholder('Property value')
+                            ]),
 
                     ])->columnSpan(['lg' => 2]),
 

@@ -28,7 +28,7 @@ class Product extends Model
     }
 
     protected $casts = [
-        'variations' => 'array',
+        'specifications' => 'array',
     ];
 
 }
