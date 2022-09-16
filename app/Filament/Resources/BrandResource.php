@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BrandResource\Pages;
 use App\Filament\Resources\BrandResource\RelationManagers;
+use App\Filament\Resources\BrandResource\RelationManagers\ProductsRelationManager;
 use App\Models\Brand;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -63,7 +64,7 @@ class BrandResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProductsRelationManager::class,
         ];
     }
 
@@ -72,7 +73,7 @@ class BrandResource extends Resource
         return [
             'index' => Pages\ListBrands::route('/'),
             // 'create' => Pages\CreateBrand::route('/create'),
-            // 'edit' => Pages\EditBrand::route('/{record}/edit'),
+            'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }
 }
