@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('variations', function (Blueprint $table) {
             $table->id();
-            $table->integer('name');
+            $table->string('ref');
+            $table->string('name');
             $table->foreignId('product_id')->constrained();
+            $table->integer('quantity');
             $table->integer('price');
             $table->timestamps();
         });

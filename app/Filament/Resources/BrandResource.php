@@ -12,6 +12,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -35,7 +37,9 @@ class BrandResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('logo')->rounded(),
+                TextColumn::make('name'),
+                TextColumn::make('website'),
             ])
             ->filters([
                 //
@@ -60,7 +64,7 @@ class BrandResource extends Resource
         return [
             'index' => Pages\ListBrands::route('/'),
             // 'create' => Pages\CreateBrand::route('/create'),
-            'edit' => Pages\EditBrand::route('/{record}/edit'),
+            // 'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }
 }

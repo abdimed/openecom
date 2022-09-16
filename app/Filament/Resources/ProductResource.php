@@ -73,28 +73,20 @@ class ProductResource extends Resource
                                 Repeater::make('variations')->label('')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('name')->columnSpan(['lg' => 5]),
+                                        TextInput::make('ref')->columnSpan(['lg'=> 2]),
+                                        TextInput::make('name')->columnSpan(['lg' => 3]),
                                         TextInput::make('quantity')->columnSpan(['lg' => 2]),
                                         TextInput::make('price')->hint('DA')->integer()->columnSpan(['lg' => 3]),
-                                    ])->columns(['lg' => 10])->columnSpan(['lg' => 2])
+                                    ])->columns(['lg' => 5])->columnSpan(['lg' => 2])
 
                             ])->columns(['lg' => 2]),
 
-                        Section::make('Inventaire')
-                            ->schema([
-
-                                TextInput::make('ref')->required(),
-
-                                TextInput::make('quantity')->required()->numeric(),
-
-                            ])->columns(['lg' => 2]),
-
-                        Section::make('Specifications')
-                            ->schema([
-                                KeyValue::make('specifications')->label('')
-                                    ->keyPlaceholder('Property name')
-                                    ->valuePlaceholder('Property value')
-                            ]),
+                        // Section::make('Specifications')
+                        //     ->schema([
+                        //         KeyValue::make('specifications')->label('')
+                        //             ->keyPlaceholder('Property name')
+                        //             ->valuePlaceholder('Property value')
+                        //     ]),
 
                     ])->columnSpan(['lg' => 2]),
 
@@ -106,7 +98,6 @@ class ProductResource extends Resource
 
                                 Toggle::make('visible')->helperText('Ce produit sera visible dans la page des ventes'),
 
-                                DatePicker::make('aviability'),
 
                             ]),
 

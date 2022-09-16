@@ -17,13 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('ref');
             $table->string('img');
             $table->longText('description');
-            $table->integer('price');
             $table->boolean('visible');
-            $table->date('aviability');
-            $table->integer('quantity');
             $table->foreignId('brand_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
