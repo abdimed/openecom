@@ -1,6 +1,12 @@
 @extends('layouts.template')
 @section('main')
-    @foreach ($products as $product)
-        <a href="{{ route('product.view',[$product->brand->slug, $product->slug]) }}"> {{ $product->name }} </a>
-    @endforeach
+
+    <x-section id="productscroller">
+
+        <x-slot:title>Produits</x-slot:title>
+
+        @include('sections.products-grid')
+
+    </x-section>
+
 @endsection
