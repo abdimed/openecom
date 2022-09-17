@@ -9,7 +9,7 @@ use App\Models\User;
 use Filament\Notifications\Actions\Action;
 use Illuminate\Http\Request;
 use Filament\Notifications\Notification;
-use Filament\Notifications\Events\DatabaseNotificationsSent;
+
 
 class OrderController extends Controller
 {
@@ -29,12 +29,10 @@ class OrderController extends Controller
             ->icon('heroicon-o-shopping-bag')
             ->actions([
                 Action::make('voir')
-
+                ->url(route('filament.resources.orders.edit', $order))
 
             ])
             ->sendToDatabase($user);
-
-        event(new DatabaseNotificationsSent($user));
         return back();
     }
 }
