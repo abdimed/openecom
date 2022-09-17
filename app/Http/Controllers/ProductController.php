@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Variation;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,16 @@ class ProductController extends Controller
     {
         return view('pages.product-details', [
             'product' => $product,
-            'brand' => $brand
+            'brand' => $brand,
+        ]);
+    }
+
+    public function order(Brand $brand, Product $product, Request $request)
+    {
+        return view('pages.product-order', [
+            'product' => $product,
+            'brand' => $brand,
+            'variation' => $request->variation,
         ]);
     }
 }

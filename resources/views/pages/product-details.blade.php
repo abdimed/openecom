@@ -17,7 +17,12 @@
 
                 </div>
 
-                <div class="flex flex-col justify-between items-center lg:items-start gap-y-10" x-data="{ price: '' }">
+
+                <form action="{{ route('product.order', [$product->brand->slug, $product->slug]) }}"
+                    method="GET"class="flex flex-col justify-between items-center lg:items-start gap-y-10"
+                    x-data="{ price: '' }">
+                    @csrf
+
                     @if (!empty($product->variations))
                         <div>
 
@@ -54,7 +59,8 @@
 
                         </div>
                     @endif
-                </div>
+                </form>
+
 
             </section>
 
@@ -113,5 +119,6 @@
             </section>
 
         </div>
+
     @endif
 @endsection
