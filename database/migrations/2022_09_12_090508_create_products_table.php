@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('img');
             $table->longText('description');
             $table->boolean('visible');
-            $table->longText('specifications');
             $table->timestamps();
             $table->softDeletes();
         });

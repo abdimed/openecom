@@ -37,6 +37,8 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?string $navigationGroup = 'E-Commerce';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -67,20 +69,20 @@ class ProductResource extends Resource
 
                             ])->collapsible(),
 
-                        Section::make('Variations')
+                        Section::make('Choix de Variations')
                             ->schema([
 
                                 Repeater::make('variations')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('ref'),
-                                        TextInput::make('name'),
-                                        TextInput::make('quantity'),
-                                        TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')
+                                        TextInput::make('ref')->required(),
+                                        TextInput::make('name')->required(),
+                                        TextInput::make('quantity')->required()->integer(),
+                                        TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')->required()
 
-                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])->nullable()
 
-                            ])->columns(['lg' => 2]),
+                            ])->columns(['lg' => 2])->collapsible(),
 
                         Section::make('Specifications')
                             ->schema([
@@ -88,11 +90,11 @@ class ProductResource extends Resource
                                 Repeater::make('specifications')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('name'),
-                                        TextInput::make('value'),
-                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
+                                        TextInput::make('name')->required(),
+                                        TextInput::make('value')->required(),
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])->nullable()
 
-                            ]),
+                            ])->collapsible(),
 
                     ])->columnSpan(['lg' => 2]),
 
@@ -136,6 +138,9 @@ class ProductResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\RestoreAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -166,5 +171,10 @@ class ProductResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

@@ -1,16 +1,19 @@
 @extends('layouts.template')
 @section('main')
 
+    {{ $product->name }}
 
-    {{$product->name}}
 
-    @foreach ($product->variations as $variation)
-        {{$variation->price}}
-    @endforeach
+    @if (!empty($product->variations))
+        @foreach ($product->variations as $variation)
+            {{ $variation->price }}
+        @endforeach
+    @endif
 
-@dump($product->specifications['robust'])
-    @foreach ($product->specifications as $specification)
-        {{$specification}}
-    @endforeach
+    @if (!empty($product->specifications))
+        @foreach ($product->specifications as $specification)
+            {{ $specification->name }}
+        @endforeach
+    @endif
 
 @endsection
