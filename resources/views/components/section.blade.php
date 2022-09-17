@@ -6,9 +6,7 @@
             {{ $title }}
         </h2>
 
-        <div class="h-1 w-full ml-10 bg-gray-200">
-
-        </div>
+        <hr class="h-1 w-full ml-10 bg-gray-200">
 
     </div>
 

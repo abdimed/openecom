@@ -19,7 +19,7 @@
 
         </header>
 
-        <main>
+        <main class="p-2">
 
             @yield('main')
 

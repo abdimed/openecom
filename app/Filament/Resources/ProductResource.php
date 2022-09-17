@@ -24,7 +24,9 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -131,7 +133,9 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('img')->searchable(),
                 TextColumn::make('name'),
+                ToggleColumn::make('visible')->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

@@ -1,52 +1,117 @@
 @extends('layouts.template')
 @section('main')
 
-    <section class="container m-auto">
-        <div class="grid grid-cols-2 gap-10">
+    @if ($product->visible)
+        <div class="container m-auto grid grid-cols-1 gap-y-10">
 
-            <h1 class="col-span-2 text-4xl font-bold">
-                {{ $product->name }}
-            </h1>
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-            <div class="">
+                <h1 class="lg:col-span-2 text-4xl font-bold">
+                    {{ $product->name }}
+                </h1>
 
-                <img src="{{ asset('storage/' . $product->img) }}" alt=""
-                    class="w-full h-full object-contain object-center rounded-md border">
+                <div class="h-96 p-2 rounded-md border">
 
-            </div>
+                    <img src="{{ asset('storage/' . $product->img) }}" alt="product-img"
+                        class="w-full h-full object-contain object-center">
 
-            <div class="flex flex-col gap-y-10" x-data ="{price:''}">
-                @if (!empty($product->variations))
-                    <span class="font-bold">Choisissez les caractérestique</span>
+                </div>
 
-                    <ul class="flex gap-3">
-                        @foreach ($product->variations as $variation)
-                            <li>
+                <div class="flex flex-col justify-between items-center lg:items-start gap-y-10" x-data="{ price: '' }">
+                    @if (!empty($product->variations))
+                        <div>
 
-                                <input type="radio" name="variation" id="{{ $variation->id }}"
-                                    value="{{ $variation->id }}" class="peer hidden" checked>
+                            <span class="font-bold">Choisissez les caractérestique</span>
 
-                                <label for="{{ $variation->id }}" :change = "price = {{$variation->price}}" @click = "price = {{$variation->price}}"
-                                    class="rounded-md p-4 border bg-gray-300 peer-checked:bg-red-500 peer-checked:text-white">{{ $variation->name }}</label>
+                            <ul class="flex gap-3 mt-5 ">
+                                @foreach ($product->variations as $variation)
+                                    <li>
 
-                            </li>
-                        @endforeach
-                    </ul>
-                    <span x-text="price"></span>
-                @endif
-            </div>
+                                        <input type="radio" name="variation" id="{{ $variation->id }}"
+                                            value="{{ $variation->id }}" class="peer hidden" checked>
+
+                                        <label for="{{ $variation->id }}" :change="price = {{ $variation->price }}"
+                                            @click="price = {{ $variation->price }}"
+                                            class="rounded-md p-4 border bg-gray-100 peer-checked:bg-red-500 peer-checked:text-white">{{ $variation->name }}</label>
+
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+
+                        <div class="rounded-md bg-gray-100 flex justify-center p-4 flex-col gap-y-5 items-center w-3/4">
+
+                            <div>
+
+                                <strong x-text="price" class="text-2xl font-bold"></strong><span
+                                    class="align-top font-bold">DA</span>
+
+                            </div>
+
+                            <button class="bg-red-500 text-white text-xl py-1 px-4 rounded-md">Acheter <br>
+                                Maintenant</button>
+
+                        </div>
+                    @endif
+                </div>
+
+            </section>
+
+            <section>
+
+
+                <h2 class="text-xl font-bold flex items-center w-full">
+                    Description
+
+                    <hr class="h-1 w-full ml-10 bg-gray-200">
+
+                </h2>
+
+                <p class="mt-5">
+                    <x-markdown>
+
+                        {{ $product->description }}
+                    </x-markdown>
+
+                </p>
+
+
+            </section>
+
+
+
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+                <div class="bg-gray-100 rounded-lg p-4">
+
+                    <h3 class="text-center text-xl font-bold py-2">Specifications</h3>
+
+                    @if (!empty($product->specifications))
+                        <ul>
+                            @foreach ($product->specifications as $specification)
+                                <li class="flex justify-between">
+                                    <span class="text-gray-600"> {{ $specification->name }} </span>
+                                    <span> {{ $specification->value }} </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                </div>
+
+                <div class="bg-gray-100 rounded-lg p-4">
+                    <h3 class="text-center text-xl font-bold py-2">Specifications</h3>
+                </div>
+
+                <div class="bg-gray-100 rounded-lg p-4 flex flex-col items-center">
+                    <h3 class="text-center text-xl font-bold py-2">Marque</h3>
+
+                    <img src="{{ asset('storage/' . $product->brand->logo) }}" alt="brand-logo" class="w-52 h-52">
+
+                </div>
+            </section>
 
         </div>
-
-    </section>
-
-
-
-
-    @if (!empty($product->specifications))
-        @foreach ($product->specifications as $specification)
-            {{ $specification->name }}
-        @endforeach
     @endif
-
 @endsection
