@@ -22,9 +22,9 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+        return $this->belongsTo(Category::class);
     }
 
     public function variations()

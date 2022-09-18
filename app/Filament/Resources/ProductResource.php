@@ -63,14 +63,6 @@ class ProductResource extends Resource
 
                             ])->columns(['lg' => 2]),
 
-
-                        Section::make('Images')
-                            ->schema([
-
-                                FileUpload::make('img')->image()->required()->hint('L\'image principale'),
-
-                            ])->collapsible(),
-
                         Section::make('Choix de Variations')
                             ->schema([
 
@@ -98,6 +90,14 @@ class ProductResource extends Resource
 
                             ])->collapsible(),
 
+
+                        Section::make('Images')
+                            ->schema([
+
+                                FileUpload::make('img')->image()->required()->hint('L\'image principale'),
+
+                            ])->collapsible(),
+
                     ])->columnSpan(['lg' => 2]),
 
                 Grid::make()
@@ -114,13 +114,17 @@ class ProductResource extends Resource
                             ->schema([
 
                                 Select::make('brand_id')
-                                    ->relationship('brand', 'name'),
+                                    ->relationship('brand', 'name')->required(),
 
-                                MultiSelect::make('categories')
-                                    ->relationship('categories', 'name')
-                                    ->createOptionForm([
-                                        TextInput::make('name')->required()->maxLength(255),
-                                    ])
+                                Select::make('category_id')
+                                    ->relationship('category', 'name')
+                                    ->searchable()->required(),
+
+                                // MultiSelect::make('categories')
+                                //     ->relationship('categories', 'name')
+                                //     ->createOptionForm([
+                                //         TextInput::make('name')->required()->maxLength(255),
+                                //     ])
 
                             ]),
 

@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Closure;
+use Filament\Forms\Components\Card;
 
 class BrandResource extends Resource
 {
@@ -32,15 +33,19 @@ class BrandResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('logo')->required()->avatar()->columnSpan(['lg' => 2]),
-                TextInput::make('name')
-                    ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                        $set('slug', Str::slug($state));
-                    })->required(),
+                Card::make()
+                    ->schema([
+                        FileUpload::make('logo')->required()->avatar()->columnSpan(['lg' => 2]),
+                        TextInput::make('name')
+                            ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', Str::slug($state));
+                            })->required(),
 
-                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
-                TextInput::make('Website')->url(),
+                        TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                        TextInput::make('Website')->url(),
+                    ])->columns(['lg' => 2])
+
             ]);
     }
 
@@ -74,7 +79,7 @@ class BrandResource extends Resource
     {
         return [
             'index' => Pages\ListBrands::route('/'),
-            // 'create' => Pages\CreateBrand::route('/create'),
+            'create' => Pages\CreateBrand::route('/create'),
             'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }

@@ -19,6 +19,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
 
 class ProductsRelationManager extends RelationManager
 {
@@ -56,20 +57,20 @@ class ProductsRelationManager extends RelationManager
 
                             ])->collapsible(),
 
-                        Section::make('Variations')
+                        Section::make('Choix de Variations')
                             ->schema([
 
                                 Repeater::make('variations')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('ref'),
-                                        TextInput::make('name'),
-                                        TextInput::make('quantity'),
-                                        TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')
+                                        TextInput::make('ref')->required(),
+                                        TextInput::make('name')->required(),
+                                        TextInput::make('quantity')->required()->integer(),
+                                        TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')->required()
 
-                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])->nullable()
 
-                            ])->columns(['lg' => 2]),
+                            ])->columns(['lg' => 2])->collapsible(),
 
                         Section::make('Specifications')
                             ->schema([
@@ -77,11 +78,11 @@ class ProductsRelationManager extends RelationManager
                                 Repeater::make('specifications')
                                     ->relationship()
                                     ->schema([
-                                        TextInput::make('name'),
-                                        TextInput::make('value'),
-                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])
+                                        TextInput::make('name')->required(),
+                                        TextInput::make('value')->required(),
+                                    ])->columns(['lg' => 2])->columnSpan(['lg' => 2])->nullable()
 
-                            ]),
+                            ])->collapsible(),
 
                     ])->columnSpan(['lg' => 2]),
 
@@ -99,20 +100,16 @@ class ProductsRelationManager extends RelationManager
                             ->schema([
 
                                 Select::make('brand_id')
-                                    ->relationship('brand', 'name'),
+                                    ->relationship('brand', 'name')->required(),
 
-                                MultiSelect::make('categories')
-                                    ->relationship('categories', 'name')
-                                    ->createOptionForm([
-                                        TextInput::make('name')->required()->maxLength(255),
-                                    ])
+                                Select::make('category_id')
+                                    ->relationship('category', 'name')->searchable()->required(),
 
                             ]),
 
                     ])->columnSpan(['lg' => 1]),
 
             ])->columns(['lg' => 3]);
-
     }
 
     public static function table(Table $table): Table
@@ -120,6 +117,7 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                TextColumn::make('category.name')
             ])
             ->filters([
                 //

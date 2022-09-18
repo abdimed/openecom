@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('brand_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('slug');
             $table->string('img');
             $table->longText('description');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
