@@ -2,7 +2,7 @@
 @section('main')
 
 
-    <form action="{{ route('order.post', [$product->brand->slug, $product->slug]) }}" method="POST">
+    <form action="{{ route('order.post', [$product->category->slug, $product->slug]) }}" method="POST">
         @csrf
         <div class="grid grid-cols-1 lg:grid-cols-2 bg-gray-100 rounded-md">
 

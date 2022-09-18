@@ -20,6 +20,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
+use Closure;
 
 class ProductsRelationManager extends RelationManager
 {

@@ -37,4 +37,7 @@ class Product extends Model
         return $this->hasMany(Specification::class);
     }
 
+    protected $casts = [
+        'attachments' => 'array',
+    ];
 }

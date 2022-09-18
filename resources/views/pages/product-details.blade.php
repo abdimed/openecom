@@ -10,15 +10,21 @@
                     {{ $product->name }}
                 </h1>
 
-                <div class="h-96 p-2 rounded-md border">
+                <div class="rounded-md border grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
+
+                    <div class="flex flex-row lg:flex-col justify-between p-2 lg:order-1 order-2">
+                        @foreach ($product->attachments as $attachment )
+                        <img src="{{asset('storage/'.$attachment)}}" alt="att" class="w-20 h-20 object-cover object-center rounded-md">
+                        @endforeach
+                    </div>
 
                     <img src="{{ asset('storage/' . $product->img) }}" alt="product-img"
-                        class="w-full h-full object-contain object-center">
+                        class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1">
 
                 </div>
 
 
-                <form action="{{ route('product.order', [$product->brand->slug, $product->slug]) }}"
+                <form action="{{ route('product.order', [$product->category->slug, $product->slug]) }}"
                     method="GET"class="flex flex-col justify-between items-center lg:items-start gap-y-10"
                     x-data="{ price: '' }">
                     @csrf

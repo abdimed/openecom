@@ -95,6 +95,7 @@ class ProductResource extends Resource
                             ->schema([
 
                                 FileUpload::make('img')->image()->required()->hint('L\'image principale'),
+                                FileUpload::make('attachments')->image()->multiple()->maxFiles(4),
 
                             ])->collapsible(),
 

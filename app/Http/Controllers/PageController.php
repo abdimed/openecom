@@ -10,7 +10,7 @@ class PageController extends Controller
     public function welcome()
     {
         return view('pages.welcome', [
-           'products' => Product::with(['brand', 'categories'])->get()
+           'products' => Product::with(['brand', 'category'])->get()
         ]);
     }
 

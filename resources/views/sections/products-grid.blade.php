@@ -4,7 +4,7 @@
 
         @foreach ($products as $product)
             @if ($product->visible)
-                <a href="{{ route('product.view', [$product->brand->slug, $product->slug]) }}"
+                <a href="{{ route('product.view', [$product->category->slug, $product->slug]) }}"
                     class="shrink-0 flex m-auto flex-col justify-between snap-start border rounded-md w-[264px] h-[360px] hover:shadow-lg transition-all duration-300">
 
                     <img src="{{ asset('storage/' . $product->img) }}" alt="img"

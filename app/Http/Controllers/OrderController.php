@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Order;
 use App\Models\Product;
@@ -14,7 +15,7 @@ use Filament\Notifications\Notification;
 
 class OrderController extends Controller
 {
-    public function post(Brand $brand, Product $product, Request $request)
+    public function post(Category $category, Brand $brand, Product $product, Request $request)
     {
         $client = Client::create([
             'name' => $request->name,
