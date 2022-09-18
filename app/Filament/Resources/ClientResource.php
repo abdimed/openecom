@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrderResource\Pages;
-use App\Filament\Resources\OrderResource\RelationManagers;
-use App\Models\Order;
+use App\Filament\Resources\ClientResource\Pages;
+use App\Filament\Resources\ClientResource\RelationManagers;
+use App\Filament\Resources\ClientResource\RelationManagers\OrdersRelationManager;
+use App\Models\Client;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -14,11 +15,13 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OrderResource extends Resource
+class ClientResource extends Resource
 {
-    protected static ?string $model = Order::class;
+    protected static ?string $model = Client::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
@@ -32,11 +35,7 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('variation.name')->label('choix'),
-                TextColumn::make('variation.price')->suffix('DA')->label('prix'),
-                TextColumn::make('created_at')->dateTime(format:'d/m/Y H:i')->sortable(),
-                TextColumn::make('client.name'),
-
+                TextColumn::make('name'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -54,16 +53,16 @@ class OrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            OrdersRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrders::route('/'),
-            'create' => Pages\CreateOrder::route('/create'),
-            'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'index' => Pages\ListClients::route('/'),
+            'create' => Pages\CreateClient::route('/create'),
+            'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
     }
 

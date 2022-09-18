@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -15,21 +16,30 @@ class OrderController extends Controller
 {
     public function post(Brand $brand, Product $product, Request $request)
     {
+        $client = Client::create([
+            'name' => $request->name,
+        ]);
+
+
         $order =  Order::create([
             'name' => $request->name,
+            'number' => 'CMD',
+            'client_id' => $client->id,
             'product_id' => $product->id,
             'variation_id' => $request->variation,
         ]);
+
+
 
         $user = User::where('id', 11)->get();
 
         Notification::make()
             ->title('Nouvelle Commande')
-            ->body('**' . $order->name . '**')
+            ->body('**' . $order->name . '**' . ' a fais une commande')
             ->icon('heroicon-o-shopping-bag')
             ->actions([
                 Action::make('voir')
-                ->url(route('filament.resources.orders.edit', $order))
+                    ->url(route('filament.resources.orders.edit', $order))
 
             ])
             ->sendToDatabase($user);
