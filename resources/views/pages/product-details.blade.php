@@ -10,16 +10,16 @@
                     {{ $product->name }}
                 </h1>
 
-                <div class="rounded-md border grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
 
-                    <div class="flex flex-row lg:flex-col justify-between p-2 lg:order-1 order-2">
+                    <div class="flex flex-row lg:flex-col justify-between items-center p-2 lg:order-1 order-2">
                         @foreach ($product->attachments as $attachment )
                         <img src="{{asset('storage/'.$attachment)}}" alt="att" class="w-20 h-20 object-cover object-center rounded-md">
                         @endforeach
                     </div>
 
                     <img src="{{ asset('storage/' . $product->img) }}" alt="product-img"
-                        class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1">
+                        class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1 rounded-md border ">
 
                 </div>
 
@@ -43,7 +43,7 @@
 
                                         <label for="{{ $variation->id }}" :change="price = {{ $variation->price }}"
                                             @click="price = {{ $variation->price }}"
-                                            class="rounded-md p-4 border bg-gray-100 peer-checked:bg-red-500 peer-checked:text-white">{{ $variation->name }}</label>
+                                            class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-red-500 peer-checked:text-red-500 peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>
 
                                     </li>
                                 @endforeach
@@ -60,7 +60,7 @@
 
                             </div>
 
-                            <button class="bg-red-500 text-white text-xl py-1 px-4 rounded-md">Acheter <br>
+                            <button class="bg-red-500 text-white hover:bg-red-600 hover:scale-110 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">Acheter <br>
                                 Maintenant</button>
 
                         </div>
