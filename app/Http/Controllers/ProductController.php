@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Variation;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,9 +21,20 @@ class ProductController extends Controller
 
     public function order(Category $category, Product $product, Request $request)
     {
-        return view('pages.product-order', [
-            'product' => $product,
-            'variation' => $request->variation,
-        ]);
+        switch ($request->action) {
+            case 'order':
+                return view('pages.product-order', [
+                    'product' => $product,
+                    'variation' => $request->variation,
+                ]);
+                break;
+
+            case 'addToCart':
+                $variation = Variation::findOrFail($request->variation);
+
+                Cart::add($variation->id, $product->name, 50, $variation->price, $variation->id);
+                return back();
+                break;
+        }
     }
 }

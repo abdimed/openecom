@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Laravel</title>
 
-        <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    </head>
+    <!-- Styles -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+</head>
 
-    <body class="antialiased">
-        <header>
+<body class="antialiased">
+    <header>
+        @include('sections.navbar')
+    </header>
 
-        </header>
+    <main class="p-2">
 
-        <main class="p-2">
+        @yield('main')
 
-            @yield('main')
+    </main>
 
-        </main>
+    <footer>
 
-        <footer>
+    </footer>
+    @livewireScripts
+</body>
 
-        </footer>
-
-    </body>
 </html>

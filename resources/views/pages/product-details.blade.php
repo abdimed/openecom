@@ -13,8 +13,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
 
                     <div class="flex flex-row lg:flex-col justify-between items-center p-2 lg:order-1 order-2">
-                        @foreach ($product->attachments as $attachment )
-                        <img src="{{asset('storage/'.$attachment)}}" alt="att" class="w-20 h-20 object-cover object-center rounded-md">
+                        @foreach ($product->attachments as $attachment)
+                            <img src="{{ asset('storage/' . $attachment) }}" alt="att"
+                                class="w-20 h-20 object-cover object-center rounded-md">
                         @endforeach
                     </div>
 
@@ -24,49 +25,7 @@
                 </div>
 
 
-                <form action="{{ route('product.order', [$product->category->slug, $product->slug]) }}"
-                    method="GET"class="flex flex-col justify-between items-center lg:items-start gap-y-10"
-                    x-data="{ price: '' }">
-                    @csrf
-
-                    @if (!empty($product->variations))
-                        <div>
-
-                            <span class="font-bold">Choisissez les caractérestique</span>
-
-                            <ul class="flex gap-3 mt-5 ">
-                                @foreach ($product->variations as $variation)
-                                    <li>
-
-                                        <input type="radio" name="variation" id="{{ $variation->id }}"
-                                            value="{{ $variation->id }}" class="peer hidden" checked>
-
-                                        <label for="{{ $variation->id }}" :change="price = {{ $variation->price }}"
-                                            @click="price = {{ $variation->price }}"
-                                            class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-red-500 peer-checked:text-red-500 peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>
-
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                        </div>
-
-                        <div class="rounded-md bg-gray-100 flex justify-center p-4 flex-col gap-y-5 items-center w-3/4">
-
-                            <div>
-
-                                <strong x-text="price" class="text-2xl font-bold"></strong><span
-                                    class="align-top font-bold">DA</span>
-
-                            </div>
-
-                            <button class="bg-red-500 text-white hover:bg-red-600 hover:scale-110 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">Acheter <br>
-                                Maintenant</button>
-
-                        </div>
-                    @endif
-                </form>
-
+                @livewire('cart-form', ['product' => $product])
 
             </section>
 
@@ -82,7 +41,6 @@
 
                 <p class="mt-5">
                     <x-markdown>
-
                         {{ $product->description }}
                     </x-markdown>
 
