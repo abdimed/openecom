@@ -13,12 +13,13 @@ class CartForm extends Component
     public $price;
     public $variations;
 
-    public function post()
+    public function addToCart()
     {
         $variation = Variation::findOrFail($this->variation_id);
 
         Cart::add($variation->id, $variation->name, 50, $variation->price, $variation->id);
 
+        $this->emit('cart_updated');
     }
 
     public function mount()
@@ -26,17 +27,21 @@ class CartForm extends Component
         $firstVariation = $this->product->variations->first();
         $this->variation_id = $firstVariation->id;
         $this->price = $firstVariation->price;
-
     }
 
     public function updatedVariationID()
     {
         $variation = $this->variations->firstWhere('id', $this->variation_id);
-        $this->price= $variation->price;
+        $this->price = $variation->price;
     }
 
     public function render()
     {
-        return view('livewire.cart-form');
+        return view(
+            'livewire.cart-form',
+            [
+                'isInCart' => Cart::content()->where('id', $this->variation_id)->count(),
+            ]
+        );
     }
 }
