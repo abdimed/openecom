@@ -12,19 +12,11 @@ class CartController extends Controller
 
     public function view()
     {
-        $items = Cart::content();
 
         $total = Cart::total();
 
-        foreach ($items as $item)
-        {
-            $products[]= Product::find($item->id);
-        }
-
         return view('pages.cart', [
-           'cartItems' => Cart::content(),
-           'total' => $total,
-           'products'=> $products,
+            'total' => $total,
         ]);
     }
 }
