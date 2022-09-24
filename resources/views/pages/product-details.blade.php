@@ -25,7 +25,7 @@
                 </div>
 
 
-                @livewire('cart-form', ['product' => $product])
+                @livewire('cart-form', ['product' => $product, 'variations' => $product->variations])
 
             </section>
 

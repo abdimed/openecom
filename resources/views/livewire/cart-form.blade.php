@@ -1,20 +1,17 @@
 <form wire:submit.prevent="post" class="flex flex-col justify-between items-center lg:items-start gap-y-10"
-    x-data="{ price: '' }">
+    x-data="{ price, variation }">
 
     @if (!empty($product->variations))
         <div>
 
             <span class="font-bold">Choisissez les caractérestique</span>
 
-            <ul class="flex gap-3 mt-5 ">
+            <ul class="flex gap-3 mt-5">
                 @foreach ($product->variations as $variation)
                     <li>
 
-                        <input type="radio" x-model="$wire.variation_id" id="{{ $variation->id }}" checked
-                            value="{{ $variation->id }}" class="peer hidden">
-                        <span x-text="$wire.variation_id"></span>
+                        <input type="radio" x-model="$wire.variation_id" value="{{ $variation->id }}" id="{{ $variation->id }}" class="peer hidden">
                         <label for="{{ $variation->id }}"
-                           wire:click="price({{$variation->id}})"
                             class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-red-500 peer-checked:text-red-500 peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>
 
                     </li>
@@ -27,12 +24,13 @@
 
             <div class="lg:col-span-2 flex justify-center">
 
-                <strong class="text-2xl font-bold">{{$price}}</strong><span class="align-top font-bold">DA</span>
+                <strong class="text-2xl font-bold" x-text= "$wire.price"></strong><span
+                    class="align-top font-bold">DA</span>
 
             </div>
 
             <button value="addToCart" name="action"
-                class="flex items-center justify-center  bg-red-500 text-white hover:bg-red-600 hover:scale-110 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">
+                class="flex items-center justify-center  bg-red-500 text-white hover:bg-red-600 hover:scale-105 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -43,10 +41,10 @@
                 au panier</button>
 
             <button value="order" name="action"
-                class="bg-red-500 text-white hover:bg-red-600 hover:scale-110 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">Acheter
+                class="bg-red-500 text-white hover:bg-red-600 hover:scale-105 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">Acheter
                 <br>
                 Maintenant</button>
 
         </div>
     @endif
-</form>
+</div>

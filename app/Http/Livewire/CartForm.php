@@ -11,24 +11,28 @@ class CartForm extends Component
     public $product;
     public $variation_id;
     public $price;
+    public $variations;
 
-    public function post($variation_id)
+    public function post()
     {
-        $variation = Variation::findOrFail($variation_id);
+        $variation = Variation::findOrFail($this->variation_id);
 
         Cart::add($variation->id, $variation->name, 50, $variation->price, $variation->id);
 
     }
 
-    public function price($variation_id)
-    {
-        $variation = Variation::findOrFail($variation_id);
-        $this->price = $variation->price;
-    }
-
     public function mount()
     {
-        $this->variation_id = 1;
+        $firstVariation = $this->product->variations->first();
+        $this->variation_id = $firstVariation->id;
+        $this->price = $firstVariation->price;
+
+    }
+
+    public function updatedVariationID()
+    {
+        $variation = $this->variations->firstWhere('id', $this->variation_id);
+        $this->price= $variation->price;
     }
 
     public function render()
