@@ -12,11 +12,6 @@ class CartController extends Controller
 
     public function view()
     {
-
-        $total = Cart::total();
-
-        return view('pages.cart', [
-            'total' => $total,
-        ]);
+        return view('pages.cart');
     }
 }
