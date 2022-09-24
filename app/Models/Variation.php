@@ -20,4 +20,5 @@ class Variation extends Model
     {
         return $this->hasMany(Order::class);
     }
+
 }

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Gloudemans\Shoppingcart\CanBeBought;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Product extends Model
 {
@@ -40,4 +42,6 @@ class Product extends Model
     protected $casts = [
         'attachments' => 'array',
     ];
+
+
 }

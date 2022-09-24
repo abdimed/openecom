@@ -54,10 +54,10 @@
                 </button>
             @endif
 
-            <button value="order" name="action" wire:loading.class="flex items-center justify-center bg-gray-500 text-white text-xl py-1 px-10 rounded-md"
-                class="bg-red-500 text-white hover:bg-red-600 hover:scale-105 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">
+            <a href="{{ route('cart.view') }}"  wire:loading.class="bg-gray-500"
+                class="text-center bg-red-500 text-white hover:bg-red-600 hover:scale-105 hover:-translate-y-2 transition-all duration-200 text-xl py-1 px-10 rounded-md">
                 Acheter <br> Maintenant
-            </button>
+            </a>
 
         </div>
 
