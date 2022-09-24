@@ -13,22 +13,32 @@ class CartTable extends Component
 
     public $rowId;
 
-
     public function addQty($rowId)
     {
 
         $itemQty = Cart::get($rowId)->qty;
 
         Cart::update($rowId, $itemQty+1);
+    }
+
+    public function minusQty($rowId)
+    {
+
+        $itemQty = Cart::get($rowId)->qty;
+
+        Cart::update($rowId, $itemQty-1);
+
 
     }
 
     public function render()
     {
+        $this->totalPrice = Cart::total();
         return view(
             'livewire.cart-table',
             [
                 'cartItems' => Cart::content(),
+                'totalPrice' => Cart::total(),
             ]
         );
     }

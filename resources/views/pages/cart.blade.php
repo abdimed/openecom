@@ -3,5 +3,5 @@
 
     @livewire('cart-table')
 
-    <span class="text-red-500"> {{ $total }}</span>
+
 @endsection
