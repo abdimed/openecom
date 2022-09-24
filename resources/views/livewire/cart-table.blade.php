@@ -1,4 +1,5 @@
 <div class=" bg-gray-100 lg:p-6">
+    @if($cartItems->count()>0)
     <ul class="grid grid-cols-1 gap-y-5">
 
         @foreach ($cartItems as $item)
@@ -57,5 +58,5 @@
 
 
     </ul>
-
+@endif
 </div>

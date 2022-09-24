@@ -33,6 +33,8 @@ class CartTable extends Component
     public function removeFromCart($rowId)
     {
         Cart::remove($rowId);
+
+        $this->emit('cart_updated');
     }
 
     public function render()

@@ -1,3 +1,3 @@
 <div>
-    <span> Cart ({{ $cart_counter }})</span>
+    <a href="{{route('cart.view')}}"> Cart ({{ $cart_counter }})</a>
 </div>
