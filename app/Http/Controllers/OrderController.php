@@ -15,6 +15,7 @@ use Filament\Notifications\Notification;
 
 class OrderController extends Controller
 {
+
     public function post(Category $category, Brand $brand, Product $product, Request $request)
     {
         $client = Client::create([

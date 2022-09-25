@@ -9,7 +9,7 @@
                 @foreach ($product->variations as $variation)
                     <li class="flex">
 
-                        <input type="radio" x-model="$wire.variation_id" value="{{ $variation->id }}"
+                        <input type="radio" wire:model="variation_id" value="{{ $variation->id }}"
                             id="{{ $variation->id }}" class="peer hidden">
                         <label for="{{ $variation->id }}"
                             class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-red-500 peer-checked:text-red-500 peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>

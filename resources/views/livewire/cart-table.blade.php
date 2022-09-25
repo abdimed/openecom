@@ -1,8 +1,8 @@
-<div class=" bg-gray-100 lg:p-6">
+<div>
 
     @if ($cartItems->count() > 0)
 
-        <ul class="grid grid-cols-1 gap-y-5">
+        <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6">
 
             @foreach ($cartItems as $item)
                 <li class="grid grid-cols-3 lg:grid-cols-6 bg-white rounded-md shadow-md p-2">
@@ -16,7 +16,8 @@
 
                         <div class="flex flex-col justify-center items-center">
                             <span class="text-sm text-gray-400">prix unitaire</span>
-                            <span class="text-2xl"> {{ $item->price }} <span class="text-sm align-top">DA</span>
+                            <span class="text-2xl"> {{ number_format($item->price, 2, ',', '.') }} <span
+                                    class="text-sm align-top">DA</span>
                             </span>
                         </div>
 
@@ -57,7 +58,65 @@
 
             </div>
 
+            <a href="" class="bg-red-500 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
+                Proceder a l'achat
+            </a>
+
         </ul>
+
+
+        <h2 class="lg:col-span-2 text-2xl font-bold my-10">InformationClient</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 bg-gray-100 rounded-md">
+
+            <form action="">
+
+                <div class="grid grid-cols-1 gap-y-5">
+
+                    <div class="flex flex-col">
+                        <label for="full_name">nom complet</label>
+                        <input type="text" name="full_name" class="rounded-full">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="tel"> N° Téléphone </label>
+                        <input type="text" name="tel" class="rounded-full">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="wilaya">Wilaya</label>
+                        <input type="text" name="wilaya" class="rounded-full">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="adress">Adresse de livraison</label>
+                        <input type="text" name="adress" class="rounded-full">
+                    </div>
+
+                    <div class="">
+                        <label for="is_compnay"> Vous etes une entreprise ?</label>
+                        <input type="checkbox" name="is_company" id="" class="peer">
+
+                        <div class="hidden peer-checked:visible">
+                            <label for="adress">Adresse de livraison</label>
+
+                            <input type="text" name="adress" class="rounded-full ">
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <label for="adress">Adresse de livraison</label>
+                        <input type="text" name="adress" class="rounded-full peer-checked:hidden">
+                    </div>
+
+                    <div>
+                        <label for="adress">Adresse de livraison</label>
+                        <input type="text" name="adress" class="rounded-full hidden">
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
 
     @endif
 
