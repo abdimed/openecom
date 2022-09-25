@@ -12,6 +12,7 @@ class CartForm extends Component
     public $variation_id;
     public $price;
     public $variations;
+    public $action;
 
     public function addToCart()
     {
@@ -31,8 +32,8 @@ class CartForm extends Component
 
     public function updatedVariationID()
     {
-        $variation = $this->variations->firstWhere('id', $this->variation_id);
-        $this->price = $variation->price;
+        $this->price = $this->variations->firstWhere('id', $this->variation_id)->price;
+
     }
 
     public function render()

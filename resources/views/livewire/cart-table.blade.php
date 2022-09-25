@@ -23,7 +23,7 @@
 
                         <div class="flex flex-col justify-center items-center">
                             <span class="text-sm text-gray-400">Qty</span>
-                            <div class="bg-gray-100 rounded-md flex items-center gap-x-5 px-2">
+                            <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2">
 
                                 <button wire:click="minusQty( '{{ $item->rowId }}' )"
                                     class="font-bold text-3xl">-</button>
@@ -32,6 +32,10 @@
 
                                 <button wire:click="addQty( '{{ $item->rowId }}' )"
                                     class="font-bold text-3xl">+</button>
+
+                                <div wire:loading class="absolute inset-0 w-full h-full bg-white/60 rounded-md">
+
+                                </div>
 
                             </div>
 

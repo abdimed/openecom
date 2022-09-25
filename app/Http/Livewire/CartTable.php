@@ -19,6 +19,8 @@ class CartTable extends Component
         $itemQty = Cart::get($rowId)->qty;
 
         Cart::update($rowId, $itemQty+1);
+
+        $this->emit('cart_updated');
     }
 
     public function minusQty($rowId)
@@ -27,6 +29,8 @@ class CartTable extends Component
         $itemQty = Cart::get($rowId)->qty;
 
         Cart::update($rowId, $itemQty-1);
+
+        $this->emit('cart_updated');
 
     }
 
@@ -39,12 +43,12 @@ class CartTable extends Component
 
     public function render()
     {
-        $this->totalPrice = Cart::total();
+        $this->totalPrice = Cart::subtotal();
         return view(
             'livewire.cart-table',
             [
                 'cartItems' => Cart::content(),
-                'totalPrice' => Cart::total(),
+                'totalPrice' => Cart::subtotal(),
             ]
         );
     }
