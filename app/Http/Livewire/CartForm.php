@@ -12,7 +12,6 @@ class CartForm extends Component
     public $variation_id;
     public $price;
     public $variations;
-    public $action;
 
     public function addToCart()
     {
@@ -21,6 +20,15 @@ class CartForm extends Component
         Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['variation' => $variation->name, 'img' => $this->product->img]);
 
         $this->emit('cart_updated');
+    }
+
+    public function buyNow()
+    {
+        $variation = Variation::findOrFail($this->variation_id);
+
+        Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['variation' => $variation->name, 'img' => $this->product->img]);
+
+        return to_route('cart.view');
     }
 
     public function mount()
