@@ -11,7 +11,7 @@ use App\Models\User;
 use Filament\Notifications\Actions\Action;
 use Illuminate\Http\Request;
 use Filament\Notifications\Notification;
-
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -33,7 +33,7 @@ class OrderController extends Controller
 
 
 
-        $user = User::where('id', 11)->get();
+        $user = Auth::user();
 
         Notification::make()
             ->title('Nouvelle Commande')

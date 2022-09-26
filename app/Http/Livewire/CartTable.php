@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Client;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -40,6 +41,7 @@ class CartTable extends Component
 
         $this->emit('cart_updated');
     }
+
 
     public function render()
     {

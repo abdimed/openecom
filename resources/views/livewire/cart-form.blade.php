@@ -20,7 +20,6 @@
 
         </div>
 
-
         <div
             class="relative grid grid-cols-1 lg:grid-cols-2 p-4 gap-5 items-center rounded-md bg-gray-100 w-full lg:w-3/4">
 
