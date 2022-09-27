@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('slug');
             $table->string('images');
-            $table->string('file');
+            $table->string('document');
             $table->longText('description');
             $table->boolean('visible')->default(0);
             $table->timestamps();

@@ -7,7 +7,7 @@
                 <a href="{{ route('product.view', [$product->category->slug, $product->slug]) }}"
                     class="shrink-0 flex m-auto flex-col justify-between snap-start border rounded-md w-[264px] h-[360px] hover:shadow-lg transition-all duration-300">
 
-                    <img src="{{ asset('storage/' . $product->attachments[0]) }}" alt="img"
+                    <img src="{{ asset('storage/' . $product->images[0]) }}" alt="img"
                         class="w-full h-[249px] object-cover object-center">
 
                     <div class="p-2">

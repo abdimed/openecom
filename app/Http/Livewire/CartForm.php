@@ -17,7 +17,7 @@ class CartForm extends Component
     {
         $variation = Variation::findOrFail($this->variation_id);
 
-        Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['product_id' => $this->product->id, 'variation' => $variation->name, 'img' => $this->product->img]);
+        Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['product_id' => $this->product->id, 'variation' => $variation->name, 'img' => $this->product->images[0]]);
 
         $this->emit('cart_updated');
     }
@@ -29,7 +29,7 @@ class CartForm extends Component
 
             $variation = Variation::findOrFail($this->variation_id);
 
-            Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['variation' => $variation->name, 'img' => $this->product->img]);
+            Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['variation' => $variation->name, 'img' => $this->product->images[0]]);
         }
 
         return to_route('cart.view');

@@ -40,7 +40,7 @@ class Product extends Model
     }
 
     protected $casts = [
-        'attachments' => 'array',
+        'images' => 'array',
     ];
 
 

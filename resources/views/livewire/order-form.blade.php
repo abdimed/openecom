@@ -6,9 +6,10 @@
 
         <form wire:submit.prevent="newOrder">
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-5 lg:p-5 p-2 bg-gray-100 rounded-md divide-x-4">
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-y-5 lg:p-5 p-2 bg-gray-100 rounded-md divide-x-2 divide-gray-300">
 
-                <div class="lg:p-5 p-2">
+                <div class="lg:p-5 p-2 flex flex-col gap-y-5">
 
                     <div class="flex flex-col">
                         <label for="full_name">nom complet</label>
@@ -32,11 +33,16 @@
                         <label for="is_compnay"> Vous etes une entreprise ?</label>
                         <input type="checkbox" wire:model="is_company" value="1" class="peer">
 
-                        <div class="hidden peer-checked:flex flex-col">
-                            <label for="company_name">Nom de l'entreprise</label>
-                            <input type="text" name="company_name" class="rounded-full ">
-                            <label for="email">Email Professionel</label>
-                            <input type="text" name="email" class="rounded-full ">
+                        <div class="hidden peer-checked:flex flex-col gap-y-5 mt-5">
+                            <div class="flex flex-col">
+                                <label for="company_name">Nom de l'entreprise</label>
+                                <input type="text" name="company_name" class="rounded-full ">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="email">Email Professionel</label>
+                                <input type="text" name="email" class="rounded-full ">
+                            </div>
                         </div>
 
                     </div>
@@ -90,8 +96,7 @@
 
         <div wire:loading.flex class="absolute w-full h-full bg-white/50 inset-0 cursor-wait">
 
-            <img src="{{ asset('loading.svg') }}" alt="loading..."
-                class="m-auto w-28">
+            <img src="{{ asset('loading.svg') }}" alt="loading..." class="m-auto w-28">
 
         </div>
 

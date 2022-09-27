@@ -35,7 +35,7 @@ class BrandResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        FileUpload::make('logo')->required()->avatar()->columnSpan(['lg' => 2]),
+                        FileUpload::make('logo')->image()->required()->columnSpan(['lg' => 2])->imagePreviewHeight('250'),
                         TextInput::make('name')
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {

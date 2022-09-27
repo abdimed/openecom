@@ -97,7 +97,7 @@ class ProductResource extends Resource
 
                                 FileUpload::make('images')->image()->multiple()->maxFiles(4),
 
-                                FileUpload::make('file')->required(),
+                                FileUpload::make('document')->acceptedFileTypes(['application/pdf']),
 
                             ])->collapsible(),
 
@@ -121,6 +121,20 @@ class ProductResource extends Resource
 
                                 Select::make('category_id')
                                     ->relationship('category', 'name')
+                                    ->createOptionForm([
+                                        FileUpload::make('icon')->image()->avatar(),
+                                        Grid::make()
+                                            ->schema([
+                                                TextInput::make('name')
+                                                    ->reactive()
+                                                    ->afterStateUpdated(function (Closure $set, $state) {
+                                                        $set('slug', Str::slug($state));
+                                                    })->required(),
+
+                                                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                                            ])
+
+                                    ])
                                     ->searchable()->required(),
                             ]),
 
