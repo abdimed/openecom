@@ -20,6 +20,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\KeyValue;
+use Filament\Forms\Components\Placeholder;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -94,8 +95,7 @@ class ProductResource extends Resource
                         Section::make('Images')
                             ->schema([
 
-                                FileUpload::make('img')->image()->required()->hint('L\'image principale'),
-                                FileUpload::make('attachments')->image()->multiple()->maxFiles(4),
+                                FileUpload::make('images')->image()->multiple()->maxFiles(4),
 
                             ])->collapsible(),
 
@@ -119,6 +119,20 @@ class ProductResource extends Resource
 
                                 Select::make('category_id')
                                     ->relationship('category', 'name')
+                                    ->createOptionForm([
+                                        FileUpload::make('icon')->image()->avatar(),
+                                        Grid::make()
+                                            ->schema([
+                                                TextInput::make('name')
+                                                    ->reactive()
+                                                    ->afterStateUpdated(function (Closure $set, $state) {
+                                                        $set('slug', Str::slug($state));
+                                                    })->required(),
+
+                                                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                                            ])
+
+                                    ])
                                     ->searchable()->required(),
 
                                 // MultiSelect::make('categories')

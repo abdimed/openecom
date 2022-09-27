@@ -2,7 +2,7 @@
 @section('main')
 
     @if ($product->visible)
-        <div class="container m-auto grid grid-cols-1 gap-y-10">
+        <div class="container m-auto grid grid-cols-1 gap-y-10" x-data="{imgPrincipale: '/storage/{{$product->attachments[0]}}'}">
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
@@ -14,12 +14,12 @@
 
                     <div class="flex flex-row lg:flex-col justify-between items-center p-2 lg:order-1 order-2">
                         @foreach ($product->attachments as $attachment)
-                            <img src="{{ asset('storage/' . $attachment) }}" alt="att"
+                            <img x-on:click.self="imgPrincipale = '/storage/{{$attachment}}'" src="{{ asset('storage/' . $attachment) }}" alt="att"
                                 class="w-20 h-20 object-cover object-center rounded-md">
                         @endforeach
                     </div>
 
-                    <img src="{{ asset('storage/' . $product->img) }}" alt="product-img"
+                    <img :src="imgPrincipale" alt="product-img"
                         class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1 rounded-md border ">
 
                 </div>
@@ -29,7 +29,6 @@
             </section>
 
             <section>
-
 
                 <h2 class="text-xl font-bold flex items-center w-full">
                     Description
@@ -45,10 +44,7 @@
 
                 </p>
 
-
             </section>
-
-
 
             <section class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
