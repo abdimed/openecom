@@ -7,6 +7,8 @@ use App\Filament\Resources\ClientResource\RelationManagers;
 use App\Filament\Resources\ClientResource\RelationManagers\OrdersRelationManager;
 use App\Models\Client;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -27,7 +29,14 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()
+                    ->schema([
+                        TextInput::make('full_name')->disabled(),
+                        TextInput::make('tel')->disabled(),
+                        TextInput::make('wilaya')->disabled(),
+                        TextInput::make('adress')->disabled(),
+                        TextInput::make('email')->disabled(),
+                    ])->columns(['lg'=>2])
             ]);
     }
 
@@ -35,13 +44,12 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('full_name'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
