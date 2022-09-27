@@ -97,6 +97,8 @@ class ProductResource extends Resource
 
                                 FileUpload::make('images')->image()->multiple()->maxFiles(4),
 
+                                FileUpload::make('file')->required(),
+
                             ])->collapsible(),
 
                     ])->columnSpan(['lg' => 2]),
@@ -119,28 +121,7 @@ class ProductResource extends Resource
 
                                 Select::make('category_id')
                                     ->relationship('category', 'name')
-                                    ->createOptionForm([
-                                        FileUpload::make('icon')->image()->avatar(),
-                                        Grid::make()
-                                            ->schema([
-                                                TextInput::make('name')
-                                                    ->reactive()
-                                                    ->afterStateUpdated(function (Closure $set, $state) {
-                                                        $set('slug', Str::slug($state));
-                                                    })->required(),
-
-                                                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
-                                            ])
-
-                                    ])
                                     ->searchable()->required(),
-
-                                // MultiSelect::make('categories')
-                                //     ->relationship('categories', 'name')
-                                //     ->createOptionForm([
-                                //         TextInput::make('name')->required()->maxLength(255),
-                                //     ])
-
                             ]),
 
                     ])->columnSpan(['lg' => 1]),

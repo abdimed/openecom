@@ -2,7 +2,7 @@
 @section('main')
 
     @if ($product->visible)
-        <div class="container m-auto grid grid-cols-1 gap-y-10" x-data="{imgPrincipale: '/storage/{{$product->attachments[0]}}'}">
+        <div class="container m-auto grid grid-cols-1 gap-y-10" x-data="{ imgPrincipale: '/storage/{{ $product->attachments[0] }}' }">
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
@@ -14,13 +14,14 @@
 
                     <div class="flex flex-row lg:flex-col justify-between items-center p-2 lg:order-1 order-2">
                         @foreach ($product->attachments as $attachment)
-                            <img x-on:click.self="imgPrincipale = '/storage/{{$attachment}}'" src="{{ asset('storage/' . $attachment) }}" alt="att"
+                            <img x-on:click.self="imgPrincipale = '/storage/{{ $attachment }}'"
+                                src="{{ asset('storage/' . $attachment) }}" alt="att"
                                 class="w-20 h-20 object-cover object-center rounded-md">
                         @endforeach
                     </div>
 
                     <img :src="imgPrincipale" alt="product-img"
-                        class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1 rounded-md border ">
+                        class="w-full h-96 object-contain p-2 object-center col-span-4 lg:order-2 order-1 rounded-md border">
 
                 </div>
 
@@ -66,7 +67,13 @@
                 </div>
 
                 <div class="bg-gray-100 rounded-lg p-4">
-                    <h3 class="text-center text-xl font-bold py-2">Specifications</h3>
+                    <h3 class="text-center text-xl font-bold py-2">Catalogue Numérique</h3>
+
+                    <a href="{{asset('storage/'.$product->file)}}" download="{{$product->name}}"
+                        class="text-center bg-red-500 text-white border-2 border-red-500 hover:bg-red-600 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
+                        Télécharger <br> format PDF
+                    </a>
+
                 </div>
 
                 <div class="bg-gray-100 rounded-lg p-4 flex flex-col items-center">
