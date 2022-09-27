@@ -38,6 +38,7 @@ class OrderResource extends Resource
                 TextColumn::make('variation.price')->suffix('DA')->label('prix'),
                 TextColumn::make('created_at')->dateTime(format:'d/m/Y H:i')->sortable(),
                 TextColumn::make('client.name'),
+                TextColumn::make('qty'),
 
             ])
             ->filters([

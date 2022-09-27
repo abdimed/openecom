@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\NewOrder;
 use App\Models\Client;
 use App\Models\Order;
 use App\Models\User;
@@ -48,26 +49,18 @@ class OrderForm extends Component
         $cartItems = Cart::content();
 
         foreach ($cartItems as $item) {
-         $order =  Order::create([
+            $order =  Order::create([
                 'client_id' => $client->id,
                 'product_id' => $item->options['product_id'],
                 'variation_id' => $item->id,
                 'qty' => $item->qty,
             ]);
+
+            NewOrder::dispatch($client, $order);
         }
 
-        $user = User::where('id', 11)->get();
 
-        Notification::make()
-            ->title('Nouvelle Commande')
-            ->body('**'.$client->full_name.'**' . ' a fais une commande')
-            ->icon('heroicon-o-shopping-bag')
-            ->actions([
-                Action::make('voir')
-                    ->url(route('filament.resources.orders.edit', $order))
 
-            ])
-            ->sendToDatabase($user);
     }
 
     public function render()
