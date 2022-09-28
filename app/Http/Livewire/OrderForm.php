@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Events\NewOrder;
-use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\User;
 use Filament\Notifications\Notification;
@@ -36,10 +36,10 @@ class OrderForm extends Component
     {
         $this->validate();
 
-        $client = Client::where('tel', $this->tel)->where('email', $this->email)->first(); //check exists
+        $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first(); //check exists
 
-        if (empty($client)) {
-            $client = Client::create([
+        if (empty($customer)) {
+            $customer = Customer::create([
                 'full_name' => $this->full_name,
                 'tel' => $this->tel,
                 'wilaya' => $this->wilaya,
@@ -54,13 +54,13 @@ class OrderForm extends Component
 
         foreach ($cartItems as $item) {
             $order =  Order::create([
-                'client_id' => $client->id,
+                'client_id' => $customer->id,
                 'product_id' => $item->options['product_id'],
                 'variation_id' => $item->id,
                 'qty' => $item->qty,
             ]);
 
-            NewOrder::dispatch($client, $order);
+            NewOrder::dispatch($customer, $order);
         }
     }
 

@@ -23,4 +23,5 @@ class ListOrders extends ListRecords
            OrderResource\Widgets\OrdersCount::class,
         ];
     }
+
 }

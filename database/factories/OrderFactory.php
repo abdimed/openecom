@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Variation;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,7 +23,7 @@ class OrderFactory extends Factory
             'number' => fake()->randomNumber(),
             'product_id' => Product::factory(),
             'variation_id' => Variation::factory(),
-            'client_id' => Client::factory(),
+            'customer_id' => Customer::factory(),
             'qty' => fake()->randomNumber(),
 
         ];
