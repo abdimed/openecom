@@ -36,15 +36,19 @@ class OrderForm extends Component
     {
         $this->validate();
 
-        $client = Client::create([
-            'full_name' => $this->full_name,
-            'tel' => $this->tel,
-            'wilaya' => $this->wilaya,
-            'adress' => $this->adress,
-            'is_company' => $this->is_company,
-            'company_name' => $this->company_name,
-            'email' => $this->email,
-        ]);
+        $client = Client::where('tel', $this->tel)->where('email', $this->email)->first(); //check exists
+
+        if (empty($client)) {
+            $client = Client::create([
+                'full_name' => $this->full_name,
+                'tel' => $this->tel,
+                'wilaya' => $this->wilaya,
+                'adress' => $this->adress,
+                'is_company' => $this->is_company,
+                'company_name' => $this->company_name,
+                'email' => $this->email,
+            ]);
+        }
 
         $cartItems = Cart::content();
 
@@ -58,9 +62,6 @@ class OrderForm extends Component
 
             NewOrder::dispatch($client, $order);
         }
-
-
-
     }
 
     public function render()

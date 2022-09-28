@@ -13,25 +13,25 @@
 
                     <div class="flex flex-col">
                         <label for="full_name">nom complet</label>
-                        <input type="text" wire:model="full_name" class="rounded-full">
+                        <input type="text" wire:model.defer="full_name" class="rounded-full">
                     </div>
                     <div class="flex flex-col">
                         <label for="tel"> N° Téléphone </label>
-                        <input type="text" wire:model="tel" class="rounded-full">
+                        <input type="text" wire:model.defer="tel" class="rounded-full">
                     </div>
                     <div class="flex flex-col">
                         <label for="wilaya">Wilaya</label>
-                        <input type="text" wire:model="wilaya" class="rounded-full">
+                        <input type="text" wire:model.defer="wilaya" class="rounded-full">
                     </div>
 
                     <div class="flex flex-col">
                         <label for="adress">Adresse de livraison</label>
-                        <input type="text" wire:model="adress" class="rounded-full">
+                        <input type="text" wire:model.defer="adress" class="rounded-full">
                     </div>
 
                     <div class="">
                         <label for="is_compnay"> Vous etes une entreprise ?</label>
-                        <input type="checkbox" wire:model="is_company" value="1" class="peer">
+                        <input type="checkbox" wire:model.defer="is_company" value="1" class="peer">
 
                         <div class="hidden peer-checked:flex flex-col gap-y-5 mt-5">
                             <div class="flex flex-col">
@@ -80,7 +80,6 @@
                             </div>
                         </div>
 
-
                         <button type="submit"
                             class="bg-red-500 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
                             Proceder a l'achat
@@ -94,11 +93,7 @@
 
         </form>
 
-        <div wire:loading.flex class="absolute w-full h-full bg-white/50 inset-0 cursor-wait">
-
-            <img src="{{ asset('loading.svg') }}" alt="loading..." class="m-auto w-28">
-
-        </div>
+       <x-loading/>
 
     </div>
 

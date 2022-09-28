@@ -95,7 +95,7 @@ class ProductResource extends Resource
                         Section::make('Images')
                             ->schema([
 
-                                FileUpload::make('images')->image()->multiple()->maxFiles(4),
+                                FileUpload::make('images')->image()->multiple()->maxFiles(4)->enableReordering()->preserveFilenames(),
 
                                 FileUpload::make('document')->acceptedFileTypes(['application/pdf']),
 

@@ -25,9 +25,7 @@
             <div
                 class="relative grid grid-cols-1 lg:grid-cols-2 p-4 gap-5 items-center rounded-md bg-gray-100 w-full lg:w-3/4">
 
-                <img wire:loading src="{{ asset('loading.svg') }}" alt="loading..."
-                    class="absolute right-0 top-0 w-16 object-contain">
-
+                <x-loading />
 
                 <div class="lg:col-span-2 flex justify-center">
 
