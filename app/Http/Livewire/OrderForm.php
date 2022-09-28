@@ -16,7 +16,7 @@ class OrderForm extends Component
     public $full_name;
     public $tel;
     public $wilaya;
-    public $adress;
+    public $address;
     public $is_company;
     public $company_name;
     public $email;
@@ -26,7 +26,7 @@ class OrderForm extends Component
         'full_name' => 'required',
         'tel' => 'required',
         'wilaya' => 'required',
-        'adress' => 'required',
+        'address' => 'required',
         'is_company' => 'required',
         'company_name' => 'nullable',
         'email' => 'nullable',
@@ -43,7 +43,7 @@ class OrderForm extends Component
                 'full_name' => $this->full_name,
                 'tel' => $this->tel,
                 'wilaya' => $this->wilaya,
-                'adress' => $this->adress,
+                'address' => $this->address,
                 'is_company' => $this->is_company,
                 'company_name' => $this->company_name,
                 'email' => $this->email,

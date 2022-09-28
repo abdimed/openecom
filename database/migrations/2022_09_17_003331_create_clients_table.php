@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('tel');
             $table->string('wilaya');
-            $table->string('adress');
-            $table->boolean('is_company');
+            $table->string('address');
+            $table->boolean('is_company')->default(0);
             $table->string('company_name')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();

@@ -19,7 +19,7 @@ class CartTable extends Component
 
         $itemQty = Cart::get($rowId)->qty;
 
-        Cart::update($rowId, $itemQty+1);
+        Cart::update($rowId, $itemQty + 1);
 
         $this->emit('cart_updated');
     }
@@ -29,10 +29,12 @@ class CartTable extends Component
 
         $itemQty = Cart::get($rowId)->qty;
 
-        Cart::update($rowId, $itemQty-1);
+        if ($itemQty > 1) {
 
-        $this->emit('cart_updated');
+            Cart::update($rowId, $itemQty - 1);
 
+            $this->emit('cart_updated');
+        }
     }
 
     public function removeFromCart($rowId)

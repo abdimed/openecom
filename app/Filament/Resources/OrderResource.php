@@ -10,7 +10,9 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -25,9 +27,7 @@ class OrderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-
-            ]);
+            ->schema([]);
     }
 
     public static function table(Table $table): Table
@@ -35,10 +35,17 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('variation.name')->label('choix'),
-                TextColumn::make('variation.price')->suffix('DA')->label('prix'),
-                TextColumn::make('created_at')->dateTime(format:'d/m/Y H:i')->sortable(),
+                TextColumn::make('variation.price')->money('dzd')->label('prix'),
+                TextColumn::make('created_at')->dateTime(format: 'd/m/Y H:i')->sortable(),
                 TextColumn::make('client.name'),
                 TextColumn::make('qty'),
+                SelectColumn::make('status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'reviewing' => 'Reviewing',
+                        'published' => 'Published',
+                    ])
+
 
             ])
             ->filters([
@@ -76,5 +83,13 @@ class OrderResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            Widgets\OrderTotal::class,
+        ];
     }
 }

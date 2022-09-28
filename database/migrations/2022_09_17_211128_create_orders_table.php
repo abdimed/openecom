@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('variation_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('qty');
+            $table->string('statuts')->default('new');
             $table->timestamps();
         });
     }

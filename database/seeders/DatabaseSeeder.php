@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Client;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -27,5 +32,11 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'admin']);
 
         $user->assignRole('admin');
+
+        Brand::factory()->count(1);
+        Category::factory()->count(1);
+        Product::factory()->count(3)->for(Category::factory())->hasVariations(2)->create();
+
+        Client::factory()->hasOrders(1)->create();
     }
 }
