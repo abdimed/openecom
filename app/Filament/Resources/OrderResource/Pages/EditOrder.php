@@ -18,4 +18,5 @@ class EditOrder extends EditRecord
             Actions\RestoreAction::make(),
         ];
     }
+
 }

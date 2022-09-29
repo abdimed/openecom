@@ -33,10 +33,10 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('admin');
 
-        Brand::factory()->count(1);
-        Category::factory()->count(1);
-        Product::factory()->count(3)->for(Category::factory())->hasVariations(2)->create();
+        // Brand::factory()->count(1);
+        // Category::factory()->count(1);
+        // Product::factory()->count(3)->for(Category::factory())->hasVariations(2)->create();
 
-        Customer::factory()->hasOrders(1)->create();
+        // Customer::factory()->hasOrders(1)->create();
     }
 }

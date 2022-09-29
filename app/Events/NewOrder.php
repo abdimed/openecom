@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -16,7 +16,7 @@ class NewOrder
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $client;
+    public $customer;
     public $order;
 
     /**
@@ -24,9 +24,9 @@ class NewOrder
      *
      * @return void
      */
-    public function __construct(Client $client, Order $order)
+    public function __construct(Customer $customer, Order $order)
     {
-        $this->client = $client;
+        $this->customer = $customer;
         $this->order = $order;
     }
 

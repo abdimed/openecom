@@ -25,8 +25,8 @@
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="adress">Adresse de livraison</label>
-                        <input type="text" wire:model.defer="adress" class="rounded-full">
+                        <label for="address">Adresse de livraison</label>
+                        <input type="text" wire:model.defer="address" class="rounded-full">
                     </div>
 
                     <div class="">

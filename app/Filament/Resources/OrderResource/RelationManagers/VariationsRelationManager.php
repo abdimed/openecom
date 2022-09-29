@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ClientResource\RelationManagers;
+namespace App\Filament\Resources\OrderResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -11,9 +11,9 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OrdersRelationManager extends RelationManager
+class VariationsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'orders';
+    protected static string $relationship = 'variations';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -31,9 +31,9 @@ class OrdersRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                TextColumn::make('variation.name')->label('choix'),
-                TextColumn::make('variation.price')->suffix('DA')->label('prix'),
-                TextColumn::make('created_at')->dateTime(format:'d/m/Y H:i')->sortable(),
+                Tables\Columns\TextColumn::make('name'),
+                TextColumn::make('qty'),
+                TextColumn::make('price'),
             ])
             ->filters([
                 //

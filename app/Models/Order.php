@@ -12,13 +12,13 @@ class Order extends Model
 
     protected $guarded = [];
 
-    public function client()
+    public function customer()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Customer::class);
     }
 
-    public function variation()
+    public function variations()
     {
-        return $this->belongsTo(Variation::class);
+        return $this->belongsToMany(Variation::class);
     }
 }

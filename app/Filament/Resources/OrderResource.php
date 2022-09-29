@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
+use App\Filament\Resources\OrderResource\RelationManagers\VariationsRelationManager;
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -27,6 +28,8 @@ class OrderResource extends Resource
 
     protected static ?string $navigationGroup = 'E-Commerce';
 
+    protected static ?string $recordTitleAttribute = 'id';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -37,9 +40,9 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id')->prefix('CMD-'),
                 TextColumn::make('customer.full_name'),
-                TextColumn::make('variation.product.name')->label('produit'),
-                TextColumn::make('variation.name')->label('variation'),
+                TextColumn::make('total_price'),
                 BadgeColumn::make('status')->enum([
                     'new' => 'Nouveau',
                     'processing' => 'En traitement',
@@ -53,9 +56,9 @@ class OrderResource extends Resource
                         'warning' => 'processing',
                         'success' => 'delivered',
                     ]),
-                TextColumn::make('variation.price')->money('dzd')->label('prix'),
+
                 TextColumn::make('created_at')->dateTime(format: 'd/m/Y H:i')->sortable(),
-                TextColumn::make('qty'),
+
 
 
             ])
@@ -90,7 +93,7 @@ class OrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            VariationsRelationManager::class,
         ];
     }
 

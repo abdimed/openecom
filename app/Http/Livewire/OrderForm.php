@@ -36,10 +36,32 @@ class OrderForm extends Component
     {
         $this->validate();
 
-        $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first(); //check exists
+        $customer = $this->customer();
 
-        if (empty($customer)) {
-            $customer = Customer::create([
+        $cartItems = Cart::content();
+
+        $order = $this->orderCreate($customer);
+
+        foreach ($cartItems as $item) {
+
+            $order->variations()->attach($item->id, ['qty' => $item->qty]);
+        }
+
+        NewOrder::dispatch($customer, $order);
+    }
+
+    public function render()
+    {
+        return view('livewire.order-form', [
+            'totalPrice' => Cart::total(),
+        ]);
+    }
+
+    protected function customer(): Customer
+    {
+        $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first();
+        if (empty($customer))
+            return Customer::create([
                 'full_name' => $this->full_name,
                 'tel' => $this->tel,
                 'wilaya' => $this->wilaya,
@@ -48,26 +70,14 @@ class OrderForm extends Component
                 'company_name' => $this->company_name,
                 'email' => $this->email,
             ]);
-        }
-
-        $cartItems = Cart::content();
-
-        foreach ($cartItems as $item) {
-            $order =  Order::create([
-                'client_id' => $customer->id,
-                'product_id' => $item->options['product_id'],
-                'variation_id' => $item->id,
-                'qty' => $item->qty,
-            ]);
-
-            NewOrder::dispatch($customer, $order);
-        }
+        else return $customer;
     }
 
-    public function render()
+    protected function orderCreate($customer): Order
     {
-        return view('livewire.order-form', [
-            'totalPrice' => Cart::total(),
+        return  Order::create([
+            'customer_id' => $customer->id,
+            'total_price' => Cart::total(),
         ]);
     }
 }

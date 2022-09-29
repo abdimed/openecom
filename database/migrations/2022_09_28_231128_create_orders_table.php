@@ -15,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
-            $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('variation_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('qty');
+            $table->integer('total_price');
             $table->string('status')->default('new');
             $table->timestamps();
             $table->softDeletes();

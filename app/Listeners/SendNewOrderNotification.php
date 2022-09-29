@@ -33,7 +33,7 @@ class SendNewOrderNotification
 
         Notification::make()
             ->title('Nouvelle Commande')
-            ->body('**' . $event->client->full_name. '**' . ' a fais une commande')
+            ->body('**' . $event->customer->full_name. '**' . ' a fais une commande')
             ->icon('heroicon-o-shopping-bag')
             ->actions([
                 Action::make('voir')
