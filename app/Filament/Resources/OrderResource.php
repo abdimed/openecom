@@ -7,7 +7,11 @@ use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\RelationManagers\VariationsRelationManager;
 use App\Models\Order;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -33,7 +37,41 @@ class OrderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([]);
+            ->schema([
+                Grid::make()
+                    ->schema([
+                        Card::make()
+                            ->schema([
+
+                                TextInput::make('id')->disabled(),
+
+                                Select::make('status')->options([
+                                    'new' => 'Nouveau',
+                                    'processing' => 'En traitement',
+                                    'delivered' => 'Livré',
+                                    'shipped' => 'Expédié',
+                                    'cancelled' => 'Annulé'
+                                ]),
+
+                                Select::make('customers')->relationship('customer', 'full_name')->disabled(),
+
+                                TextInput::make('wilaya')->disabled(),
+
+                            ])->columns(['lg' => 2])
+
+                    ])->columnSpan(['lg' => 2]),
+                Grid::make()
+                    ->schema([
+                        Card::make()
+                            ->schema([
+
+                                Placeholder::make('date')->content(fn (Order $record): ?string => $record->created_at->format('d M Y h:i')),
+                                Placeholder::make('Depuis')->content(fn (Order $record): string  => $record->created_at->since()),
+
+                            ])
+                    ])->columnSpan(['lg' => 1])
+
+            ])->columns(['lg' => 3]);
     }
 
     public static function table(Table $table): Table
@@ -41,8 +79,7 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->prefix('CMD-'),
-                TextColumn::make('customer.full_name'),
-                TextColumn::make('total_price'),
+                TextColumn::make('customer.full_name')->searchable(),
                 BadgeColumn::make('status')->enum([
                     'new' => 'Nouveau',
                     'processing' => 'En traitement',
@@ -56,8 +93,9 @@ class OrderResource extends Resource
                         'warning' => 'processing',
                         'success' => 'delivered',
                     ]),
+                TextColumn::make('total_price'),
 
-                TextColumn::make('created_at')->dateTime(format: 'd/m/Y H:i')->sortable(),
+                TextColumn::make('created_at')->dateTime(format: 'd M Y')->sortable(),
 
 
 
@@ -66,7 +104,7 @@ class OrderResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+
                 Action::make('status')
                     ->action(function (Order $record, array $data): void {
                         $record->status = $data['status'];

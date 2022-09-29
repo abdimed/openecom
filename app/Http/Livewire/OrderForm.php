@@ -64,8 +64,6 @@ class OrderForm extends Component
             return Customer::create([
                 'full_name' => $this->full_name,
                 'tel' => $this->tel,
-                'wilaya' => $this->wilaya,
-                'address' => $this->address,
                 'is_company' => $this->is_company,
                 'company_name' => $this->company_name,
                 'email' => $this->email,
@@ -77,6 +75,8 @@ class OrderForm extends Component
     {
         return  Order::create([
             'customer_id' => $customer->id,
+            'wilaya' => $this->wilaya,
+            'address' => $this->address,
             'total_price' => Cart::total(),
         ]);
     }
