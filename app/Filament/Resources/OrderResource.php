@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -32,7 +33,7 @@ class OrderResource extends Resource
 
     protected static ?string $navigationGroup = 'E-Commerce';
 
-    protected static ?string $recordTitleAttribute = 'id';
+    protected static ?string $recordTitleAttribute = 'number';
 
     public static function form(Form $form): Form
     {
@@ -43,7 +44,7 @@ class OrderResource extends Resource
                         Card::make()
                             ->schema([
 
-                                TextInput::make('id')->disabled(),
+                                TextInput::make('number')->disabled(),
 
                                 Select::make('status')->options([
                                     'new' => 'Nouveau',
@@ -53,9 +54,13 @@ class OrderResource extends Resource
                                     'cancelled' => 'Annulé'
                                 ]),
 
-                                Select::make('customers')->relationship('customer', 'full_name')->disabled(),
+                                Select::make('customers')->relationship('customer', 'full_name')->label('client'),
 
                                 TextInput::make('wilaya')->disabled(),
+
+                                TextInput::make('address')->disabled()->columnSpan(['lg' => 2]),
+
+                                TextInput::make('total_price')->extraAttributes(['class' => 'col-start-2']),
 
                             ])->columns(['lg' => 2])
 
@@ -96,8 +101,6 @@ class OrderResource extends Resource
                 TextColumn::make('total_price'),
 
                 TextColumn::make('created_at')->dateTime(format: 'd M Y')->sortable(),
-
-
 
             ])
             ->filters([

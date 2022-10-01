@@ -2,11 +2,14 @@
 
 namespace App\Filament\Resources\OrderResource\RelationManagers;
 
+use FFI;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,7 +34,8 @@ class VariationsRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                TextColumn::make('product.name'),
+                TextColumn::make('name'),
                 TextColumn::make('qty'),
                 TextColumn::make('price'),
             ])
@@ -39,14 +43,13 @@ class VariationsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+
             ]);
     }
 }

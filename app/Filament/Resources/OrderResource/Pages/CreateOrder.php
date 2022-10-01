@@ -10,3 +10,4 @@ class CreateOrder extends CreateRecord
 {
     protected static string $resource = OrderResource::class;
 }
+

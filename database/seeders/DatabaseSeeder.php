@@ -33,7 +33,13 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('admin');
 
-        // Brand::factory()->count(1);
+        Brand::create([
+            'logo' => fake()->imageUrl(),
+            'name' => fake()->name(),
+            'slug' => fake()->slug(),
+            'website' => fake()->url(),
+        ]);
+
         // Category::factory()->count(1);
         // Product::factory()->count(3)->for(Category::factory())->hasVariations(2)->create();
 

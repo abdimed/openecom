@@ -45,6 +45,7 @@ class OrderForm extends Component
         foreach ($cartItems as $item) {
 
             $order->variations()->attach($item->id, ['qty' => $item->qty]);
+
         }
 
         NewOrder::dispatch($customer, $order);
@@ -73,8 +74,14 @@ class OrderForm extends Component
 
     protected function orderCreate($customer): Order
     {
+        $number = '0';
+        $latestOrder = Order::latest()->first();
+        if (is_null($latestOrder)) $number = 'CMD-1';
+        else $number = 'CMD-' . $latestOrder->id + 1;
+
         return  Order::create([
             'customer_id' => $customer->id,
+            'number' => $number,
             'wilaya' => $this->wilaya,
             'address' => $this->address,
             'total_price' => Cart::total(),

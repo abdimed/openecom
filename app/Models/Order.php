@@ -21,4 +21,10 @@ class Order extends Model
     {
         return $this->belongsToMany(Variation::class);
     }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
 }
