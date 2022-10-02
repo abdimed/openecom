@@ -60,7 +60,7 @@ class OrderResource extends Resource
 
                                 TextInput::make('address')->disabled()->columnSpan(['lg' => 2]),
 
-                                TextInput::make('total_price')->extraAttributes(['class' => 'col-start-2']),
+                                TextInput::make('total_price')->suffix('DA'),
 
                             ])->columns(['lg' => 2])
 
