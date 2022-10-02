@@ -13,28 +13,17 @@ class ProductController extends Controller
 {
     public function view(Category $category, Product $product)
     {
-
         return view('pages.product-details', [
             'product' => $product,
         ]);
     }
 
-    public function order(Category $category, Product $product, Request $request)
+    static function bill()
     {
-        switch ($request->action) {
-            case 'order':
-                return view('pages.product-order', [
-                    'product' => $product,
-                    'variation' => $request->variation,
-                ]);
-                break;
 
-            case 'addToCart':
-                $variation = Variation::findOrFail($request->variation);
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $mpdf->Output();
 
-                Cart::add($variation->id, $product->name, 50, $variation->price, $variation->id);
-                return back();
-                break;
-        }
     }
 }
