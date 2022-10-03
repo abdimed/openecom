@@ -162,4 +162,9 @@ class OrderResource extends Resource
             Widgets\OrderTotal::class,
         ];
     }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 }
