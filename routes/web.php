@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ Route::get('/{category:slug}/products/{product:slug}', [ProductController::class
 
 Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
-Route::get('/bill', [ProductController::class, 'bill'])->name('product.bill');
+Route::get('/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

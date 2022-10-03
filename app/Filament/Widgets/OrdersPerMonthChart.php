@@ -11,7 +11,7 @@ use Flowframe\Trend\TrendValue;
 class OrdersPerMonthChart extends LineChartWidget
 {
     protected static ?string $heading = 'Commandes par mois';
-
+    protected static ?int $sort = 2;
     protected function getData(): array
     {
         $data = Trend::model(Order::class)

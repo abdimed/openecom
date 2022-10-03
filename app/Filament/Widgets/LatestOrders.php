@@ -24,7 +24,7 @@ class LatestOrders extends BaseWidget
     protected function getTableColumns(): array
     {
         return [
-            TextColumn::make('id')->prefix('CMD-'),
+            TextColumn::make('number'),
             TextColumn::make('customer.full_name'),
             BadgeColumn::make('status')->enum([
                 'new' => 'Nouveau',

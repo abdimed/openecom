@@ -36,7 +36,7 @@ class OrderForm extends Component
     {
         $this->validate();
 
-        $customer = $this->customer();
+        $customer = $this->customer();//create or update customer
 
         $cartItems = Cart::content();
 
@@ -45,10 +45,11 @@ class OrderForm extends Component
         foreach ($cartItems as $item) {
 
             $order->variations()->attach($item->id, ['qty' => $item->qty]);
-
         }
 
-        NewOrder::dispatch($customer, $order);
+        NewOrder::dispatch($customer, $order); //notification
+
+        return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
 
     public function render()
