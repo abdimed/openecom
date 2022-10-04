@@ -40,9 +40,10 @@ class DatabaseSeeder extends Seeder
             'website' => fake()->url(),
         ]);
 
-        // Category::factory()->count(1);
-        // Product::factory()->count(3)->for(Category::factory())->hasVariations(2)->create();
-
-        // Customer::factory()->hasOrders(1)->create();
+        Category::create([
+            'icon' => fake()->imageUrl(),
+            'name' => 'a',
+            'slug' => 'a',
+        ]);
     }
 }

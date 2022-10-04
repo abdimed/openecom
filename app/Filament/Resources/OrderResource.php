@@ -54,8 +54,7 @@ class OrderResource extends Resource
                                     'cancelled' => 'Annulé'
                                 ]),
 
-                                Select::make('customers')->relationship('customer', 'full_name')->label('client'),
-
+                                Placeholder::make('client')->content(fn (Order $record): string => $record->customer->full_name),
                                 TextInput::make('wilaya')->disabled(),
 
                                 TextInput::make('address')->disabled()->columnSpan(['lg' => 2]),
@@ -98,6 +97,7 @@ class OrderResource extends Resource
                         'warning' => 'processing',
                         'success' => 'delivered',
                     ]),
+
                 TextColumn::make('total_price'),
 
                 TextColumn::make('created_at')->dateTime(format: 'd M Y')->sortable(),

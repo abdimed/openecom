@@ -8,8 +8,6 @@ use Livewire\Component;
 
 class CartTable extends Component
 {
-
-
     public $item;
 
     public $rowId;
@@ -32,8 +30,6 @@ class CartTable extends Component
         if ($itemQty > 1) {
 
             Cart::update($rowId, $itemQty - 1);
-
-            $this->emit('cart_updated');
         }
     }
 

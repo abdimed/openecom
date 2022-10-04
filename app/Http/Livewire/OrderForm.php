@@ -23,24 +23,24 @@ class OrderForm extends Component
 
 
     protected $rules = [
-        'full_name' => 'required',
-        'tel' => 'required',
-        'wilaya' => 'required',
-        'address' => 'required',
+        'full_name' => 'required|max:255',
+        'tel' => 'required|max:255',
+        'wilaya' => 'required|max:255',
+        'address' => 'required|max:255',
         'is_company' => 'required',
-        'company_name' => 'nullable',
-        'email' => 'nullable',
+        'company_name' => 'nullable|max:255',
+        'email' => 'nullable|email',
     ];
 
     public function newOrder()
     {
         $this->validate();
 
-        $customer = $this->customer();//create or update customer
-
-        $cartItems = Cart::content();
+        $customer = $this->customer(); //create or update customer
 
         $order = $this->orderCreate($customer);
+
+        $cartItems = Cart::content();
 
         foreach ($cartItems as $item) {
 
@@ -70,6 +70,7 @@ class OrderForm extends Component
                 'company_name' => $this->company_name,
                 'email' => $this->email,
             ]);
+
         else return $customer;
     }
 
@@ -85,7 +86,7 @@ class OrderForm extends Component
             'number' => $number,
             'wilaya' => $this->wilaya,
             'address' => $this->address,
-            'total_price' => Cart::total(),
+            'total_price' => Cart::priceTotal(),
         ]);
     }
 }

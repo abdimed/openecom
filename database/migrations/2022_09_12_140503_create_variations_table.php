@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('quantity');
-            $table->string('price');
+            $table->float('price');
             $table->timestamps();
         });
     }

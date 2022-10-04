@@ -39,7 +39,7 @@ class CartForm extends Component
     {
         $firstVariation = $this->product->variations->first();
         $this->variation_id = $firstVariation->id;
-        $this->price = $firstVariation->price;
+        $this->price = number_format($firstVariation->price, 2, ',', '.');
     }
 
     public function updatedVariationID()

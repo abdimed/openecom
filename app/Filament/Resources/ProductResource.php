@@ -95,7 +95,7 @@ class ProductResource extends Resource
                         Section::make('Images')
                             ->schema([
 
-                                FileUpload::make('images')->image()->multiple()->maxFiles(4)->preserveFilenames()->enableReordering()->enableDownload()->helperText('La photo en derinerre posistion sera la principale'),
+                                FileUpload::make('images')->image()->multiple()->maxFiles(4)->preserveFilenames()->enableReordering()->enableDownload()->helperText('La photo en derinerre posistion sera la principale')->required(),
 
                                 FileUpload::make('document')->acceptedFileTypes(['application/pdf']),
 
