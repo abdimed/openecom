@@ -7,6 +7,7 @@ use App\Filament\Resources\MediaResource\RelationManagers;
 use App\Models\Media;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -24,9 +25,8 @@ class MediaResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('hero')->image(),
-                FileUpload::make('banner1')->image(),
-                FileUpload::make('banner2')->image(),
+                TextInput::make('name')->required()->maxLength(255),
+                FileUpload::make('path')->image(),
             ]);
     }
 
