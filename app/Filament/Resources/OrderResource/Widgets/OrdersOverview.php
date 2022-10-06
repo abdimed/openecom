@@ -13,8 +13,8 @@ class OrdersOverview extends BaseWidget
     protected function getCards(): array
     {
         return [
-            Card::make('Commandes', Order::where('status', 'new')->get()->count())->chart((new OrderService())->mapOrders()),
-            Card::make('Nouvelle Commandes', Order::where('status', 'new')->get()->count())->chart((new OrderService())->mapNewOrders())->color('success'),
+            Card::make('Commandes', Order::where('status', 'new')->get()->count())->chart((new OrderService())->allPerMonth()),
+            Card::make('Nouvelle Commandes', Order::where('status', 'new')->get()->count())->chart((new OrderService())->newPerMonth())->color('success'),
             Card::make('Expedié', Order::where('status', 'shipped')->get()->count()),
             Card::make('Livrée', Order::where('status', 'delivered')->get()->count()),
         ];

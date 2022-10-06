@@ -48,10 +48,10 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                Split::make([
-                    TextColumn::make('full_name')->searchable()->prefix('Client : '),
 
-                ])->from('md'),
+                TextColumn::make('full_name')->searchable()->prefix('Client : '),
+                TextColumn::make('orders_count')->counts('orders')->prefix('commandes : '),
+
                 Panel::make([
                     Stack::make([
                         TextColumn::make('tel')->icon('heroicon-s-phone')->searchable(),
