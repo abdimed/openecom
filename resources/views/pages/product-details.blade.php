@@ -54,10 +54,11 @@
                     <h3 class="text-center text-xl font-bold py-2">Caractéristiques</h3>
 
                     @if (!empty($product->specifications))
-                        <ul>
+                        <ul class="px-4">
                             @foreach ($product->specifications as $specification)
-                                <li class="flex justify-between">
+                                <li class="flex justify-between items-center">
                                     <span class="text-gray-400"> {{ $specification->name }} </span>
+                                    <span class="bg-gray-400 h-[1px] flex-grow mx-2"></span>
                                     <span class="font-semibold"> {{ $specification->value }} </span>
                                 </li>
                             @endforeach

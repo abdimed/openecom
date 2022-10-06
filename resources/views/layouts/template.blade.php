@@ -20,7 +20,7 @@
         @include('sections.navbar')
     </header>
 
-    <main class="max-w-screen-xl m-auto">
+    <main class="max-w-screen-xl m-auto px-1">
 
         @yield('main')
 

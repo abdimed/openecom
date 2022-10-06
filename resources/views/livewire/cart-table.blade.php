@@ -1,8 +1,14 @@
 <div>
 
     @if ($cartItems->count() > 0)
+        <h2 class="lg:col-span-2 text-3xl font-bold my-10 flex items-center gap-x-3">Panier <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </h2>
 
-        <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6">
+        <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6 rounded-2xl">
 
             @foreach ($cartItems as $item)
                 <li class="grid grid-cols-3 lg:grid-cols-6 bg-white rounded-md shadow-md p-2">
@@ -10,12 +16,12 @@
                     <img src="{{ asset('storage/' . $item->options['img']) }}" alt="product img"
                         class="w-32 h-32 object-contain">
 
-                    <span class="text-xl font-bold m-auto col-span-2 p-2">
+                    <span class="text-xl font-semibold my-auto col-span-2 p-2 justify-self-start">
                         {{ $item->name }}-{{ $item->options['variation'] }} </span>
                     <div class="grid grid-cols-3 col-span-3">
 
                         <div class="flex flex-col justify-center items-center">
-                            <span class="text-sm text-gray-400">prix unitaire</span>
+                            <span class="text-sm text-gray-400">Prix unitaire</span>
                             <span class="text-2xl"> {{ number_format($item->price, 2, ',', '.') }} <span
                                     class="text-sm align-top">DA</span>
                             </span>
@@ -26,12 +32,12 @@
                             <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2">
 
                                 <button wire:click="minusQty( '{{ $item->rowId }}' )"
-                                    class="font-bold text-3xl">-</button>
+                                    class="font-semibold text-3xl">-</button>
 
-                                <span class="text-2xl font-bold">{{ $item->qty }}</span>
+                                <span class="text-2xl font-semibold">{{ $item->qty }}</span>
 
                                 <button wire:click="addQty( '{{ $item->rowId }}' )"
-                                    class="font-bold text-3xl">+</button>
+                                    class="font-semibold text-3xl">+</button>
 
                                 <div wire:loading
                                     class="absolute inset-0 w-full h-full bg-white/60 rounded-md cursor-wait">
@@ -55,11 +61,12 @@
                 </li>
             @endforeach
 
-            <div class="flex flex-col justify-end place-self-end mt-16">
+            <div class="flex flex-col mt-16 text-gray-600">
 
                 <span class="text-xl font-semibold">Total:</span>
 
-                <span class="text-3xl font-bold"> {{ $totalPrice }} <span class="text-3xl align-top">Da</span></span>
+                <span class="text-3xl font-semibold"> {{ $totalPrice }} <span
+                        class="text-3xl align-top">Da</span></span>
 
             </div>
 
