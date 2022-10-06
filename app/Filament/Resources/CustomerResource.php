@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CustomerResource\Pages;
 use App\Filament\Resources\CustomerResource\RelationManagers;
+use App\Filament\Resources\CustomerResource\RelationManagers\OrdersRelationManager;
 use App\Models\Customer;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -38,8 +39,6 @@ class CustomerResource extends Resource
                     ->schema([
                         TextInput::make('full_name')->disabled(),
                         TextInput::make('tel')->disabled(),
-                        TextInput::make('wilaya')->disabled(),
-                        TextInput::make('adress')->disabled(),
                         TextInput::make('email')->disabled(),
                     ])->columns(['lg' => 2])
             ]);
@@ -86,7 +85,7 @@ class CustomerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            OrdersRelationManager::class,
         ];
     }
 

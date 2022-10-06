@@ -4,9 +4,9 @@ namespace App\Filament\Resources\MediaResource\Pages;
 
 use App\Filament\Resources\MediaResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ManageRecords;
 
-class ListMedia extends ListRecords
+class ManageMedia extends ManageRecords
 {
     protected static string $resource = MediaResource::class;
 

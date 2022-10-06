@@ -104,9 +104,11 @@ class OrderResource extends Resource
                         'heroicon-o-truck' => 'shipped',
                         'heroicon-o-x-circle' =>'cancelled',
                         'heroicon-o-check-circle' =>'delivered'
-                    ]),
+                    ])->sortable(),
 
                 TextColumn::make('total_price'),
+
+                TextColumn::make('wilaya'),
 
                 TextColumn::make('created_at')->dateTime(format: 'd M Y')->sortable(),
 
