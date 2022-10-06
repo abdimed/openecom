@@ -20,7 +20,7 @@ class ListOrders extends ListRecords
     protected function getHeaderWidgets(): array
     {
         return [
-           OrderResource\Widgets\OrdersCount::class,
+           OrderResource\Widgets\OrdersOverview::class,
         ];
     }
 

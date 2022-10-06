@@ -19,9 +19,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
-use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -92,10 +90,11 @@ class OrderResource extends Resource
                     'cancelled' => 'Annulé'
                 ])
                     ->colors([
-                        'primary',
+                        'secondary',
                         'danger' => 'cancelled',
                         'warning' => 'processing',
                         'success' => 'delivered',
+                        'primary' => 'new',
                     ])
                     ->icons([
                         'heroicon-o-x',
@@ -163,14 +162,6 @@ class OrderResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
-    }
-
-
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            Widgets\OrderTotal::class,
-        ];
     }
 
     protected static function getNavigationBadge(): ?string
