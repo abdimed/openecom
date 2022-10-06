@@ -43,6 +43,8 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'E-Commerce';
 
+    protected static ?string $modelLabel = 'Produits';
+
     public static function form(Form $form): Form
     {
         return $form

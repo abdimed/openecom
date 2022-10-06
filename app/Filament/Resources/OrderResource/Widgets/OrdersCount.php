@@ -15,6 +15,7 @@ class OrdersCount extends BaseWidget
         return [
             Card::make('Commandes', Order::all()->count()),
             Card::make('Nouvelle Commandes', Order::where('status', 'new')->get()->count()),
+            Card::make('Expedié', Order::where('status', 'shipped')->get()->count()),
             Card::make('Livrée', Order::where('status', 'delivered')->get()->count()),
         ];
     }

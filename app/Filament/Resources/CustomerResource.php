@@ -28,6 +28,8 @@ class CustomerResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'full_name';
 
+    protected static ?string $modelLabel = 'client';
+
     public static function form(Form $form): Form
     {
         return $form

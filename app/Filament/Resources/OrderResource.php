@@ -96,6 +96,14 @@ class OrderResource extends Resource
                         'danger' => 'cancelled',
                         'warning' => 'processing',
                         'success' => 'delivered',
+                    ])
+                    ->icons([
+                        'heroicon-o-x',
+                        'heroicon-o-exclamation-circle' =>'new',
+                        'heroicon-o-clock' => 'processing',
+                        'heroicon-o-truck' => 'shipped',
+                        'heroicon-o-x-circle' =>'cancelled',
+                        'heroicon-o-check-circle' =>'delivered'
                     ]),
 
                 TextColumn::make('total_price'),
@@ -118,11 +126,11 @@ class OrderResource extends Resource
                             ->options([
                                 'new' => 'Nouveau',
                                 'processing' => 'En traitement',
-                                'delivered' => 'Livré',
                                 'shipped' => 'Expédié',
+                                'delivered' => 'Livré',
                                 'cancelled' => 'Annulé'
                             ])->required()
-                    ])->requiresConfirmation()
+                    ])->requiresConfirmation()->icon('heroicon-s-cog')
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
