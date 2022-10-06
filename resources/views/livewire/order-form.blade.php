@@ -17,7 +17,7 @@
                     </div>
                     <div class="flex flex-col">
                         <label for="tel"> N° Téléphone </label>
-                        <input type="text" wire:model.defer="tel" class="rounded-full">
+                        <input type="tel" wire:model.defer="tel" class="rounded-full">
                     </div>
                     <div class="flex flex-col">
                         <label for="wilaya">Wilaya</label>
@@ -41,7 +41,7 @@
 
                             <div class="flex flex-col">
                                 <label for="email">Email Professionel</label>
-                                <input type="text" name="email" class="rounded-full ">
+                                <input type="email"  wire:model.defer="email"  class="rounded-full ">
                             </div>
                         </div>
 

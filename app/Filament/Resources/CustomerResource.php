@@ -12,6 +12,10 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -29,13 +33,13 @@ class CustomerResource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    TextInput::make('full_name')->disabled(),
-                    TextInput::make('tel')->disabled(),
-                    TextInput::make('wilaya')->disabled(),
-                    TextInput::make('adress')->disabled(),
-                    TextInput::make('email')->disabled(),
-                ])->columns(['lg'=>2])
+                    ->schema([
+                        TextInput::make('full_name')->disabled(),
+                        TextInput::make('tel')->disabled(),
+                        TextInput::make('wilaya')->disabled(),
+                        TextInput::make('adress')->disabled(),
+                        TextInput::make('email')->disabled(),
+                    ])->columns(['lg' => 2])
             ]);
     }
 
@@ -43,18 +47,37 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('full_name'),
+                Split::make([
+                    TextColumn::make('full_name')->searchable()->prefix('Client : '),
+
+                ])->from('md'),
+                Panel::make([
+                    Stack::make([
+                        TextColumn::make('tel')->icon('heroicon-s-phone')->searchable(),
+                        TextColumn::make('email')->icon('heroicon-s-mail')->searchable(),
+                    ]),
+
+
+                ])->collapsible(),
+                BooleanColumn::make('is_company')->alignment('right')->sortable()->label('entreprise')
+                    ->trueIcon('heroicon-o-office-building')
+                    ->falseIcon('heroicon-o-user')
+                    ->trueColor('success')
+                    ->falseColor('primary')
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-                Tables\Actions\RestoreBulkAction::make(),
-                Tables\Actions\ForceDeleteBulkAction::make(),
+                // Tables\Actions\DeleteBulkAction::make(),
+                // Tables\Actions\RestoreBulkAction::make(),
+                // Tables\Actions\ForceDeleteBulkAction::make(),
+            ])->contentGrid([
+                'md' => 2,
+                'xl' => 3,
             ]);
     }
 

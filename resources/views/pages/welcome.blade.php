@@ -2,7 +2,7 @@
 @section('main')
 
 
-    <section id="hero" style="background-image: url('')">
+    <section id="hero" style="background-image: url('{{asset('storage/'. $media->hero)}}')">
 
     </section>
 
