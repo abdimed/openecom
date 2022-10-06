@@ -5,7 +5,7 @@
     <div class="relative">
 
         <form wire:submit.prevent="newOrder">
-
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
             <div
                 class="grid grid-cols-1 lg:grid-cols-2 gap-y-5 lg:p-5 p-2 bg-gray-100 rounded-md divide-x-2 divide-gray-300">
 
@@ -31,7 +31,7 @@
 
                     <div class="">
                         <label for="is_compnay"> Vous etes une entreprise ?</label>
-                        <input type="checkbox" wire:model.defer="is_company" value="1" class="peer">
+                        <input type="checkbox" wire:model.defer="is_company" class="peer">
 
                         <div class="hidden peer-checked:flex flex-col gap-y-5 mt-5">
                             <div class="flex flex-col">
@@ -65,7 +65,7 @@
 
                         <div
                             class="grid grid-cols-1 border border-dashed border-gray-400 bg-gray-200 divide-y-4 divide-gray-400/25 p-2 rounded-md text-gray-700">
-                            <div class="p-2">
+                            <div class="p-2 text-lg">
                                 total des articles: <span class="font-semibold">{{ $totalPrice }} DA</span>
                                 <br>
                                 +
@@ -76,7 +76,7 @@
                             <div class="p-2">
                                 <span class="text-xl font-semibold">Total à payer:</span>
                                 <br>
-                                <span class="flex justify-center font-bold text-3xl"> 8000 DA</span>
+                                <span class="flex justify-center font-bold text-4xl"> 8000 DA</span>
                             </div>
                         </div>
 

@@ -15,8 +15,8 @@
     @livewireStyles
 </head>
 
-<body class="antialiased">
-    <header>
+<body class="antialiased font-poppins">
+    <header class="bg-primary">
         @include('sections.navbar')
     </header>
 
@@ -29,6 +29,7 @@
     <footer>
 
     </footer>
+
     @livewireScripts
 </body>
 

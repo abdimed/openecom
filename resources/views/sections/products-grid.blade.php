@@ -5,14 +5,14 @@
         @foreach ($products as $product)
             @if ($product->visible)
                 <a href="{{ route('product.view', [$product->category->slug, $product->slug]) }}"
-                    class="shrink-0 flex m-auto flex-col justify-between snap-start border rounded-md w-[264px] h-[360px] hover:shadow-lg transition-all duration-300">
+                    class="shrink-0 flex m-auto flex-col justify-between snap-start border rounded-xl w-[264px] h-[360px] hover:shadow-lg transition-all duration-300 overflow-hidden">
 
                     <img src="{{ asset('storage/' . $product->images[0]) }}" alt="img"
-                        class="w-full h-[249px] object-cover object-center">
+                        class="w-full h-[249px] object-contain object-center">
 
                     <div class="p-2">
                         <span>{{ $product->brand->name }}</span>
-                        <span>{{ $product->name }}</span>
+                        <p class="truncate ">{{ $product->name }}</p>
                     </div>
 
                     <div class="flex justify-between p-2">

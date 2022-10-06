@@ -17,7 +17,7 @@ class OrderForm extends Component
     public $tel;
     public $wilaya;
     public $address;
-    public $is_company;
+    public $is_company = false;
     public $company_name;
     public $email;
 
@@ -27,13 +27,14 @@ class OrderForm extends Component
         'tel' => 'required|max:255',
         'wilaya' => 'required|max:255',
         'address' => 'required|max:255',
-        'is_company' => 'required',
+        'is_company' => '',
         'company_name' => 'nullable|max:255',
         'email' => 'nullable|email',
     ];
 
     public function newOrder()
     {
+
         $this->validate();
 
         $customer = $this->customer(); //create or update customer
@@ -63,13 +64,13 @@ class OrderForm extends Component
     {
         $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first();
         if (empty($customer))
-            return Customer::create([
-                'full_name' => $this->full_name,
-                'tel' => $this->tel,
-                'is_company' => $this->is_company,
-                'company_name' => $this->company_name,
-                'email' => $this->email,
-            ]);
+        return Customer::create([
+            'full_name' => $this->full_name,
+            'tel' => $this->tel,
+            'is_company' => $this->is_company,
+            'company_name' => $this->company_name,
+            'email' => $this->email,
+        ]);
 
         else return $customer;
     }

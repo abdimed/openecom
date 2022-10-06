@@ -57,9 +57,9 @@
 
             <div class="flex flex-col justify-end place-self-end mt-16">
 
-                <span class="text-2xl font-semibold">Total:</span>
+                <span class="text-xl font-semibold">Total:</span>
 
-                <span class="text-5xl font-bold"> {{ $totalPrice }} <span class="text-3xl align-top">Da</span></span>
+                <span class="text-3xl font-bold"> {{ $totalPrice }} <span class="text-3xl align-top">Da</span></span>
 
             </div>
 
