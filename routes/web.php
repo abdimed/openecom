@@ -25,6 +25,8 @@ Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
 Route::get('/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
 
+Route::get('/complete', [OrderController::class, 'complete'])->name('order.complete');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

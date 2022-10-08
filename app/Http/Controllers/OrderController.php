@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Dompdf\Dompdf;
 use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
@@ -15,5 +13,10 @@ class OrderController extends Controller
         $mpdf->Bookmark('Start of the document');
         $mpdf->WriteHTML(View::make('pdf.bill', ['order' => $order]));
         $mpdf->Output();
+    }
+
+    public function complete()
+    {
+        return view('pages.order-complete');
     }
 }

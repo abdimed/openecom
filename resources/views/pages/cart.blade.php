@@ -1,8 +1,8 @@
 @extends('layouts.template')
 @section('main')
-
     <section>
-        @livewire('order-form')
-    </section>
 
+            @livewire('cart-table')
+
+    </section>
 @endsection

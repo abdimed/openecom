@@ -14,9 +14,4 @@ class PageController extends Controller
         ]);
     }
 
-    // public function bill()
-    // {
-    //     retrun view
-    // }
-
 }

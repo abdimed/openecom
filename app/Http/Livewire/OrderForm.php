@@ -3,13 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Events\NewOrder;
-use App\Models\Customer;
-use App\Models\Order;
-use App\Models\User;
-use Filament\Notifications\Notification;
-use Filament\Notifications\Actions\Action;
+use App\Services\CustomerService;
+use App\Services\OrderService;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class OrderForm extends Component
@@ -22,7 +18,6 @@ class OrderForm extends Component
     public $company_name;
     public $email;
 
-
     protected $rules = [
         'full_name' => 'required|max:255',
         'tel' => 'required|max:255',
@@ -33,27 +28,20 @@ class OrderForm extends Component
         'email' => 'nullable|email',
     ];
 
-    public function newOrder()
+    public function post()
     {
 
         $this->validate();
 
-        $customer = $this->customer(); //create or update customer
+        $customer = (new CustomerService())->setCustomer($this->full_name, $this->tel, $this->is_company, $this->company_name, $this->email); //Create or update customer
 
-        $order = $this->orderCreate($customer);
+        $order = (new OrderService())->setOrder($customer, $this->wilaya, $this->address);
 
-        $cartItems = Cart::content();
+        (new OrderService())->setOrderVariations($order);
 
-        foreach ($cartItems as $item) {
+        NewOrder::dispatch($customer, $order); //Notification
 
-            $order->variations()->attach($item->id, ['qty' => $item->qty]);
-        }
-
-        NewOrder::dispatch($customer, $order); //notification
-
-        session()->flash('orderPosted', 'Votre commande a bien été reçue!');
-
-        Cart::destroy();
+        $this->emit('orderPosted');
 
         // return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
@@ -63,37 +51,6 @@ class OrderForm extends Component
         return view('livewire.order-form', [
             'cartItems' => Cart::content(),
             'totalPrice' => Cart::total(),
-        ]);
-    }
-
-    protected function customer(): Customer
-    {
-        $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first();
-        if (empty($customer))
-            return Customer::create([
-                'full_name' => $this->full_name,
-                'tel' => $this->tel,
-                'is_company' => $this->is_company,
-                'company_name' => $this->company_name,
-                'email' => $this->email,
-            ]);
-
-        else return $customer;
-    }
-
-    protected function orderCreate($customer): Order
-    {
-        $number = '0';
-        $latestOrder = Order::latest()->first();
-        if (is_null($latestOrder)) $number = 'CMD-1';
-        else $number = 'CMD-' . $latestOrder->id + 1;
-
-        return  Order::create([
-            'customer_id' => $customer->id,
-            'number' => $number,
-            'wilaya' => $this->wilaya,
-            'address' => $this->address,
-            'total_price' => Cart::priceTotal(),
         ]);
     }
 }

@@ -22,12 +22,12 @@ class OrdersPerMonthChart extends LineChartWidget
             'datasets' => [
                 [
                     'label' => 'Toutes',
-                    'data' => $orders->allPerMonth(),
+                    'data' => $orders->getArray(''),
                     'tension' =>  0.3,
                 ],
                 [
                     'label' => 'Nouvelles',
-                    'data' => $orders->newPerMonth(),
+                    'data' => $orders->getArray('new'),
                     'backgroundColor' => [
                         'rgba(77, 222, 128, 1)',
                     ],
@@ -39,7 +39,7 @@ class OrdersPerMonthChart extends LineChartWidget
 
                 [
                     'label' => 'Annulés',
-                    'data' => $orders->cancelledPerMonth(),
+                    'data' => $orders->getArray('cancelled'),
                     'backgroundColor' => [
                         'rgba(255, 65, 54, 1)',
                     ],

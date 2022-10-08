@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Client;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
 class CartTable extends Component
 {
+
     public $item;
 
     public $rowId;
@@ -40,10 +40,18 @@ class CartTable extends Component
         $this->emit('cart_updated');
     }
 
+    protected $listeners = ['orderPosted' => 'completeOrder'];
+
+    public function completeOrder()
+    {
+
+        session()->flash('orderPosted', 'Votre commande a bien été reçue!');
+
+        Cart::destroy();
+    }
 
     public function render()
     {
-        $this->totalPrice = Cart::subtotal();
         return view(
             'livewire.cart-table',
             [
