@@ -18,7 +18,7 @@ class StatsOverview extends BaseWidget
     {
         return [
             Card::make('Nouvelle Commandes', Order::where('status', 'new')->get()->count())->chart((new OrderService())->getArray(''))->color('primary'),
-            Card::make('Nouveaux Clients', Customer::count())->chart((new CustomerService())->allPerMonth())->color('success'),
+            Card::make('Nouveaux Clients', Customer::count())->chart((new CustomerService())->getArray())->color('success'),
         ];
     }
 

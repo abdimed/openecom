@@ -1,5 +1,6 @@
 <div>
     @if ($cartItems->count() > 0)
+
         <h2 class="lg:col-span-2 text-3xl font-bold my-10 flex items-center gap-x-3">Panier <svg
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">

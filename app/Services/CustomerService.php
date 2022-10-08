@@ -8,7 +8,7 @@ use Flowframe\Trend\TrendValue;
 
 class CustomerService
 {
-    public function allPerMonth(): array
+    public function getArray(): array
     {
         return Trend::model(Customer::class)
             ->between(
