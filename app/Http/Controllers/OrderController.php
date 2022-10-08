@@ -13,7 +13,7 @@ class OrderController extends Controller
     {
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->Bookmark('Start of the document');
-        $mpdf->WriteHTML(View::make('pdf.bill',['order'=>$order]));
+        $mpdf->WriteHTML(View::make('pdf.bill', ['order' => $order]));
         $mpdf->Output();
     }
 }

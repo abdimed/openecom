@@ -9,6 +9,7 @@ use App\Models\User;
 use Filament\Notifications\Notification;
 use Filament\Notifications\Actions\Action;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class OrderForm extends Component
@@ -50,12 +51,17 @@ class OrderForm extends Component
 
         NewOrder::dispatch($customer, $order); //notification
 
-        return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
+        session()->flash('orderPosted', 'Votre commande a bien été reçue!');
+
+        Cart::destroy();
+
+        // return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
 
     public function render()
     {
         return view('livewire.order-form', [
+            'cartItems' => Cart::content(),
             'totalPrice' => Cart::total(),
         ]);
     }
@@ -64,13 +70,13 @@ class OrderForm extends Component
     {
         $customer = Customer::where('tel', $this->tel)->where('email', $this->email)->first();
         if (empty($customer))
-        return Customer::create([
-            'full_name' => $this->full_name,
-            'tel' => $this->tel,
-            'is_company' => $this->is_company,
-            'company_name' => $this->company_name,
-            'email' => $this->email,
-        ]);
+            return Customer::create([
+                'full_name' => $this->full_name,
+                'tel' => $this->tel,
+                'is_company' => $this->is_company,
+                'company_name' => $this->company_name,
+                'email' => $this->email,
+            ]);
 
         else return $customer;
     }
