@@ -55,7 +55,7 @@ class OrderResource extends Resource
                                 Placeholder::make('client')->content(fn (Order $record): string => $record->customer->full_name),
                                 TextInput::make('wilaya')->disabled(),
 
-                                TextInput::make('address')->disabled()->columnSpan(['lg' => 2]),
+                                TextInput::make('address')->columnSpan(['lg' => 2]),
 
                                 TextInput::make('total_price')->suffix('DA'),
 

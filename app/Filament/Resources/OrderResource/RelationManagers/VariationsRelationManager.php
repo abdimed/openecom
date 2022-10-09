@@ -34,6 +34,7 @@ class VariationsRelationManager extends RelationManager
     {
         return $table
             ->columns([
+                TextColumn::make('ref')->label('Code'),
                 TextColumn::make('product.name'),
                 TextColumn::make('name'),
                 TextColumn::make('qty'),
