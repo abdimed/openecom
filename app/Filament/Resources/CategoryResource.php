@@ -45,7 +45,7 @@ class CategoryResource extends Resource
                                 $set('slug', Str::slug($state));
                             })->required(),
 
-                        TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                        TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique(ignorable: fn ($record) => $record)->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
 
                     ])->columns(['lg' => 2])
 
