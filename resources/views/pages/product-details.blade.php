@@ -8,9 +8,15 @@
             <x-section id="product">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-                    <h1 class="lg:col-span-2 text-4xl font-bold">
-                        {{ $product->name }}
-                    </h1>
+                    <div class="lg:col-span-2">
+
+                        <x-title>
+
+                            {{ $product->name }}
+
+                        </x-title>
+                    </div>
+
 
                     <div class="grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
 
@@ -49,7 +55,7 @@
 
                     <div class="bg-gray-100 rounded-lg p-4">
 
-                        <h3 class="text-center text-xl font-bold py-2">Caractéristiques</h3>
+                        <h3 class="text-center text-xl font-bold py-2 text-gray-600">Caractéristiques</h3>
 
                         @if (!empty($product->specifications))
                             <ul class="px-4">
@@ -66,7 +72,7 @@
                     </div>
 
                     <div class="bg-gray-100 rounded-lg p-4">
-                        <h3 class="text-center text-xl font-bold py-2">Catalogue Numérique</h3>
+                        <h3 class="text-center text-xl font-bold py-2 text-gray-600">Catalogue Numérique</h3>
 
                         <a href="/storage/{{ $product->document }}" download="{{ $product->name }} "
                             class="text-center flex justify-center p-4 flex-col">
@@ -80,7 +86,7 @@
                     </div>
 
                     <div class="bg-gray-100 rounded-lg p-4 flex flex-col items-center">
-                        <h3 class="text-center text-xl font-bold py-2">Marque</h3>
+                        <h3 class="text-center text-xl font-bold py-2 text-gray-600">Marque</h3>
 
                         <img src="{{ asset('storage/' . $product->brand->logo) }}" alt="brand-logo"
                             class="w-52 h-52 object-contain">

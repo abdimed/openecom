@@ -34,6 +34,11 @@ class Product extends Model
         return $this->hasMany(Specification::class);
     }
 
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::class);
+    }
+
     protected $casts = [
         'images' => 'array',
     ];

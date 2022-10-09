@@ -27,7 +27,7 @@
 
                 <x-loading />
 
-                <div class="lg:col-span-2 flex justify-center">
+                <div class="lg:col-span-2 flex justify-center text-gray-600">
 
                     <strong class="text-2xl font-bold" x-text="$wire.price"></strong><span
                         class="align-top font-bold">DA</span>

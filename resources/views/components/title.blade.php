@@ -1,6 +1,6 @@
-<div class="flex items-center py-5">
+<div class="flex justify-between items-center py-5">
 
-    <h2 class="text-4xl font-bold flex items-center gap-x-5">
+    <h2 class="text-2xl lg:text-3xl font-semibold">
         {{ $slot }}
     </h2>
 

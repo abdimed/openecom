@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('main')
-    <section>
+    <section class="max-w-screen-xl m-auto p-4">
 
             @livewire('cart-table')
 

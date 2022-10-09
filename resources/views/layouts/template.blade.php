@@ -12,10 +12,12 @@
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     @livewireStyles
 </head>
 
 <body class="antialiased font-poppins">
+
     <header class="bg-primary">
         @include('sections.navbar')
     </header>

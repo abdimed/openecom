@@ -139,6 +139,7 @@ class ProductResource extends Resource
 
                                     ])
                                     ->searchable()->required(),
+
                             ]),
 
                     ])->columnSpan(['lg' => 1]),
