@@ -17,6 +17,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -27,6 +28,7 @@ class UserResource extends Resource
     protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
 
     public static function form(Form $form): Form
     {
@@ -87,8 +89,14 @@ class UserResource extends Resource
         ];
     }
 
+    private function getUser(): User
+    {
+        return Auth::user();
+    }
+
     public static function getPages(): array
     {
+
 
         return [
             'index' => Pages\ListUsers::route('/'),
