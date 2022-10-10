@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
+use App\Filament\Resources\RoleResource\RelationManagers\UsersRelationManager;
 use Spatie\Permission\Models\Role;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -19,6 +20,8 @@ class RoleResource extends Resource
     protected static ?string $model = Role::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    protected static bool $shouldRegisterNavigation =false ;
 
     public static function form(Form $form): Form
     {
@@ -48,7 +51,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UsersRelationManager::class,
         ];
     }
 
@@ -59,5 +62,10 @@ class RoleResource extends Resource
             'create' => Pages\CreateRole::route('/create'),
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
+    }
+
+    public function is_admin(): bool
+    {
+        return Auth()->user->role();
     }
 }

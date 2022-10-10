@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Role::create(['name' => 'admin']);
+        Role::create(['name' => 'commercial']);
 
         $user->assignRole('admin');
 
