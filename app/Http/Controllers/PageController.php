@@ -14,7 +14,7 @@ class PageController extends Controller
         return view('pages.welcome', [
            'products' => Product::with(['brand', 'category'])->get(),
            'categories' => Category::all(),
-           'panel1' => Media::where('name', 'panel1')->first(),
+           'medias' => Media::all(),
         ]);
     }
 
