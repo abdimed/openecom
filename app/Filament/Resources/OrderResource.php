@@ -72,7 +72,6 @@ class OrderResource extends Resource
 
                                         Placeholder::make('date')->content(fn (Order $record): ?string => $record->created_at->format('d M Y h:i')),
                                         Placeholder::make('Depuis')->content(fn (Order $record): string  => $record->created_at->since()),
-
                                     ])->visible(
                                         static fn (Page $livewire): bool =>
                                         $livewire instanceof Pages\EditOrder ? true : false,
