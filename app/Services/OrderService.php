@@ -12,7 +12,7 @@ class OrderService
 {
     public function getArray(string $status): array
     {
-        return $trend = Trend::query(Order::where('status', '<>', $status))
+        return Trend::query(Order::where('status', '<>', $status))
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
@@ -20,8 +20,6 @@ class OrderService
             ->count()
             ->map(fn (TrendValue $value) => $value->aggregate)
             ->toArray();
-
-        dd($trend);
     }
 
     public function getMonth()

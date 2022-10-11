@@ -27,6 +27,8 @@ class UserResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?string $navigationGroup = 'administration';
+
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
 
@@ -87,11 +89,6 @@ class UserResource extends Resource
         return [
             //
         ];
-    }
-
-    private function getUser(): User
-    {
-        return Auth::user();
     }
 
     public static function getPages(): array

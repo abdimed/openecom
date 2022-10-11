@@ -27,7 +27,9 @@ class BrandResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bookmark-alt';
 
-    protected static ?string $navigationGroup = 'E-Commerce';
+    protected static ?string $navigationGroup = 'e-commerce';
+
+    protected static ?string $modelLabel = 'marque';
 
     protected static ?string $recordTitleAttribute = 'name';
 

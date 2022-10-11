@@ -31,7 +31,7 @@ class CustomerResource extends Resource
 
     protected static ?string $modelLabel = 'client';
 
-    protected static ?string $navigationGroup = 'E-Commerce';
+    protected static ?string $navigationGroup = 'e-commerce';
 
     public static function form(Form $form): Form
     {

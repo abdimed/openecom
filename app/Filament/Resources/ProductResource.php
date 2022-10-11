@@ -41,7 +41,7 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'E-Commerce';
+    protected static ?string $navigationGroup = 'e-commerce';
 
     protected static ?string $modelLabel = 'Produits';
 
@@ -49,6 +49,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
+
                 Grid::make()
                     ->schema([
 
@@ -124,21 +125,14 @@ class ProductResource extends Resource
 
                                 Select::make('category_id')
                                     ->relationship('category', 'name')
+                                    ->required(),
+
+                                Select::make('collections')
+                                    ->multiple()
+                                    ->relationship('collections', 'name')
                                     ->createOptionForm([
-                                        FileUpload::make('icon')->image()->avatar(),
-                                        Grid::make()
-                                            ->schema([
-                                                TextInput::make('name')
-                                                    ->reactive()
-                                                    ->afterStateUpdated(function (Closure $set, $state) {
-                                                        $set('slug', Str::slug($state));
-                                                    })->required(),
-
-                                                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
-                                            ])
-
+                                        TextInput::make('name')->required()->maxLength(255),
                                     ])
-                                    ->searchable()->required(),
 
                             ]),
 

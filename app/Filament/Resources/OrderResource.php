@@ -7,6 +7,7 @@ use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\RelationManagers\VariationsRelationManager;
 use App\Models\Order;
 use Filament\Forms;
+use Filament\Pages\page;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
@@ -29,7 +30,7 @@ class OrderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $navigationGroup = 'E-Commerce';
+    protected static ?string $navigationGroup = 'e-commerce';
 
     protected static ?string $recordTitleAttribute = 'number';
 
@@ -39,41 +40,48 @@ class OrderResource extends Resource
             ->schema([
                 Grid::make()
                     ->schema([
-                        Card::make()
+                        Grid::make()
                             ->schema([
+                                Card::make()
+                                    ->schema([
 
-                                TextInput::make('number')->disabled(),
+                                        TextInput::make('number')->disabled(),
 
-                                Select::make('status')->options([
-                                    'new' => 'Nouveau',
-                                    'processing' => 'En traitement',
-                                    'delivered' => 'Livré',
-                                    'shipped' => 'Expédié',
-                                    'cancelled' => 'Annulé'
-                                ]),
+                                        Select::make('status')->options([
+                                            'new' => 'Nouveau',
+                                            'processing' => 'En traitement',
+                                            'delivered' => 'Livré',
+                                            'shipped' => 'Expédié',
+                                            'cancelled' => 'Annulé'
+                                        ]),
 
-                                Placeholder::make('client')->content(fn (Order $record): string => $record->customer->full_name),
-                                TextInput::make('wilaya')->disabled(),
+                                        TextInput::make('wilaya')->disabled(),
 
-                                TextInput::make('address')->columnSpan(['lg' => 2]),
+                                        TextInput::make('address')->columnSpan(['lg' => 2]),
 
-                                TextInput::make('total_price')->suffix('DA'),
+                                        TextInput::make('total_price')->suffix('DA'),
 
-                            ])->columns(['lg' => 2])
+                                    ])->columns(['lg' => 2])
 
-                    ])->columnSpan(['lg' => 2]),
-                Grid::make()
-                    ->schema([
-                        Card::make()
+                            ])->columnSpan(['lg' => 2]),
+
+                        Grid::make()
                             ->schema([
+                                Card::make()
+                                    ->schema([
 
-                                Placeholder::make('date')->content(fn (Order $record): ?string => $record->created_at->format('d M Y h:i')),
-                                Placeholder::make('Depuis')->content(fn (Order $record): string  => $record->created_at->since()),
+                                        Placeholder::make('date')->content(fn (Order $record): ?string => $record->created_at->format('d M Y h:i')),
+                                        Placeholder::make('Depuis')->content(fn (Order $record): string  => $record->created_at->since()),
 
-                            ])
-                    ])->columnSpan(['lg' => 1])
+                                    ])->visible(
+                                        static fn (Page $livewire): bool =>
+                                        $livewire instanceof Pages\EditOrder ? true : false,
+                                    ),
+                            ])->columnSpan(['lg' => 1])
+                    ])->columns(['lg' => 3])
 
-            ])->columns(['lg' => 3]);
+
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -98,11 +106,11 @@ class OrderResource extends Resource
                     ])
                     ->icons([
                         'heroicon-o-x',
-                        'heroicon-o-exclamation-circle' =>'new',
+                        'heroicon-o-exclamation-circle' => 'new',
                         'heroicon-o-clock' => 'processing',
                         'heroicon-o-truck' => 'shipped',
-                        'heroicon-o-x-circle' =>'cancelled',
-                        'heroicon-o-check-circle' =>'delivered'
+                        'heroicon-o-x-circle' => 'cancelled',
+                        'heroicon-o-check-circle' => 'delivered'
                     ])->sortable(),
 
                 TextColumn::make('total_price'),

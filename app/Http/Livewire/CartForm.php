@@ -15,7 +15,7 @@ class CartForm extends Component
 
     public function addToCart()
     {
-        $variation = Variation::findOrFail($this->variation_id);
+        $variation = $this->product->variations->firstWhere('id', $this->variation_id);
 
         Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['product_id' => $this->product->id, 'variation' => $variation->name, 'img' => $this->product->images[0]]);
 
@@ -27,7 +27,7 @@ class CartForm extends Component
 
         if (!Cart::content()->where('id', $this->variation_id)->count()) {
 
-            $variation = Variation::findOrFail($this->variation_id);
+            $variation = $this->product->variations->firstWhere('id', $this->variation_id);
 
             Cart::add($variation->id, $this->product->name, 1, $variation->price, 1, ['variation' => $variation->name, 'img' => $this->product->images[0]]);
         }
