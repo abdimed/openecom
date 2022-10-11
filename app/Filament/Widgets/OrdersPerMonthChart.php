@@ -5,8 +5,6 @@ namespace App\Filament\Widgets;
 use App\Models\Order;
 use App\Services\OrderService;
 use Filament\Widgets\LineChartWidget;
-use Flowframe\Trend\Trend;
-use Flowframe\Trend\TrendValue;
 
 
 class OrdersPerMonthChart extends LineChartWidget
