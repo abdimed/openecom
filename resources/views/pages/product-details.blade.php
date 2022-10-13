@@ -24,7 +24,7 @@
                             @foreach ($product->images as $image)
                                 <img x-on:click.self="imgPrincipale = '/storage/{{ $image }}'"
                                     src="{{ asset('storage/' . $image) }}" alt="att"
-                                    class="w-20 h-20 object-cover object-center rounded-md">
+                                    class="w-20 h-20 object-cover object-center rounded-md border p-1">
                             @endforeach
                         </div>
 
@@ -93,6 +93,34 @@
 
                     </div>
                 </div>
+
+
+                <div class="relative" x-data>
+
+                    <x-title>d'Autres {{ $category->name  }}</x-title>
+
+                    <div class="flex justify-between w-full flex-nowrap space-x-5">
+
+                        <div class="my-auto" @click="$refs.carossel.scrollBy({left:-200, behavior: 'smooth'})">
+                            <x-scroll-left-btn />
+                        </div>
+
+                        <div class="flex grow gap-10 overflow-x-scroll snap-x py-5" x-ref="carossel">
+
+                            @foreach ($category->products as $product)
+                                @if ($product->visible)
+                                    <x-product-card :$product />
+                                @endif
+                            @endforeach
+
+                        </div>
+
+                        <div class="my-auto" @click="$refs.carossel.scrollBy({left:200, behavior: 'smooth'})">
+                            <x-scroll-right-btn />
+                        </div>
+
+                    </div>
+
             </x-section>
 
         </div>

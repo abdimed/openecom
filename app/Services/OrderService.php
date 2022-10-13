@@ -22,6 +22,19 @@ class OrderService
             ->toArray();
     }
 
+    public function getArrayPerDay(string $status): array
+    {
+        return Trend::query(Order::where('status', '<>', $status))
+            ->between(
+                start: now(),
+                end: now(),
+            )->perDay()
+            ->count()
+            ->map(fn (TrendValue $value) => $value->aggregate)
+            ->toArray();
+    }
+
+
     public function getMonth()
     {
         return Trend::query(Order::where('status', 'new'))
@@ -31,6 +44,18 @@ class OrderService
             )->perMonth()
             ->count()
             ->map(fn (TrendValue $value) => $value->date);
+
+    }
+
+    public function getDay()
+    {
+        return Trend::model(Order::class)
+            ->between(
+                start: now()->startOfWeek(),
+                end: now()->endOfWeek(),
+            )->perDay()
+            ->count()
+            ->map(fn (TrendValue $value) => $value->date)->toArray();
     }
 
     public function setOrder(Customer $customer, $wilaya, $address): Order

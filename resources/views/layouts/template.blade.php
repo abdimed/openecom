@@ -13,6 +13,7 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
     @livewireStyles
 </head>
 
@@ -28,9 +29,7 @@
 
     </main>
 
-    <footer>
-
-    </footer>
+    @include('sections.footer')
 
     @livewireScripts
 </body>

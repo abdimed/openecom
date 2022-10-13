@@ -12,6 +12,7 @@ class ProductController extends Controller
     {
         return view('pages.product-details', [
             'product' => $product,
+            'category' => Category::findOrFail($category->id),
         ]);
     }
 }

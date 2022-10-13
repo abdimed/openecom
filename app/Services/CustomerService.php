@@ -20,6 +20,18 @@ class CustomerService
             ->toArray();
     }
 
+    public function getPerDay(): array
+    {
+        return Trend::model(Customer::class)
+            ->between(
+                start: now()->startOfYear(),
+                end: now()->endOfYear(),
+            )->perDay()
+            ->count()
+            ->map(fn (TrendValue $value) => $value->aggregate)
+            ->toArray();
+    }
+
     public function getCustomer($tel, $email): ?Customer
     {
         return Customer::where('tel', $tel)->where('email', $email)->first();
@@ -27,7 +39,7 @@ class CustomerService
 
     public function setCustomer($full_name, $tel, $is_company, $company_name, $email): Customer
     {
-       $customer = $this->getCustomer($tel, $email);
+        $customer = $this->getCustomer($tel, $email);
 
         if (empty($customer))
             return  Customer::create([

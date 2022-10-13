@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CollectionResource\Pages;
 use App\Filament\Resources\CollectionResource\RelationManagers;
+use App\Filament\Resources\CollectionResource\RelationManagers\ProductsRelationManager;
 use App\Models\Collection;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -20,8 +21,6 @@ class CollectionResource extends Resource
     protected static ?string $model = Collection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
-    protected static ?string $navigationGroup = 'e-commerce';
 
     public static function form(Form $form): Form
     {
@@ -42,17 +41,25 @@ class CollectionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            ProductsRelationManager::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCollections::route('/'),
+            'index' => Pages\ListCollections::route('/'),
+            'create' => Pages\CreateCollection::route('/create'),
+            'edit' => Pages\EditCollection::route('/{record}/edit'),
         ];
     }
 }
