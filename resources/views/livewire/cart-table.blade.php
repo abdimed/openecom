@@ -26,25 +26,23 @@
 
                     <div class="flex flex-col justify-center items-center">
                         <span class="text-sm text-gray-400">Qty</span>
-                        <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2">
+                        <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2"
+                            wire:loading.class="opacity-50">
 
-                            <button wire:click="minusQty( '{{ $item->rowId }}' )"
+                            <button wire:click="minusQty( '{{ $item->rowId }}' )" wire:loading.attr="disabled"
                                 class="font-semibold text-3xl">-</button>
 
                             <span class="text-2xl font-semibold">{{ $item->qty }}</span>
 
-                            <button wire:click="addQty( '{{ $item->rowId }}' )"
+                            <button wire:click="addQty( '{{ $item->rowId }}' )" wire:loading.attr="disabled"
                                 class="font-semibold text-3xl">+</button>
-
-                            <div wire:loading class="absolute inset-0 w-full h-full bg-white/60 rounded-md cursor-wait">
-
-                            </div>
 
                         </div>
 
                     </div>
 
-                    <button wire:click="removeFromCart( '{{ $item->rowId }}' )" class="text-red-500 m-auto absolute top-3  right-3">
+                    <button wire:click="removeFromCart( '{{ $item->rowId }}' )"
+                        class="text-red-500 m-auto absolute top-3  right-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
