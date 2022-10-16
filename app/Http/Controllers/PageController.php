@@ -19,6 +19,7 @@ class PageController extends Controller
                     'variations',
                 ]
             ])->get(),
+            'categories' => Category::all()
         ]);
     }
 }

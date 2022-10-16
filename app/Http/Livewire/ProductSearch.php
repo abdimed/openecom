@@ -12,19 +12,12 @@ class ProductSearch extends Component
 
     public $products;
 
-    public function searchUpdated()
-    {
-        if ($this->search == '') {
-        } else
-            $this->products =  Product::where('name', 'LIKE', "%{$this->search}%")->get();
-    }
-
     public function render()
     {
         return view(
             'livewire.product-search',
             [
-                'products' => $this->products
+                'products' => Product::where('name', 'LIKE', "%{$this->search}%")->get()
             ]
         );
     }
