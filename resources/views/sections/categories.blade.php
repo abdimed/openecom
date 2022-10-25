@@ -1,6 +1,6 @@
 <section id="categories">
 
-    @livewire('product-search')
+    {{-- @livewire('product-search') --}}
 
     <div class="p-4 flex flex-col justify-center items-center space-y-20"
         style="background-image: url('{{ asset('assets/bg-wood.png') }}')">
