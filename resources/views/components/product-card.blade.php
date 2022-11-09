@@ -1,5 +1,5 @@
-<a href="{{ route('product.view', [$product->category->slug, $product->slug]) }}"
-    class="shrink-0 flex flex-col justify-between snap-start border rounded-xl w-[270px] h-[360px] hover:shadow-lg hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+<a href="{{ route('product.details', [$product->category->slug, $product->slug]) }}"
+    class="shrink-0 flex flex-col justify-between snap-start border-2 rounded-xl w-[270px] h-[360px] hover:shadow-lg hover:-translate-y-2 transition-all duration-300 overflow-hidden">
 
     <img src="{{ asset('storage/' . $product->images[0]) }}" alt="img"
         class="w-full h-[249px] object-contain object-center overflow-hidden">

@@ -2,7 +2,6 @@
     @if ($cartItems->count() > 0)
         <x-title>
             Panier
-            </h2>
         </x-title>
         <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6 rounded-2xl">
 
@@ -66,7 +65,9 @@
 
         </ul>
 
+        {{-- Order Form --}}
         @livewire('order-form')
+
     @elseif (session()->has('orderPosted'))
         <div class="flex flex-col justify-center items-center my-10">
 
@@ -74,6 +75,8 @@
                 {{ session('orderPosted') }}
             </span>
             <img src="{{ asset('assets/success.png') }}" alt="success" class="w-48">
+
+            <a href="/">Reçu</a>
 
         </div>
 

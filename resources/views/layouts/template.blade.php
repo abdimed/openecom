@@ -17,13 +17,13 @@
     @livewireStyles
 </head>
 
-<body class="antialiased font-poppins">
+<body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
     <header class="bg-primary">
         @include('sections.navbar')
     </header>
 
-    <main>
+    <main class="">
 
         @yield('main')
 

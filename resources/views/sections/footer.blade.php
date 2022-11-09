@@ -1,6 +1,6 @@
 <footer class="flex bg-primary h-[300px]">
 
-    <div class="grid grid-cols-5 max-w-screen-xl m-auto text-white p-4 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-5 max-w-screen-xl m-auto text-white p-4 w-full">
         <div class="col-span-2">
             <img src="{{ asset('assets/logo.png') }}" alt="logo">
             <a href="tel:+21356153196" class="font-semibold mt-5 block">Numéro  :<span

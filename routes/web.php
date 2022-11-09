@@ -19,11 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('page.welcome');
 
-Route::get('/{category:slug}/products/{product:slug}', [ProductController::class, 'view'])->name('product.view');
+Route::get('/category/{category:slug}', [PageController::class, 'categoryProducts'])->name('category.products');
+
+Route::get('/category/{category:slug}/products/{product:slug}', [PageController::class, 'productDetails'])->name('product.details');
 
 Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
-Route::get('/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
+
+Route::get('/order/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
 
 Route::get('/complete', [OrderController::class, 'complete'])->name('order.complete');
 

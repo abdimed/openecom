@@ -22,4 +22,22 @@ class PageController extends Controller
             'categories' => Category::all()
         ]);
     }
+
+    public function categoryProducts(Category $category)
+    {
+        return view('pages.category-products', [
+            'products' => $category->products()->get(),
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function productDetails(Category $category, Product $product)
+    {
+        return view('pages.product-details', [
+            'product' => $product,
+            'category' => Category::findOrFail($category->id),
+            'categories' => Category::all()
+        ]);
+    }
+
 }
