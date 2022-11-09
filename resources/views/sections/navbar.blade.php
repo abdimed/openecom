@@ -39,7 +39,7 @@
     </div>
 
 
-    <div class="fixed top-0 w-4/5 h-screen bg-white text-black" x-show="mobileMenu" x-cloak
+    <div class="fixed top-0 left-0  w-4/5 h-screen bg-white text-black z-50" x-show="mobileMenu" x-cloak
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
         x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
