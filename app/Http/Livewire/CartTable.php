@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-
+use App\Models\Category;
 class CartTable extends Component
 {
 
@@ -57,6 +57,7 @@ class CartTable extends Component
             [
                 'cartItems' => Cart::content(),
                 'totalPrice' => Cart::subtotal(),
+                'categories' => Category::all()
             ]
         );
     }

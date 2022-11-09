@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-
+use App\Models\Category;
 class CartCounter extends Component
 {
 
@@ -17,6 +17,7 @@ class CartCounter extends Component
             'livewire.cart-counter',
             [
                 'cart_counter' => Cart::content()->count(),
+                'categories' => Category::all()
             ]
         );
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Variation;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
@@ -53,6 +54,7 @@ class CartForm extends Component
             'livewire.cart-form',
             [
                 'isInCart' => Cart::content()->where('id', $this->variation_id)->count(),
+                'categories' => Category::all()
             ]
         );
     }

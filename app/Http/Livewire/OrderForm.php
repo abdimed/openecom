@@ -7,7 +7,7 @@ use App\Services\CustomerService;
 use App\Services\OrderService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-
+use App\Models\Category;
 class OrderForm extends Component
 {
     public $full_name;
@@ -51,6 +51,7 @@ class OrderForm extends Component
         return view('livewire.order-form', [
             'cartItems' => Cart::content(),
             'totalPrice' => Cart::total(),
+            'categories' => Category::all()
         ]);
     }
 }
