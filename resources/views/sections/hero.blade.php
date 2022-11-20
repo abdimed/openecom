@@ -1,5 +1,5 @@
 <div class="flex w-full max-w-[2200px] h-[500px] lg:h-[720px] bg-cover bg-center"
-    style="background-image: url('{{ asset('assets/banner.webp') }}')">
+    style="background-image: url('{{ asset('assets/banner1.jpg') }}')">
 
     <x-section id="hero">
 

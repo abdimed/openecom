@@ -17,7 +17,7 @@
         <div>
             <a href="/">Accueil</a>
         </div>
-        <div class="peer" x-on:click="categoryMenu = !categoryMenu">
+        <div x-on:click="categoryMenu = !categoryMenu">
             <span class="flex items-center cursor-pointer">
                 Categorie
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
