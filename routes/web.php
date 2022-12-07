@@ -26,7 +26,7 @@ Route::get('/category/{category:slug}/products/{product:slug}', [PageController:
 Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
 
-Route::get('/order/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
+Route::get('/admin/order/{order}/bill', [OrderController::class, 'bill'])->name('order.bill');
 
 Route::get('/complete', [OrderController::class, 'complete'])->name('order.complete');
 

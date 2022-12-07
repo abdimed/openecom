@@ -9,8 +9,9 @@ class OrderController extends Controller
 {
     public function bill(Order $order)
     {
-        $mpdf = new \Mpdf\Mpdf();
-        $mpdf->Bookmark('Start of the document');
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+        ]);
         $mpdf->WriteHTML(View::make('pdf.bill', ['order' => $order]));
         $mpdf->Output();
     }

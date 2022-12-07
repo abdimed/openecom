@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Document</title>
+    <title>Facture {{ $order->number }}</title>
 </head>
 
 <body>
-    <img src="{{ asset('assets/logo.png') }}" alt="">
+    {{-- <img src="{{ asset('assets/logo.png') }}" alt="zz"> --}}
     <h1>
-        Bon de livraison
+        Bon de livraison {{$order->number}}
     </h1>
     <h3>SARL CCBO IMPORTATION MDF / MELAMINE / HIGH GLOSS
         ET ACCESSOIRES DE DRESSING ET CUISINE</h3>
