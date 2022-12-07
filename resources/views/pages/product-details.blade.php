@@ -79,7 +79,7 @@
                             <span
                                 class="block bg-red-500 text-white border-2 border-red-500 hover:bg-red-600 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
                                 Télécharger <br> format PDF</span>
-                            <img src="{{ asset('download.png') }}" alt="" class="m-auto mt-5">
+                            <img src="{{ asset('assets/download.png') }}" alt="" class="m-auto mt-5">
                         </a>
 
 

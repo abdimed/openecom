@@ -23,7 +23,7 @@
                         </span>
                     </div>
 
-                    <div class="flex flex-col justify-center items-center">
+                    <div class="flex flex-col justify-center items-center col-span-2 justify-self-end lg:justify-self-center">
                         <span class="text-sm text-gray-400">Qty</span>
                         <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2"
                             wire:loading.class="opacity-50">
@@ -65,8 +65,7 @@
 
         </ul>
 
-        {{-- Order Form --}}
-        @livewire('order-form')
+        @livewire('order-form') {{-- Order Form --}}
 
     @elseif (session()->has('orderPosted'))
         <div class="flex flex-col justify-center items-center my-10">

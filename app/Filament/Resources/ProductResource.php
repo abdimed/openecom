@@ -158,6 +158,8 @@ class ProductResource extends Resource
                     Tables\Actions\ForceDeleteAction::make(),
                     Tables\Actions\DeleteAction::make(),
                 ]),
+                Tables\Actions\ReplicateAction::make()
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

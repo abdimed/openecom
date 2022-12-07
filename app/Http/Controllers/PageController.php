@@ -35,7 +35,7 @@ class PageController extends Controller
         return view('pages.product-details', [
             'product' => $product,
             'category' => $category,
-            'otherProducts' => $category->products()->with('category', 'variations'),
+            'otherProducts' => $category->products()->with('category', 'variations')->get(),
             'categories' => Category::all()
         ]);
     }
