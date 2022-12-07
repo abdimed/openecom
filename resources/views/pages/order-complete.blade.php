@@ -3,6 +3,6 @@
     <span class="text-center text-2xl font-bold">
         {{ session('orderPosted') }}
     </span>
-    <img src="{{ asset('build/assets/checkmark.png') }}" alt="checkmark" class="w-48">
+    <img src="{{ asset('build/assets/success.png') }}" alt="success" class="w-48">
 
 </div>

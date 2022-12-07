@@ -3,8 +3,8 @@
         <x-title>
             Panier
         </x-title>
-        <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6 rounded-2xl">
 
+        <ul class="grid grid-cols-1 bg-gray-100 gap-y-5 lg:p-6 rounded-2xl">
 
             @foreach ($cartItems as $item)
                 <li class="relative grid grid-cols-3 lg:grid-cols-6 bg-white rounded-md shadow-md p-2">

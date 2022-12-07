@@ -43,7 +43,7 @@ class OrderForm extends Component
 
         $this->emit('orderPosted');
 
-         return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
+        //  return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
 
     public function render()
@@ -51,7 +51,6 @@ class OrderForm extends Component
         return view('livewire.order-form', [
             'cartItems' => Cart::content(),
             'totalPrice' => Cart::total(),
-            'categories' => Category::all()
         ]);
     }
 }

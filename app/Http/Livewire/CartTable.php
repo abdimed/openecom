@@ -57,7 +57,6 @@ class CartTable extends Component
             [
                 'cartItems' => Cart::content(),
                 'totalPrice' => Cart::subtotal(),
-                'categories' => Category::all()
             ]
         );
     }

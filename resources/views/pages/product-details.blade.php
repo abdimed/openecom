@@ -107,7 +107,7 @@
 
                         <div class="flex grow gap-10 overflow-x-scroll snap-x py-5" x-ref="carossel">
 
-                            @foreach ($category->products as $product)
+                            @foreach ($otherProducts as $product)
                                 @if ($product->visible)
                                     <x-product-card :$product />
                                 @endif

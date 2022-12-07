@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Collection;
-use App\Models\Media;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -26,16 +24,18 @@ class PageController extends Controller
     public function categoryProducts(Category $category)
     {
         return view('pages.category-products', [
-            'products' => $category->products()->get(),
+            'products' => $category->products()->with('variations', 'category')->get(),
             'categories' => Category::all()
         ]);
     }
 
     public function productDetails(Category $category, Product $product)
     {
+
         return view('pages.product-details', [
             'product' => $product,
-            'category' => Category::findOrFail($category->id),
+            'category' => $category,
+            'otherProducts' => $category->products()->with('category', 'variations'),
             'categories' => Category::all()
         ]);
     }

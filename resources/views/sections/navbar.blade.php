@@ -1,3 +1,4 @@
+
 <nav class="flex justify-between items-center py-4 px-2 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
     <div class="text-white lg:hidden block justify-self-end">
         <button x-on:click="mobileMenu = !mobileMenu">

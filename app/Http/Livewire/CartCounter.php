@@ -17,7 +17,6 @@ class CartCounter extends Component
             'livewire.cart-counter',
             [
                 'cart_counter' => Cart::content()->count(),
-                'categories' => Category::all()
             ]
         );
     }

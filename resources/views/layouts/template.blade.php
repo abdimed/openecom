@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>CCBO</title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,9 @@
 <body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
     <header class="bg-primary">
+
         @include('sections.navbar')
+
     </header>
 
     <main class="">
@@ -29,7 +31,12 @@
 
     </main>
 
-    @include('sections.footer')
+    <footer class="flex bg-primary h-[300px]">
+
+        @include('sections.footer')
+
+    </footer>
+
 
     @livewireScripts
 </body>
