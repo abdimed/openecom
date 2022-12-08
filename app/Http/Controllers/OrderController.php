@@ -9,11 +9,15 @@ class OrderController extends Controller
 {
     public function bill(Order $order)
     {
-        $mpdf = new \Mpdf\Mpdf([
-            'mode' => 'utf-8',
-        ]);
-        $mpdf->WriteHTML(View::make('pdf.bill', ['order' => $order]));
-        $mpdf->Output();
+        if (session()->has('orderPosted')) {
+
+            $mpdf = new \Mpdf\Mpdf([
+                'mode' => 'utf-8',
+            ]);
+            $mpdf->WriteHTML(View::make('pdf.bill', ['order' => $order]));
+            $mpdf->Output();
+        }
+        else return 'zebi';
     }
 
     public function complete()

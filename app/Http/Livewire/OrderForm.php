@@ -8,6 +8,8 @@ use App\Services\OrderService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use App\Models\Category;
+use Illuminate\Support\Facades\View;
+
 class OrderForm extends Component
 {
     public $full_name;
@@ -43,7 +45,7 @@ class OrderForm extends Component
 
         $this->emit('orderPosted');
 
-        //  return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
+        return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
 
     public function render()

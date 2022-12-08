@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Filament\Notifications\Notification;
 use Filament\Notifications\Actions\Action;
 
-class SendNewOrderNotification
+class NewOrderListener
 {
     /**
      * Create the event listener.
