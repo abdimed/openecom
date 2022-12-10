@@ -133,6 +133,7 @@ class ProductResource extends Resource
                                     ->createOptionForm([
                                         TextInput::make('name')->required()->maxLength(255),
                                     ])
+                                    ->preload()
 
                             ]),
 
@@ -159,6 +160,26 @@ class ProductResource extends Resource
                     Tables\Actions\DeleteAction::make(),
                 ]),
                 Tables\Actions\ReplicateAction::make()
+                    ->excludeAttributes(['name', 'slug'])
+                    ->form([
+                        Grid::make()
+                            ->schema(
+                                [
+                                    TextInput::make('name')
+                                        ->reactive()
+                                        ->afterStateUpdated(function (Closure $set, $state) {
+                                            $set('slug', Str::slug($state));
+                                        })->required(),
+
+                                    TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique()->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                                ]
+                            )->columns(['lg' => 2])
+
+
+                    ])
+                    ->beforeReplicaSaved(function (Product $replica, array $data): void {
+                        $replica->fill($data);
+                    })
 
             ])
             ->bulkActions([

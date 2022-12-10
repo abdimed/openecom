@@ -20,7 +20,7 @@
 <body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
     <header class="bg-primary">
-
+        <x-info-bar></x-info-bar>
         @include('sections.navbar')
 
     </header>

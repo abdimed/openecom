@@ -14,7 +14,7 @@
                 <div class="flex grow gap-10 overflow-x-scroll snap-x py-5" x-ref="carossel">
 
                     @foreach ($collection->products as $product)
-                        @if ($product->visible)
+                        @if ($product->visible && $product->variations != null)
                             <x-product-card :$product />
                         @endif
                     @endforeach

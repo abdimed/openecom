@@ -45,7 +45,6 @@ class OrderForm extends Component
 
         $this->emit('orderPosted');
 
-        return to_route('order.bill', ['customer' => $customer, 'order' => $order]);
     }
 
     public function render()

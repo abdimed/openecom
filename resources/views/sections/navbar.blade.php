@@ -1,5 +1,5 @@
 
-<nav class="flex justify-between items-center py-4 px-2 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
+<nav class="flex justify-between items-center py-4 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
     <div class="text-white lg:hidden block justify-self-end">
         <button x-on:click="mobileMenu = !mobileMenu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
@@ -14,30 +14,31 @@
         <img src="{{ asset('assets/logo-white.svg') }}" alt="logo" class="w-32 h-fit">
     </a>
 
-    <div class="hidden lg:flex gap-x-10 text-white relative">
-        <div>
+    <ul class="hidden lg:flex gap-x-10 text-white  menu menu1">
+        <li>
             <a href="/">Accueil</a>
-        </div>
-        <div x-on:click="categoryMenu = !categoryMenu">
+        </li>
+        <li x-on:click="categoryMenu = !categoryMenu">
+
             <span class="flex items-center cursor-pointer">
                 Categorie
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
+                    stroke="currentColor" class="w-4 h-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
             </span>
 
 
-            <div class="absolute bg-white p-5 rounded-xl shadow-xl z-40" x-show="categoryMenu" x-transition>
+            <div class="absolute bg-secondary text-white text-base py-5 px-2 rounded-lg shadow-xl z-40 ml-5 -bottom-16" x-show="categoryMenu" x-transition>
                 @foreach ($categories as $category)
-                    <a href="{{ route('category.products', $category) }}" class="block text-black  hover:underline">
+                    <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                         {{ $category->name }}
                     </a>
                 @endforeach
             </div>
-        </div>
+        </li>
 
-    </div>
+    </ul>
 
 
     <div class="fixed top-0 left-0  w-4/5 h-screen bg-white text-black z-50" x-show="mobileMenu" x-cloak

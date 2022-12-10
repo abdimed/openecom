@@ -10,7 +10,7 @@
 
         <p class="font-semibold mt-5 block">Adress: <span>oran oran</span></p>
 
-        <a href="mailto:zebi@zebi.com" class="font-semibold mt-5 block">email@email.com </a>
+        <a href="mailto:hello@ccbo.com" class="font-semibold mt-5 block">email@email.com </a>
     </div>
 
     <div>

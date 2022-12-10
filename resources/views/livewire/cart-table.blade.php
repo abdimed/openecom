@@ -75,7 +75,7 @@
             </span>
             <img src="{{ asset('assets/success.png') }}" alt="success" class="w-48">
 
-            <a href="/">Reçu</a>
+            <a href="/" class="bg-primary text-white font-semibold px-4 py-2 rounded-full">Retour à la page d'accueil </a>
 
         </div>
 

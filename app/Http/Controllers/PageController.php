@@ -11,7 +11,7 @@ class PageController extends Controller
     public function welcome()
     {
         return view('pages.welcome', [
-            'collections' => Collection::has('products')->with([
+            'collections' => Collection::has('products.variations')->with([
                 'products' => [
                     'category',
                     'variations',
@@ -24,7 +24,7 @@ class PageController extends Controller
     public function categoryProducts(Category $category)
     {
         return view('pages.category-products', [
-            'products' => $category->products()->with('variations', 'category')->get(),
+            'products' => $category->products()->has('variations')->with('variations', 'category')->get(),
             'categories' => Category::all()
         ]);
     }
@@ -35,7 +35,15 @@ class PageController extends Controller
         return view('pages.product-details', [
             'product' => $product,
             'category' => $category,
-            'otherProducts' => $category->products()->with('category', 'variations')->get(),
+            'otherProducts' => $category->products()->has('variations')->with('category', 'variations')->get(),
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function productSamet()
+    {
+        return view('pages.category-products', [
+            'products' => Product::has('variations')->with('variations', 'category')->whereRelation('brand', 'name', 'samet')->get(),
             'categories' => Category::all()
         ]);
     }
