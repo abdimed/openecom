@@ -36,7 +36,7 @@ class PageController extends Controller
             'product' => $product,
             'category' => $category,
             'otherProducts' => $category->products()->has('variations')->with('category', 'variations')->get(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
         ]);
     }
 

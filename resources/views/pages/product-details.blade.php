@@ -6,6 +6,9 @@
         <div x-data="{ imgPrincipale: '/storage/{{ $product->images[0] }}' }">
 
             <x-section id="product">
+
+                <span class="text-gray-400"> Category - <a href="{{route('category.products', $product->category)}}">{{ $product->category->name }}</a></span>
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
                     <div class="lg:col-span-2">

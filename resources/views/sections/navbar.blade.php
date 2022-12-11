@@ -1,5 +1,5 @@
 
-<nav class="flex justify-between items-center py-4 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
+<nav class="flex justify-between items-center py-2 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
     <div class="text-white lg:hidden block justify-self-end">
         <button x-on:click="mobileMenu = !mobileMenu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">

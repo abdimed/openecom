@@ -5,7 +5,7 @@
 
     @include('sections.categories')
 
-    <div class="w-full bg-black">
+    <div class="w-full" style="background-image: url('{{asset('assets/bg-line.jpg')}}')">
 
         <div
             class="max-w-screen-xl px-2 m-auto text-white font-bold text-4xl text-center flex flex-col lg:flex-row items-center py-2   ">

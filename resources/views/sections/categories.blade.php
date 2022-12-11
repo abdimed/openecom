@@ -3,7 +3,7 @@
 
         {{-- @livewire('product-search') --}}
 
-        <div class="p-4 flex flex-col justify-center items-center space-y-20">
+        <div class="p-4 flex flex-col justify-center items-center content-center space-y-14">
 
             <h2 class="text-4xl text-center">Donnez vie à vos envis !</h2>
 
@@ -12,9 +12,9 @@
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category) }}"
 
-                        class="flex flex-col justify-center items-center rounded-3xl border-2 border-black p-5 overflow-hidden w-32 h-32 md:w-40 md:h-40 place-self-center  bg-white transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
+                        class="flex flex-col items-center justify-center rounded-3xl border-2 border-black p-4 w-32 h-32 md:w-44 md:h-44 bg-white transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
 
-                        <img src="{{ asset('storage/' . $category->icon) }}" alt="{{$category->name}}">
+                        <img src="{{ asset('storage/' . $category->icon) }}" alt="{{$category->name}}" class="w-20 h-20 md:w-32 md:h-32 mx-auto p-2">
                         <h3 class="text-center">{{ $category->name }}</h3>
 
                     </a>
