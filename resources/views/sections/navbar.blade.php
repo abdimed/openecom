@@ -29,7 +29,7 @@
             </span>
 
 
-            <div class="absolute bg-secondary text-white text-base py-5 px-2 rounded-lg shadow-xl z-40 ml-5 -bottom-16" x-show="categoryMenu" x-transition>
+            <div class="absolute bg-[#b89c94] text-gray-900 text-base py-5 px-2  shadow-xl z-40 ml-5 left-0 -bottom-16 w-96" x-show="categoryMenu" x-transition>
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                         {{ $category->name }}
