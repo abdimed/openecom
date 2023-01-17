@@ -57,32 +57,14 @@
                     <div class="grid grid-cols-1 gap-y-10">
 
                         <h2 class="text-3xl font-bold">Livraison</h2>
-                        <div class="flex items-center space-x-3">
-                            <input type="radio" name="delivery" id="home_delivery" class="accent-pink-500">
-                            <label for="home_delivery" class="text-2xl font-semibold">Livraison à
-                                domicile</label>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <input type="radio" name="delivery" id="shop_delivery">
-                            <label for="shop_delivery" class="text-2xl font-semibold">Récuperer la commande d’un
-                                de
-                                nos Magasins</label>
-                        </div>
 
                         <div
                             class="grid grid-cols-1 border border-dashed border-gray-400 bg-gray-200 divide-y-4 divide-gray-400/25 p-2 rounded-md text-gray-700">
-                            <div class="p-2 text-lg">
-                                total des articles: <span class="font-semibold">{{ $totalPrice }} DA</span>
-                                <br>
-                                +
-                                <br>
-                                Livraison: <span class="font-semibold">700DA</span>
-                            </div>
 
                             <div class="p-2">
                                 <span class="text-xl font-semibold">Total à payer:</span>
                                 <br>
-                                <span class="flex justify-center font-bold text-4xl"> 8000 DA</span>
+                                <span class="flex justify-center font-bold text-4xl"> {{ $totalPrice }} Da</span>
                             </div>
                         </div>
 

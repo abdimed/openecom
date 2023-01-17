@@ -23,7 +23,8 @@
                         </span>
                     </div>
 
-                    <div class="flex flex-col justify-center items-center col-span-2 justify-self-end lg:justify-self-center">
+                    <div
+                        class="flex flex-col justify-center items-center col-span-2 justify-self-end lg:justify-self-center">
                         <span class="text-sm text-gray-400">Qty</span>
                         <div class="relative bg-gray-100 rounded-md flex items-center gap-x-5 px-2"
                             wire:loading.class="opacity-50">
@@ -58,15 +59,14 @@
 
                 <span class="text-xl font-semibold">Total:</span>
 
-                <span class="text-3xl font-semibold"> {{ $totalPrice }} <span
-                        class="text-3xl align-top">Da</span></span>
+                <span class="text-3xl font-semibold"> {{ $totalPrice }}<span class="text-3xl align-top">Da</span>
+                </span>
 
             </div>
 
         </ul>
 
         @livewire('order-form') {{-- Order Form --}}
-
     @elseif (session()->has('orderPosted'))
         <div class="flex flex-col justify-center items-center my-10">
 
@@ -75,7 +75,8 @@
             </span>
             <img src="{{ asset('assets/success.png') }}" alt="success" class="w-48">
 
-            <a href="/" class="bg-primary text-white font-semibold px-4 py-2 rounded-full">Retour à la page d'accueil </a>
+            <a href="/" class="bg-primary text-white font-semibold px-4 py-2 rounded-full">Retour à la page
+                d'accueil </a>
 
         </div>
 

@@ -13,14 +13,15 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
     @livewireStyles
 </head>
 
 <body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
     <header class="bg-primary">
+
         <x-info-bar/>
+
         @include('sections.navbar')
 
     </header>

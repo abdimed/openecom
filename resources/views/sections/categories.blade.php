@@ -1,7 +1,7 @@
 <div class="bg-cover bg-no-repeat bg-center" style="background-image: url('{{ asset('assets/bg-wood.png') }}')">
     <x-section id="categories">
 
-        {{-- @livewire('product-search') --}}
+        @livewire('product-search')
 
         <div class="p-4 flex flex-col justify-center items-center content-center space-y-14">
 
@@ -20,6 +20,7 @@
                     </a>
                 @endforeach
             </div>
+
 
             <a href="/products/samet" class="relative flex items-center bg-[#E30613] rounded-3xl shadow-xl shadow-red-500 transition-all duration-300 hover:-translate-y-2 hover:drop-shadow-2xl">
                 <img src="{{asset('assets/accessory-icon.png')}}" alt="samet accessoires" class="absolute left-2">

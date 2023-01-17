@@ -51,7 +51,7 @@ class OrderForm extends Component
     {
         return view('livewire.order-form', [
             'cartItems' => Cart::content(),
-            'totalPrice' => Cart::total(),
+            'totalPrice' =>  Cart::subtotal(),
         ]);
     }
 }

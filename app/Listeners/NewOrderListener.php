@@ -29,7 +29,7 @@ class NewOrderListener
      */
     public function handle(NewOrder $event)
     {
-        $admins = User::role('admin')->get();
+        $admins = User::role(['admin', 'commercial'])->get();
 
         Notification::make()
             ->title('Nouvelle Commande')

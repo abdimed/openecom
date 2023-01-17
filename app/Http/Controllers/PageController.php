@@ -25,7 +25,8 @@ class PageController extends Controller
     {
         return view('pages.category-products', [
             'products' => $category->products()->has('variations')->with('variations', 'category')->get(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
+
         ]);
     }
 
@@ -35,7 +36,7 @@ class PageController extends Controller
         return view('pages.product-details', [
             'product' => $product,
             'category' => $category,
-            'otherProducts' => $category->products()->has('variations')->with('category', 'variations')->get(),
+            'otherProducts' => $category->products()->where('id', '!=', $product->id)->has('variations')->with('category', 'variations')->get(),
             'categories' => Category::all(),
         ]);
     }

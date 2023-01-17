@@ -14,11 +14,11 @@
         <img src="{{ asset('assets/logo-white.svg') }}" alt="logo" class="w-32 h-fit">
     </a>
 
-    <ul class="hidden lg:flex gap-x-10 text-white  menu menu1">
-        <li>
+    <ul class="hidden lg:flex gap-x-10 text-white">
+        <li class="p-2 hover:underline underline-offset-4">
             <a href="/">Accueil</a>
         </li>
-        <li x-on:click="categoryMenu = !categoryMenu">
+        <li x-on:click="categoryMenu = !categoryMenu" class="relative p-2 hover:underline underline-offset-4">
 
             <span class="flex items-center cursor-pointer">
                 Categorie
@@ -28,8 +28,7 @@
                 </svg>
             </span>
 
-
-            <div class="absolute bg-[#b89c94] text-gray-900 text-base py-5 px-2  shadow-xl z-40 ml-5 left-0 -bottom-16 w-96" x-show="categoryMenu" x-transition>
+            <div class="absolute bg-[#b89c94] text-gray-900 text-base py-5 px-2 shadow-xl z-40 ml-5 left-0 w-96" x-show="categoryMenu" x-transition>
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                         {{ $category->name }}
@@ -39,7 +38,6 @@
         </li>
 
     </ul>
-
 
     <div class="fixed top-0 left-0  w-4/5 h-screen bg-white text-black z-50" x-show="mobileMenu" x-cloak
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
