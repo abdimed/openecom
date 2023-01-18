@@ -19,7 +19,7 @@
 
     </div>
 
-    <ul class="absolute bg-white rounded-xl w-full shadow-xl" x-show="$wire.search != '' "
+    <ul class="absolute bg-white rounded-xl w-full shadow-xl z-20" x-show="$wire.search != '' "
         x-cloak>
         @if(!$products->isEmpty())
         @foreach ($products as $product)

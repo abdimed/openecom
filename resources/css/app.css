@@ -3,21 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* width */
 ::-webkit-scrollbar {
-  width: 2px;
-  height: 5px;
+    @apply w-1;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+    @apply bg-white;
+}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EBECF0;
-  width: 1px;
-  border-radius: 10px;
+    @apply bg-primary;
 }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-300;
+}
+
 
 [x-cloak] {
-  display: none !important;
+    display: none !important;
 }
-

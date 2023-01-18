@@ -22,6 +22,9 @@ class CollectionSeeder extends Seeder
         Collection::factory()
             ->has(
                 Product::factory()
+                    ->state([
+                        'document' => 'doc.pdf'
+                    ])
                     ->for(
                         Category::factory()->state([
                             'name' => 'metal',
@@ -30,6 +33,7 @@ class CollectionSeeder extends Seeder
                     ->for(
                         Brand::factory()->state([
                             'name' => 'samet',
+                            'logo' => 'samet.png'
                         ])
                     )
                     ->has(

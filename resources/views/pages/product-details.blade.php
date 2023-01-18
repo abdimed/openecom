@@ -74,7 +74,7 @@
 
                     </div>
                     <div class="bg-gray-100 rounded-lg p-4">
-                        @if ($product->ducument != null)
+                        @if (!is_null($product->document))
                             <h3 class="text-center text-xl font-bold py-2 text-gray-600">Catalogue Numérique</h3>
                             <a href="/storage/{{ $product->document }}" download="{{ $product->name }} "
                                 class="text-center flex justify-center p-4 flex-col">

@@ -11,6 +11,7 @@ use App\Models\Variation;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -24,10 +25,16 @@ class OrderTest extends TestCase
      * @return void
      */
 
-    public function test_livewire_order_form_component_can_store_an_order_and_send_notification_to_admins()
+    protected function setUp(): void
     {
-        $this->seed();
+        parent::setUp();
 
+        Role::create(['name' => 'admin',]);
+        Role::create(['name' => 'commercial',]);
+    }
+
+    public function test_livewire_order_form_component_can_store_an_order_and_send_notification_to_admins_and_commercial_agents()
+    {
         Livewire::test(OrderForm::class)
             ->set('full_name', 'Joe Doe')
             ->set('tel', '0794662246')
@@ -42,10 +49,8 @@ class OrderTest extends TestCase
     }
 
 
-    public function test_if_unauthenticated_customer_will_be_recognized_when_he_orders_again()
+    public function test_customer_can_be_recognized_when_he_orders_again()
     {
-        $this->seed();
-
         Livewire::test(OrderForm::class)
             ->set('full_name', 'Joe Doe')
             ->set('tel', '0794662246')
