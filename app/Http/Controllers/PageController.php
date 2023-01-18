@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Collection;
+use App\Models\Customer;
 use App\Models\Product;
 
 class PageController extends Controller
 {
     public function welcome()
     {
+        dd(Customer::where('id', '1')->withCount('orders')->first()->orders_count);
         return view('pages.welcome', [
             'collections' => Collection::has('products.variations')->with([
                 'products' => [
