@@ -1,4 +1,5 @@
 <div class="bg-cover bg-no-repeat bg-center" style="background-image: url('{{ asset('assets/bg-wood.png') }}')">
+
     <x-section id="categories">
 
         @livewire('product-search')

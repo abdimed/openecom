@@ -29,10 +29,5 @@ Route::get('/order/bill', [OrderController::class, 'bill'])->name('order.bill')-
 
 Route::get('products/samet', [PageController::class, 'productSamet']);
 
-// Route::get('/complete', [OrderController::class, 'complete'])->name('order.complete');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

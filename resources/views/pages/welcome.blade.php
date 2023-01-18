@@ -10,9 +10,4 @@
 
     @include('sections.products-swiper')
 
-
-    <x-section id="img">
-        <img src="" alt="">
-    </x-section>
-
 @endsection
