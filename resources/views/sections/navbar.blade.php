@@ -18,9 +18,9 @@
         <li class="p-2 hover:underline underline-offset-4">
             <a href="/">Accueil</a>
         </li>
-        <li x-on:click="categoryMenu = !categoryMenu" class="relative p-2 hover:underline underline-offset-4">
+        <li x-on:click="categoryMenu = !categoryMenu" class="relative p-2">
 
-            <span class="flex items-center cursor-pointer">
+            <span class="flex items-center cursor-pointer hover:underline underline-offset-4">
                 Categorie
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-4 h-4">
@@ -28,7 +28,7 @@
                 </svg>
             </span>
 
-            <div class="absolute bg-[#b89c94] text-gray-900 text-base py-5 px-2 shadow-xl z-40 ml-5 left-0 w-96" x-show="categoryMenu" x-transition>
+            <div class="absolute mt-2 bg-white text-black text-base py-5 px-2 shadow-xl z-40 ml-5 left-0 w-96" x-show="categoryMenu" x-transition>
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                         {{ $category->name }}

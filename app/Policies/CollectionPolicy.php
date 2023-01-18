@@ -31,7 +31,7 @@ class CollectionPolicy
      */
     public function view(User $user, Collection $collection)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -42,7 +42,7 @@ class CollectionPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -54,7 +54,7 @@ class CollectionPolicy
      */
     public function update(User $user, Collection $collection)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -66,7 +66,7 @@ class CollectionPolicy
      */
     public function delete(User $user, Collection $collection)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -78,7 +78,7 @@ class CollectionPolicy
      */
     public function restore(User $user, Collection $collection)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -90,6 +90,6 @@ class CollectionPolicy
      */
     public function forceDelete(User $user, Collection $collection)
     {
-        //
+        return $user->hasRole('admin');
     }
 }

@@ -18,11 +18,11 @@ class VariationFactory extends Factory
     public function definition()
     {
         return [
-            'ref' => fake()->randomNumber(),
+            'ref' => fake()->numberBetween(10, 10000),
             'name' => fake()->name(),
             'product_id' => Product::factory(),
-            'quantity' => fake()->randomNumber(),
-            'price' => fake()->randomNumber(),
+            'quantity' => fake()->numberBetween(1, 20),
+            'price' => fake()->numberBetween(10, 10000),
         ];
     }
 }

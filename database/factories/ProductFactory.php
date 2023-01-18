@@ -20,13 +20,11 @@ class ProductFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'brand_id' => Brand::factory(),
-            'category_id' => Category::factory(),
             'slug' => fake()->slug(),
-            'images' => fake()->imageUrl(),
-            'document' => fake()->filePath(),
+            'images' => ['1.jpg', '2.jpg', '3.jpg'],
+            'document' => fake()->filePath(''),
             'description' => fake()->paragraph(),
-            'visible' => fake()->boolean(),
+            'visible' => 1,
         ];
     }
 }

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Collection>
  */
-class CategoryFactory extends Factory
+class CollectionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +17,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'slug' => fake()->slug(),
-            'icon' => 'c1.jpg',
-            'visible' => fake()->boolean(),
+            'name'=> fake()->name()
         ];
     }
 }

@@ -30,4 +30,4 @@ Route::get('/order/bill', [OrderController::class, 'bill'])->name('order.bill')-
 Route::get('products/samet', [PageController::class, 'productSamet']);
 
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';

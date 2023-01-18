@@ -21,30 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
 
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('123')
-        ]);
+        $this->call([
+            UserSeeder::class,
+            BrandSeeder::class,
+            CategorySeeder::class,
+            CollectionSeeder::class,
 
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'commercial']);
-
-        $user->assignRole('admin');
-
-        Brand::create([
-            'logo' => fake()->imageUrl(),
-            'name' => fake()->name(),
-            'slug' => fake()->slug(),
-            'website' => fake()->url(),
-        ]);
-
-        Category::create([
-            'icon' => fake()->imageUrl(),
-            'name' => 'a',
-            'slug' => 'a',
         ]);
     }
 }

@@ -66,7 +66,9 @@
 
         </ul>
 
-        @livewire('order-form') {{-- Order Form --}}
+        {{-- Order Form --}}
+        @livewire('order-form')
+
     @elseif (session()->has('orderPosted'))
         <div class="flex flex-col justify-center items-center my-10">
 
