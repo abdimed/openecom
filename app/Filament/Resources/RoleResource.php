@@ -4,9 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
+use App\Filament\Resources\RoleResource\RelationManagers\PermissionsRelationManager;
 use App\Filament\Resources\RoleResource\RelationManagers\UsersRelationManager;
 use Spatie\Permission\Models\Role;
 use Filament\Forms;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -27,7 +32,14 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                    ->columnSpan(['lg' => 2]),
+
+                CheckboxList::make('permissions')
+                    ->relationship('permissions', 'alias')
+                    ->columns(['lg' => 3])
+                    ->columnSpan(['lg' => 2])
+                    ->bulkToggleable()
             ]);
     }
 
@@ -52,6 +64,7 @@ class RoleResource extends Resource
     {
         return [
             UsersRelationManager::class,
+            // PermissionsRelationManager::class,
         ];
     }
 

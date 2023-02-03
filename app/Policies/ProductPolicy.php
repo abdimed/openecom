@@ -18,7 +18,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('product viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return $user->hasRole('admin');
+        return $user->can('product view');
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('product create');
     }
 
     /**
@@ -53,7 +53,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->hasRole('admin');
+        return $user->can('update product');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->hasRole('admin');
+        return $user->can('delete product');
     }
 
     /**
@@ -77,7 +77,7 @@ class ProductPolicy
      */
     public function restore(User $user, Product $product)
     {
-        return $user->hasRole('admin');
+        return $user->can('resotre product');
     }
 
     /**
@@ -89,6 +89,6 @@ class ProductPolicy
      */
     public function forceDelete(User $user, Product $product)
     {
-        return $user->hasRole('admin');
+        return $user->can('forceDelte product');
     }
 }
