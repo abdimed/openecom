@@ -53,7 +53,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->can('update product');
+        return $user->can('product update');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->can('delete product');
+        return $user->can('product delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class ProductPolicy
      */
     public function restore(User $user, Product $product)
     {
-        return $user->can('resotre product');
+        return $user->can('product restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class ProductPolicy
      */
     public function forceDelete(User $user, Product $product)
     {
-        return $user->can('forceDelte product');
+        return $user->can('product forceDelte');
     }
 }

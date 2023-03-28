@@ -18,7 +18,7 @@ class BrandPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('brand viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class BrandPolicy
      */
     public function view(User $user, Brand $brand)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand view');
     }
 
     /**
@@ -41,7 +41,7 @@ class BrandPolicy
      */
     public function create(User $user)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand create');
     }
 
     /**
@@ -53,7 +53,7 @@ class BrandPolicy
      */
     public function update(User $user, Brand $brand)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand update');
     }
 
     /**
@@ -65,7 +65,7 @@ class BrandPolicy
      */
     public function delete(User $user, Brand $brand)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class BrandPolicy
      */
     public function restore(User $user, Brand $brand)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class BrandPolicy
      */
     public function forceDelete(User $user, Brand $brand)
     {
-         return $user->hasRole('admin');
+        return $user->can('brand forceDelte ');
     }
 }

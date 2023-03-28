@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\RoleResource\RelationManagers;
+namespace App\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -10,9 +10,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UsersRelationManager extends RelationManager
+class RolesRelationManager extends RelationManager
 {
-    protected static string $relationship = 'users';
+    protected static string $relationship = 'roles';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -40,11 +40,9 @@ class UsersRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DetachAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DetachBulkAction::make(),
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }

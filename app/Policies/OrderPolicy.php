@@ -18,7 +18,7 @@ class OrderPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole(['admin', 'commercial']);
+        return $user->can('order viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
-        return $user->hasRole('commercial');
+        return $user->can('order view');
     }
 
     /**
@@ -41,7 +41,7 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('order create');
     }
 
     /**
@@ -53,7 +53,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
-        return $user->hasRole('admin');
+        return $user->can('order update');
     }
 
     /**
@@ -65,7 +65,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        return $user->hasRole('admin');
+        return $user->can('order delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class OrderPolicy
      */
     public function restore(User $user, Order $order)
     {
-        return $user->hasRole('admin');
+        return $user->can('order restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class OrderPolicy
      */
     public function forceDelete(User $user, Order $order)
     {
-        return $user->hasRole('admin');
+        return $user->can('order forceDelte ');
     }
 }

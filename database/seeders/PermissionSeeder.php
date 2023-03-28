@@ -9,6 +9,8 @@ use Spatie\Permission\Models\Permission;
 class PermissionSeeder extends Seeder
 {
     private $permissions = [
+        ['name' => 'dashboard access', 'alias' => 'Acces Tableau de bord'],
+
         ['name' => 'brand viewAny', 'alias' => 'Marque: voir tout'],
         ['name' => 'brand view', 'alias' => 'Marque: voir'],
         ['name' => 'brand create', 'alias' => 'Marque: crée'],

@@ -18,7 +18,8 @@ class CustomerPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole(['admin', 'commercial']);
+        return $user->can('customer viewAny');
+
     }
 
     /**
@@ -30,7 +31,8 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer view');
+
     }
 
     /**
@@ -41,7 +43,8 @@ class CustomerPolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer create');
+
     }
 
     /**
@@ -53,7 +56,8 @@ class CustomerPolicy
      */
     public function update(User $user, Customer $customer)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer update');
+
     }
 
     /**
@@ -65,7 +69,8 @@ class CustomerPolicy
      */
     public function delete(User $user, Customer $customer)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer delete');
+
     }
 
     /**
@@ -77,7 +82,7 @@ class CustomerPolicy
      */
     public function restore(User $user, Customer $customer)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer restore');
     }
 
     /**
@@ -89,6 +94,6 @@ class CustomerPolicy
      */
     public function forceDelete(User $user, Customer $customer)
     {
-        return $user->hasRole('admin');
+        return $user->can('customer forceDelte ');
     }
 }

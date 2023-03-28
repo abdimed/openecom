@@ -18,8 +18,7 @@ class CollectionPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasRole('admin');
-
+        return $user->can('collection viewAny');
     }
 
     /**
@@ -31,7 +30,7 @@ class CollectionPolicy
      */
     public function view(User $user, Collection $collection)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection view');
     }
 
     /**
@@ -42,7 +41,7 @@ class CollectionPolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection create');
     }
 
     /**
@@ -54,7 +53,7 @@ class CollectionPolicy
      */
     public function update(User $user, Collection $collection)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection update');
     }
 
     /**
@@ -66,7 +65,8 @@ class CollectionPolicy
      */
     public function delete(User $user, Collection $collection)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection delete');
+
     }
 
     /**
@@ -78,7 +78,9 @@ class CollectionPolicy
      */
     public function restore(User $user, Collection $collection)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection restore');
+
+
     }
 
     /**
@@ -90,6 +92,6 @@ class CollectionPolicy
      */
     public function forceDelete(User $user, Collection $collection)
     {
-        return $user->hasRole('admin');
+        return $user->can('collection forceDelte ');
     }
 }
