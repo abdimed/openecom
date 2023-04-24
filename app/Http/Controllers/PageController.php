@@ -27,7 +27,14 @@ class PageController extends Controller
         return view('pages.category-products', [
             'products' => $category->products()->has('variations')->with('variations', 'category')->get(),
             'categories' => Category::all(),
+        ]);
+    }
 
+    public function collectionProducts(Collection $collection)
+    {
+        return view('pages.collection-products', [
+            'products' => $collection->products()->has('variations')->with('variations', 'category')->get(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -49,5 +56,4 @@ class PageController extends Controller
             'categories' => Category::all()
         ]);
     }
-
 }

@@ -15,7 +15,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Illuminate\Support\Str;
+use Closure;
 class CollectionResource extends Resource
 {
     protected static ?string $model = Collection::class;
@@ -26,7 +27,13 @@ class CollectionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255),
+                TextInput::make('name')
+                    ->reactive()
+                    ->afterStateUpdated(function (Closure $set, $state) {
+                        $set('slug', Str::slug($state));
+                    })->required(),
+
+                TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique(ignorable: fn ($record) => $record)->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
             ]);
     }
 

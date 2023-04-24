@@ -9,6 +9,7 @@ use App\Filament\Resources\RoleResource\RelationManagers\UsersRelationManager;
 use Spatie\Permission\Models\Role;
 use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -34,12 +35,15 @@ class RoleResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->columnSpan(['lg' => 2]),
+                Fieldset::make('Permission')
+                    ->schema([
+                        CheckboxList::make('permissions')
+                            ->relationship('permissions', 'alias')
+                            ->columns(['lg' => 3])
+                            ->columnSpan(['lg' => 2])
+                            ->bulkToggleable()
+                    ])
 
-                CheckboxList::make('permissions')
-                    ->relationship('permissions', 'alias')
-                    ->columns(['lg' => 3])
-                    ->columnSpan(['lg' => 2])
-                    ->bulkToggleable()
             ]);
     }
 

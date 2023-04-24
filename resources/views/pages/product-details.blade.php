@@ -47,9 +47,9 @@
 
 
                 <p class="mt-5">
-                    <x-markdown>
-                        {{ $product->description }}
-                    </x-markdown>
+
+                    {!! $product->description !!}
+
 
                 </p>
 
@@ -110,25 +110,13 @@
 
                         <x-title>d'Autres {{ $category->name }}</x-title>
 
-                        <div class="flex justify-between w-full flex-nowrap space-x-5">
+                        <div class="grid lg:grid-cols-4 grid-cols-2 gap-4 justify-items-center">
 
-                            <div class="my-auto" @click="$refs.carossel.scrollBy({left:-200, behavior: 'smooth'})">
-                                <x-scroll-left-btn />
-                            </div>
-
-                            <div class="flex grow gap-10 overflow-x-scroll snap-x py-5" x-ref="carossel">
-
-                                @foreach ($otherProducts as $product)
-                                    @if ($product->visible)
-                                        <x-product-card :$product />
-                                    @endif
-                                @endforeach
-
-                            </div>
-
-                            <div class="my-auto" @click="$refs.carossel.scrollBy({left:200, behavior: 'smooth'})">
-                                <x-scroll-right-btn />
-                            </div>
+                            @foreach ($otherProducts as $product)
+                                @if ($product->visible && $product->variations != null)
+                                    <x-product-card :$product />
+                                @endif
+                            @endforeach
 
                         </div>
                 @endif

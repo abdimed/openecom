@@ -21,6 +21,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\RichEditor;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -64,7 +65,16 @@ class ProductResource extends Resource
 
                                 TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique(ignoreRecord: true)->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
 
-                                MarkdownEditor::make('description')->columnSpan(['lg' => 2])->required(),
+                                RichEditor::make('description')->columnSpan(['lg' => 2])->required()
+                                    ->disableToolbarButtons([
+                                        'attachFiles',
+                                        'codeBlock',
+                                        'h2',
+                                        'h3',
+                                        'orderedList'
+                                    ]),
+
+
 
                             ])->columns(['lg' => 2]),
 

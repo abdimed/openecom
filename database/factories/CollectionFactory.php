@@ -17,7 +17,8 @@ class CollectionFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> fake()->name()
+            'name'=> fake()->name(),
+            'slug' => fake()->slug()
         ];
     }
 }

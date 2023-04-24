@@ -8,6 +8,6 @@
 
     <x-separation />
 
-    @include('sections.products-swiper')
+    @include('sections.products-grid')
 
 @endsection
