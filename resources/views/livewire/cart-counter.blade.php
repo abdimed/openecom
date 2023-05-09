@@ -1,4 +1,4 @@
-<a href="{{ route('cart.view') }}" class="relative text-white rounded-full p-2 hover:bg-[#734f44]">
+<a href="{{ route('cart.view') }}" class="relative text-primary rounded-full p-2 hover:bg-gray-200">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round"

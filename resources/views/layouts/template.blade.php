@@ -16,7 +16,7 @@
 
 <body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
-    <header class="bg-primary">
+    <header class="bg-white border-b-2">
 
         <x-info-bar/>
 
@@ -24,7 +24,7 @@
 
     </header>
 
-    <main class="">
+    <main class="relative">
 
         @yield('main')
 

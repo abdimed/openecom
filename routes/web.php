@@ -21,11 +21,11 @@ Route::get('/', [PageController::class, 'welcome'])->name('page.welcome');
 
 Route::get('/category/{category:slug}', [PageController::class, 'categoryProducts'])->name('category.products');
 
+Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
+
 Route::get('/{collection:slug}', [PageController::class, 'collectionProducts'])->name('collection.products');
 
 Route::get('/category/{category:slug}/products/{product:slug}', [PageController::class, 'productDetails'])->name('product.details');
-
-Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
 Route::get('/order/bill', [OrderController::class, 'bill'])->name('order.bill')->middleware(['auth', 'role:admin']);
 

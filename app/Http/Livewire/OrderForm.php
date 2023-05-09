@@ -47,6 +47,8 @@ class OrderForm extends Component
 
     }
 
+    protected $listeners = ['cart_updated' => 'render'];
+
     public function render()
     {
         return view('livewire.order-form', [

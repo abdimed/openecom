@@ -42,7 +42,7 @@
                     </div>
 
                     <button wire:click="removeFromCart( '{{ $item->rowId }}' )"
-                        class="text-red-500 m-auto absolute top-3  right-3">
+                        class="text-primary m-auto absolute top-3  right-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -81,6 +81,20 @@
                 d'accueil </a>
 
         </div>
+
+    @else
+
+    <div class="flex flex-col justify-center items-center my-10">
+
+        <span class="text-center text-2xl font-bold">
+           Le panier est vide.
+        </span>
+        <img src="{{ asset('assets/empty.png') }}" alt="success" class="w-48">
+
+        <a href="/" class="bg-primary text-white font-semibold px-4 py-2 rounded-full">Retour à la page
+            d'accueil </a>
+
+    </div>
 
     @endif
 </div>

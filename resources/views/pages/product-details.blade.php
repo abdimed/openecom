@@ -23,7 +23,7 @@
 
                     <div class="grid grid-cols-1 lg:grid-cols-5 overflow-hidden">
 
-                        <div class="flex flex-row lg:flex-col justify-between items-center p-2 lg:order-1 order-2">
+                        <div class="flex flex-row lg:flex-col gap-5 items-center p-2 lg:order-1 order-2">
                             @foreach ($product->images as $image)
                                 <img x-on:click.self="imgPrincipale = '/storage/{{ $image }}'"
                                     src="{{ asset('storage/' . $image) }}" alt="att"
@@ -79,7 +79,7 @@
                             <a href="/storage/{{ $product->document }}" download="{{ $product->name }} "
                                 class="text-center flex justify-center p-4 flex-col">
                                 <span
-                                    class="block bg-red-500 text-white border-2 border-red-500 hover:bg-red-600 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
+                                    class="block bg-primary text-white border-2 border-primary hover:bg-primary hover:-translate-y-1 hover:shadow hover:shadow-primary transition-all duration-200 text-xl py-1 rounded-md">
                                     Télécharger <br> format PDF</span>
                                 <img src="{{ asset('assets/download.png') }}" alt="" class="m-auto mt-5">
                             </a>
@@ -88,7 +88,7 @@
                             <a href="/storage/{{ $product->document }}" download="{{ $product->name }} "
                                 class="text-center flex justify-center p-4 flex-col pointer-events-none grayscale">
                                 <span
-                                    class="block bg-red-500 text-white border-2 border-red-500 hover:bg-red-600 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
+                                    class="block bg-primary text-white border-2 border-primary hover:bg-primary hover:-translate-y-1 hover:shadow hover:shadow-primary transition-all duration-200 text-xl py-1 rounded-md">
                                     Télécharger <br> format PDF</span>
                                 <img src="{{ asset('assets/download.png') }}" alt="" class="m-auto mt-5">
                             </a>

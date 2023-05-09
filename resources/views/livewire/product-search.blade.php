@@ -15,7 +15,7 @@
 
     <div wire:loading class="absolute w-full h-full bg-white/50 inset-0 cursor-wait z-50">
 
-        <img src="{{ asset('loading.svg') }}" alt="loading..." class="w-10">
+        <img src="{{ asset('assets/loading.svg') }}" alt="loading..." class="w-10">
 
     </div>
 

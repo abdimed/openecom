@@ -56,7 +56,7 @@
                 <div class="p-2 col-span-5">
                     <div class="grid grid-cols-1 gap-y-10">
 
-                        <h2 class="text-3xl font-bold">Livraison</h2>
+                        {{-- <h2 class="text-3xl font-bold">Livraison</h2> --}}
 
                         <div
                             class="grid grid-cols-1 border border-dashed border-gray-400 bg-gray-200 divide-y-4 divide-gray-400/25 p-2 rounded-md text-gray-700">
@@ -69,7 +69,7 @@
                         </div>
 
                         <button type="submit"
-                            class="bg-red-500 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
+                            class="bg-primary hover:bg-primary/90 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
                             Proceder a l'achat
                         </button>
 

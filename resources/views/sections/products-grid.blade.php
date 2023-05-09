@@ -5,7 +5,7 @@
 
             <x-title>{{ $collection->name }}</x-title>
 
-            <div class="grid lg:grid-cols-4 grid-cols-2 gap-4 justify-items-center">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-4">
 
                 @foreach ($collection->products->take(8) as $product)
                     @if ($product->visible && $product->variations != null)

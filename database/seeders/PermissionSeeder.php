@@ -67,6 +67,14 @@ class PermissionSeeder extends Seeder
         ['name' => 'user restore', 'alias' => 'Utilisateur: restaurer'],
         ['name' => 'user forceDelete', 'alias' => 'Utilisateur: forcer la supréssion'],
 
+        ['name' => 'collection viewAny', 'alias' => 'Collection: voir tout'],
+        ['name' => 'collection view', 'alias' => 'Collection: voir'],
+        ['name' => 'collection create', 'alias' => 'Collection: crée'],
+        ['name' => 'collection update', 'alias' => 'Collection: modifier'],
+        ['name' => 'collection delete', 'alias' => 'Collection: suprimer'],
+        ['name' => 'collection restore', 'alias' => 'Collection: restaurer'],
+        ['name' => 'collection forceDelete', 'alias' => 'Collection: forcer la supréssion'],
+
 
 
     ];

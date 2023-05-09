@@ -1,6 +1,6 @@
 
-<nav class="flex justify-between items-center py-2 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
-    <div class="text-white lg:hidden block justify-self-end">
+<nav class="flex justify-between items-center py-4 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
+    <div class="text-primary lg:hidden block justify-self-end">
         <button x-on:click="mobileMenu = !mobileMenu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
@@ -11,14 +11,14 @@
     </div>
 
     <a href="/">
-        <img src="{{ asset('assets/logo-white.svg') }}" alt="logo" class="w-32 h-fit">
+        <img src="{{ asset('assets/logo.svg') }}" alt="logo" class="w-32 h-fit">
     </a>
 
-    <ul class="hidden lg:flex gap-x-10 text-white">
+    <ul class="hidden lg:flex gap-x-10 text-primary font-semibold">
         <li class="p-2 hover:underline underline-offset-4">
             <a href="/">Accueil</a>
         </li>
-        <li x-on:click="categoryMenu = !categoryMenu" class="relative p-2">
+        <li x-on:click="categoryMenu = !categoryMenu" class="relative p-2" x-on:click.outside="categoryMenu = false">
 
             <span class="flex items-center cursor-pointer hover:underline underline-offset-4">
                 Categorie
@@ -28,7 +28,7 @@
                 </svg>
             </span>
 
-            <div class="absolute mt-2 bg-white text-black text-base py-5 px-2 shadow-xl z-40 ml-5 left-0 w-96" x-show="categoryMenu" x-transition>
+            <div class="absolute mt-2 bg-gray-200 border-2 border-primary text-black text-base py-5 px-2 shadow-xl z-40 ml-5 left-0 w-96" x-show="categoryMenu" x-transition>
                 @foreach ($categories as $category)
                     <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                         {{ $category->name }}

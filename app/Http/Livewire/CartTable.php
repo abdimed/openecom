@@ -31,6 +31,8 @@ class CartTable extends Component
 
             Cart::update($rowId, $itemQty - 1);
         }
+
+        $this->emit('cart_updated');
     }
 
     public function removeFromCart($rowId)
