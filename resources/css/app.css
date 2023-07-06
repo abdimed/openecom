@@ -23,4 +23,14 @@
 }
 
 
+.section-background {
+    background-color: #f4f4f4;
+    background-image: linear-gradient(45deg, #dddddd 25%, transparent 25%),
+                      linear-gradient(-45deg, #dddddd 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #dddddd 75%),
+                      linear-gradient(-45deg, transparent 75%, #dddddd 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  }
+
 [x-cloak] { display: none !important; }

@@ -1,10 +1,8 @@
-<div class="relative">
+<div class="relative px-4">
 
-    <x-section id="categories">
+    <section id="categories">
 
-        @livewire('product-search')
-
-        <div class="p-4 flex flex-col justify-center items-center content-center space-y-4 mt-10">
+        <div class="flex flex-col justify-center items-center content-center space-y-4 mt-10">
 
             <h2 class="text-xl lg:text-2xl text-center font-semibold">Découvrez nous accessoires!</h2>
 
@@ -32,6 +30,6 @@
 
         </div>
 
-    </x-section>
+    </section>
 
 </div>

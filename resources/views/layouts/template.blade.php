@@ -16,11 +16,14 @@
 
 <body class="antialiased font-poppins flex flex-col justify-between min-h-screen">
 
-    <header class="bg-white border-b-2">
+    <header class="bg-white">
 
-        <x-info-bar/>
+        {{-- <x-info-bar/> --}}
 
         @include('sections.navbar')
+
+        @include('sections.top-header')
+
 
     </header>
 
