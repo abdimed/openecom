@@ -9,17 +9,21 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-4 lg:w-fit m-auto w-full">
 
                 @foreach ($categories as $category)
-                    {{-- <a href="{{ route('category.products', $category) }}"
-                        class="grid grid-cols-1 rounded-3xl box-border border-2 p-2 w-full bg-gray-200 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
+                    <a href="{{ route('category.products', $category) }}"
+                        class="relative block w-full h-full rounded-lg overflow-hidden group">
                         <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}"
-                            class="w-16 h-16 md:w-20 md:h-20 mx-auto p-2">
-                        <h3 class="text-center font-semibold text-sm">{{ $category->name }}</h3>
-                    </a> --}}
+                            class="w-[280px] h-full max-h-[200px] rounde-lg object-cover object-center group-hover:scale-125 duration-500 transition-all">
+                        <h3
+                            class="absolute bottom-5 text-white font-semibold text-xl z-20 p-2 group-hover:text-2xl transition-all duration-500">
+                            {{ $category->name }} </h3>
 
-                    <a href="{{ route('category.products', $category) }}" class="relative block w-full h-full rounded-lg overflow-hidden group">
-                        <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" class="w-[280px] h-full max-h-[200px] rounde-lg object-cover object-center group-hover:scale-125 duration-500 transition-all">
-                        <h3 class="absolute bottom-0 text-white font-semibold text-lg z-20 p-2 group-hover:text-2xl transition-all duration-500">{{ $category->name }}</h3>
-                        <div class="pointer-events-none bg-gradient-to-t from-black h-1/2 w-full absolute bottom-0 z-10 group-hover:h-full transition-all duration-500"></div>
+                        <div
+                            class="absolute bottom-5 left-2 z-50 w-10 h-1 bg-white rounded-full group-hover:w-full transition-all duration-300">
+                        </div>
+
+                        <div
+                            class="pointer-events-none bg-gradient-to-t from-primary via-primary/50 h-full w-full absolute bottom-0 z-10">
+                        </div>
                     </a>
                 @endforeach
                 <a href="/products/samet"

@@ -20,10 +20,10 @@
 
     </div>
 
-    <ul class="absolute bg-white rounded-xl w-full shadow-xl z-20" x-show="$wire.search != '' " x-cloak>
+    <ul class="absolute mt-2 bg-white rounded-xl w-full shadow-xl z-50 max-h-[400px] overflow-y-scroll" x-show="$wire.search != '' " x-cloak>
         @if (!$products->isEmpty())
             @foreach ($products as $product)
-                <li class="hover:bg-gray-200 py-2 border-b">
+                <li class="hover:bg-gray-200 py-2 border-b rounded-xl">
                     <a href="{{ route('product.details', [$product->category->slug, $product->slug]) }}"
                         class="grid grid-cols-4 items-center">
 

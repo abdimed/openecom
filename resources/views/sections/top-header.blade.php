@@ -10,7 +10,7 @@
     </div>
 
     <a href="/" class="block order-1">
-        <img src="{{ asset('assets/logo.svg') }}" alt="logo" class="w-26 h-fit">
+        <img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-26 h-fit">
     </a>
 
     <div class="order-last lg:order-2 w-full lg:w-2/4 mt-5 lg:mt-0">
