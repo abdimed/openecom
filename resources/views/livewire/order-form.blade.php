@@ -23,11 +23,6 @@
                         <input type="text" wire:model.defer="wilaya" class="rounded-full">
                     </div>
 
-                    <div class="flex flex-col">
-                        <label class="font-semibold" for="address">Adresse de livraison</label>
-                        <input type="text" wire:model.defer="address" class="rounded-full">
-                    </div>
-
                     <div class="">
                         <label class="font-semibold" for="is_compnay"> Vous êtes une entreprise ?</label>
                         <input type="checkbox" wire:model.defer="is_company" class="peer">

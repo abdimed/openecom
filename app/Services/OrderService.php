@@ -58,7 +58,7 @@ class OrderService
             ->map(fn (TrendValue $value) => $value->date)->toArray();
     }
 
-    public function setOrder(Customer $customer, $wilaya, $address): Order
+    public function setOrder(Customer $customer, $wilaya): Order
     {
         $number = '0';
         $latestOrder = Order::latest()->first();
@@ -69,7 +69,6 @@ class OrderService
             'customer_id' => $customer->id,
             'number' => $number,
             'wilaya' => $wilaya,
-            'address' => $address,
             'total_price' => Cart::priceTotal(),
         ]);
     }

@@ -15,7 +15,6 @@ class OrderForm extends Component
     public $full_name;
     public $tel;
     public $wilaya;
-    public $address;
     public $is_company = false;
     public $company_name;
     public $email;
@@ -24,7 +23,6 @@ class OrderForm extends Component
         'full_name' => 'required|max:255',
         'tel' => 'required|max:255',
         'wilaya' => 'required|max:255',
-        'address' => 'required|max:255',
         'is_company' => '',
         'company_name' => 'nullable|max:255',
         'email' => 'nullable|email',
@@ -37,7 +35,7 @@ class OrderForm extends Component
 
         $customer = (new CustomerService())->setCustomer($this->full_name, $this->tel, $this->is_company, $this->company_name, $this->email); //Create or update customer
 
-        $order = (new OrderService())->setOrder($customer, $this->wilaya, $this->address);
+        $order = (new OrderService())->setOrder($customer, $this->wilaya);
 
         (new OrderService())->setOrderVariations($order);
 

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('number');
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('wilaya');
-            $table->string('address');
             $table->string('total_price');
             $table->string('status')->default('new');
             $table->timestamps();

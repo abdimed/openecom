@@ -9,6 +9,7 @@ class OrderController extends Controller
 {
     public function bill(Order $order)
     {
+
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
         ]);

@@ -27,7 +27,7 @@ Route::get('/{collection:slug}', [PageController::class, 'collectionProducts'])-
 
 Route::get('/category/{category:slug}/products/{product:slug}', [PageController::class, 'productDetails'])->name('product.details');
 
-Route::get('/order/bill', [OrderController::class, 'bill'])->name('order.bill')->middleware(['auth', 'role:admin']);
+Route::get('/order/bill/{order}', [OrderController::class, 'bill'])->name('order.bill')->middleware(['auth', 'role:admin']);
 
 Route::get('products/samet', [PageController::class, 'productSamet']);
 
