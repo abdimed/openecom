@@ -20,7 +20,7 @@ class Order extends Model
 
     public function variations()
     {
-        return $this->belongsToMany(Variation::class)->withPivot('qty');
+        return $this->belongsToMany(Variation::class)->withPivot('qty', 'amount');
     }
 
     public function items()

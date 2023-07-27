@@ -44,7 +44,6 @@ class OrderService
             )->perMonth()
             ->count()
             ->map(fn (TrendValue $value) => $value->date);
-
     }
 
     public function getDay()
@@ -79,7 +78,7 @@ class OrderService
 
         foreach ($cartItems as $item) {
 
-            $order->variations()->attach($item->id, ['qty' => $item->qty]);
+            $order->variations()->attach($item->id, ['qty' => $item->qty, 'amount' => $item->qty * $item->price]);
         }
     }
 }

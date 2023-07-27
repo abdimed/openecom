@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
-use App\Models\Variation;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 

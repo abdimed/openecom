@@ -91,8 +91,12 @@
                         {{ $variation->price }} da
                     </td>
                     <td>
+                        {{ $variation->pivot->amount }}
+                    </td>
+                    <td>
                         {{ $order->total_price }}
                     </td>
+                    <td></td>
                 </tr>
             @endforeach
         </table>

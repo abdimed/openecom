@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('variation_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('qty');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
