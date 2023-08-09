@@ -5,7 +5,7 @@
 
     @include('sections.categories')
 
-    <img src="{{ asset('assets/banners/1.png') }}" alt="ccbo" class="lg:w-1/2 mt-10 px-2 lg:max-w-screen-xl mx-auto">
+    <img src="{{ asset('assets/banners/1.png') }}" alt="ccbo" loading="lazy" class="lg:w-1/2 mt-10 px-2 lg:max-w-screen-xl mx-auto">
 
     @include('sections.products-grid')
 

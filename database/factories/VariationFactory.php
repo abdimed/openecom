@@ -21,7 +21,6 @@ class VariationFactory extends Factory
             'ref' => fake()->numberBetween(10, 10000),
             'name' => fake()->name(),
             'product_id' => Product::factory(),
-            'quantity' => fake()->numberBetween(1, 20),
             'price' => fake()->numberBetween(10, 10000),
         ];
     }

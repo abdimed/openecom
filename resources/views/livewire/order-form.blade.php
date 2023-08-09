@@ -64,7 +64,7 @@
                         </div>
 
                         <button type="submit"
-                            class="bg-primary hover:bg-primary/90 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
+                            class="bg-red-500 hover:bg-red-500/90 rounded-md p-2 text-white text-bold text-2xl w-fit place-self-center">
                             Proceder a l'achat
                         </button>
 

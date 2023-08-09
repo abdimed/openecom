@@ -86,7 +86,6 @@ class ProductResource extends Resource
                                     ->schema([
                                         TextInput::make('ref')->required(),
                                         TextInput::make('name')->required(),
-                                        TextInput::make('quantity')->required()->integer(),
                                         TextInput::make('price')->mask(fn (TextInput\Mask $mask) => $mask->money(prefix: '', thousandsSeparator: ',', decimalPlaces: 2))->suffix('DA')->required()
 
                                     ])->columns(['lg' => 2])->columnSpan(['lg' => 2])->required()

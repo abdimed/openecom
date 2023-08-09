@@ -45,7 +45,7 @@
         x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
         x-on:click.outside="mobileMenu = false">
-        <img src="{{ asset('assets/logo.svg') }}" alt="logo" class="p-5">
+        <img src="{{ asset('assets/logo.png') }}" alt="logo" class="p-5">
         <ul class="space-y-5 mt-10 ml-5 font-bold">
             <li class="text-xl uppercase">
                 <a href="/"> accueil </a>
@@ -61,12 +61,6 @@
                         </a>
                     @endforeach
                 </div>
-            </li>
-            <li class="text-xl uppercase">
-                <a href="/#our-realisations"> réalisations </a>
-            </li>
-            <li class="text-xl uppercase">
-                <a href="/contact-us"> contact </a>
             </li>
         </ul>
         <button class="absolute top-2 right-2" x-on:click="mobileMenu = false">

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('ref');
             $table->string('name');
             $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('quantity');
             $table->float('price');
             $table->timestamps();
         });

@@ -33,7 +33,7 @@
 
     </main>
 
-    <footer class="flex bg-primary h-[300px]">
+    <footer class="">
 
         @include('sections.footer')
 

@@ -14,7 +14,7 @@
                             <input type="radio" wire:model="variation_id" value="{{ $variation->id }}"
                                 id="{{ $variation->id }}" class="peer hidden">
                             <label for="{{ $variation->id }}"
-                                class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-primary peer-checked:text-primary peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>
+                                class="rounded-md p-4 border-2 bg-gray-100 peer-checked:border-red-500 peer-checked:text-red-500 peer-checked:font-semibold hover:cursor-pointer">{{ $variation->name }}</label>
 
                         </li>
                     @endforeach
@@ -43,7 +43,7 @@
                     </a>
                 @else
                     <button value="addToCart" type="submit"
-                        class="relative flex items-center text-center bg-white text-primary border-2 border-primary hover:-translate-y-1 hover:shadow hover:shadow-primary transition-all duration-200 text-xl py-1 rounded-md">
+                        class="relative flex items-center text-center bg-white text-red-500 border-2 border-red-500 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
 
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute left-1 top-1" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -57,7 +57,7 @@
                 @endif
 
                 <button wire:click="buyNow" type="button"
-                    class="text-center bg-primary text-white border-2 border-primary hover:bg-primary/90 hover:-translate-y-1 hover:shadow hover:shadow-primary transition-all duration-200 text-xl py-1 rounded-md">
+                    class="text-center bg-red-500 text-white border-2 border-red-500 hover:bg-red-500/90 hover:-translate-y-1 hover:shadow hover:shadow-red-500 transition-all duration-200 text-xl py-1 rounded-md">
                     Acheter <br> Maintenant
                 </button>
 
