@@ -20,7 +20,7 @@
                     </svg>
                 </span>
 
-                <div class="absolute bg-white text-black text-base py-5 px-2 shadow-2xl z-40 ml-5 left-0 w-52 hover:grid peer-hover:grid grid-cols-1 hidden">
+                <div class="absolute bg-white text-black text-base py-5 px-2 shadow-2xl z-40 ml-5 left-0 w-52 hover:grid peer-hover:grid grid-cols-1 gap-2 hidden">
                     @foreach ($categories as $category)
                         <a href="{{ route('category.products', $category) }}" class="block hover:underline">
                             {{ $category->name }}

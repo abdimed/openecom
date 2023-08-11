@@ -1,7 +1,7 @@
 <section class="text-gray-600 body-font relative">
-    <div class="container px-5 pt-16 mx-auto flex sm:flex-nowrap flex-wrap">
+    <div class="max-w-screen-xl py-10 relative z-1 px-5 pt-16 mx-auto flex sm:flex-nowrap flex-wrap">
         <div
-            class="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+            class="lg:w-1/2 w-full h-52 lg:h-full bg-gray-300 rounded-lg overflow-hidden sm:mr-10 flex items-end justify-start relative">
             <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0"
                 marginwidth="0" scrolling="no"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25929.66922147979!2d-0.623988891545461!3d35.671864020451544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7e89db1a4bff55%3A0xcf201975d67f4f83!2sCCBO%20Samet%20Accesoire%20de%20cuisine%20et%20boiseries%20(distribution)!5e0!3m2!1sen!2sdz!4v1691546764169!5m2!1sen!2sdz"></iframe>
@@ -43,9 +43,9 @@
         </div>
     </div>
 </section>
-<section class="w-full bg-gray-200">
+<section class="w-full py-8 bg-gray-200 max-w-screen-xl mx-auto px-8 relative z-1 rounded-t-lg">
 
-    <div class="grid grid-cols-1 lg:grid-cols-4 container mt-10 mx-auto text-black p-4 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-4 container mx-auto text-black w-full">
 
         <div>
             <img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-36">
@@ -56,7 +56,7 @@
 
         <div>
             <h3 class="font-bold text-xl">Address</h3>
-            <address class="mt-5">Cité GETAL n° 15 Dar El Beida – OranAdresse</address>
+            <address class="mt-5">Cité GETAL n° 15 Dar El Beida – Oran</address>
         </div>
 
         <div class="">
@@ -71,7 +71,7 @@
                     656</span>
                 </span> </a>
 
-            <a href="mailto:detail@ccbo-dz.com" class="font-semibold mt-5 block"> detail@ccbo-dz.com</a>
+            <a href="mailto:detail@ccbo-dz.com" class="font-semibold mt-5 block"> marketing@ccbo-dz.com</a>
         </div>
 
         <div>
@@ -91,7 +91,7 @@
             </a>
         </div>
 
-    </div>s
+    </div>
 
 
 </section>

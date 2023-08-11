@@ -10,7 +10,7 @@
     </div>
 
     <a href="/" class="block order-1">
-        <img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-26 h-fit">
+        <img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-24 h-fit">
     </a>
 
     <div class="order-last lg:order-2 w-full lg:w-2/4 mt-5 lg:mt-0">
@@ -21,7 +21,7 @@
 
     <div class="flex lg:space-x-5 items-center text-primary order-3">
 
-        <a href="tel:+213550000000" class="lg:flex items-center space-x-2 hidden">
+        <a href="tel:+213560236871" class="lg:flex items-center space-x-2 hidden">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="40"
                 height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#005395" fill="none"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -32,7 +32,7 @@
             <div class="flex flex-col">
                 <span class="text-gray-400 text-xs">Appellez nous sur :</span>
                 <span class="font-bold text-base">
-                    0550 00 00 00
+                    0560 236 871
                 </span>
             </div>
         </a>
@@ -50,13 +50,13 @@
             <li class="text-xl uppercase">
                 <a href="/"> accueil </a>
             </li>
-            <li class="text-xl  uppercase">
+            <li class="text-xl uppercase">
                 <button class="hover:underline decoration-white uppercase"
                     x-on:click="categoryMenu = !categoryMenu">categories</button>
                 <div class="ml-2" x-show="categoryMenu">
                     @foreach ($categories as $category)
                         <a href="{{ route('category.products', $category) }}"
-                            class="text-base font-semibold uppercase block">
+                            class="text-base font-semibold uppercase block py-2">
                             {{ $category->name }}
                         </a>
                     @endforeach

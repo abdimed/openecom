@@ -1,7 +1,7 @@
 <div class="relative w-full m-auto" x-data>
 
     <input type="text" x-model.debounce.500ms="$wire.search"
-        class="w-full border-none bg-gray-200 rounded-full px-10 py-3 placeholder:text-sm focus:outline-dashed focus:border-primary focus:ring-4 focus:ring-primary/30"
+        class="w-full border-none bg-gray-200 rounded-full pl-10 pr-2 py-2 placeholder:text-sm focus:outline-dashed focus:border-primary focus:ring-4 focus:ring-primary/30"
         placeholder="Trouver votre produit">
 
     <div class="absolute right-2 inset-y-0 rounded-full bg-primary text-white p-1 h-fit m-auto">

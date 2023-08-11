@@ -55,7 +55,7 @@
                 </li>
             @endforeach
 
-            <div class="flex flex-col mt-16 text-gray-600">
+            <div class="flex flex-col mt-16 text-gray-600 p-4">
 
                 <span class="text-xl font-semibold">Total:</span>
 

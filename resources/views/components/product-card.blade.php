@@ -14,7 +14,7 @@
     <div class="mx-4 my-4">
 
         <button class="rounded-md bg-red-500 text-white uppercase p-2 text-xs w-full">
-            Achetter
+            Acheter
         </button>
 
     </div>
