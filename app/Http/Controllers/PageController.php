@@ -35,6 +35,7 @@ class PageController extends Controller
         return view('pages.collection-products', [
             'products' => $collection->products()->has('variations')->with('variations', 'category')->get(),
             'categories' => Category::all(),
+            'collection' => $collection->name,
         ]);
     }
 

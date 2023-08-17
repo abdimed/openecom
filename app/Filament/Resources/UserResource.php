@@ -32,6 +32,10 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereNot('email', 'supadmin@admin.com');
+    }
 
     public static function form(Form $form): Form
     {
@@ -68,11 +72,12 @@ class UserResource extends Resource
 
     public static function table(Table $table): Table
     {
+
         return $table
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('email'),
-                TextColumn::make('role.name'),
+                TextColumn::make('roles.name'),
             ])
             ->filters([
                 //

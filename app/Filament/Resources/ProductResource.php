@@ -108,9 +108,13 @@ class ProductResource extends Resource
                         Section::make('Images')
                             ->schema([
 
-                                FileUpload::make('images')->image()->multiple()->maxFiles(4)->preserveFilenames()->enableReordering()->enableDownload()->helperText('La photo en derinerre posistion sera la principale')->required(),
+                                FileUpload::make('images')->image()->multiple()->maxFiles(4)->preserveFilenames()->directory(function (Product $record): string {
+                                    return 'product/' . $record->name;
+                                })->enableReordering()->enableDownload()->helperText('La photo en derinerre posistion sera la principale')->required(),
 
-                                FileUpload::make('document')->acceptedFileTypes(['application/pdf']),
+                                FileUpload::make('document')->acceptedFileTypes(['application/pdf'])->directory(function (Product $record): string {
+                                    return 'product/' . $record->name;
+                                }),
 
                             ])->collapsible(),
 

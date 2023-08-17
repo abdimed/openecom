@@ -17,11 +17,17 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Closure;
+use Filament\Forms\Components\FileUpload;
+
 class CollectionResource extends Resource
 {
     protected static ?string $model = Collection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $navigationGroup = 'CRM';
 
     public static function form(Form $form): Form
     {
@@ -34,6 +40,8 @@ class CollectionResource extends Resource
                     })->required(),
 
                 TextInput::make('slug')->required()->disabled()->rules(['alpha_dash'])->unique(ignorable: fn ($record) => $record)->hint('SEO')->helperText('Ceci sera affiché dans le lien de la page du produit'),
+                FileUpload::make('banner')->image()->directory('banners'),
+                FileUpload::make('banner_mobile')->image()->directory('banners'),
             ]);
     }
 

@@ -29,12 +29,13 @@ class NewOrderListener
      */
     public function handle(NewOrder $event)
     {
-        $admins = User::role(['admin', 'commercial'])->get();
+        $admins = User::permission('order viewAny')->get();
 
         Notification::make()
             ->title('Nouvelle Commande')
             ->body('**' . $event->customer->full_name. '**' . ' a fais une commande')
             ->icon('heroicon-o-shopping-bag')
+            ->iconColor('success')
             ->actions([
                 Action::make('voir')
                     ->url(route('filament.resources.orders.edit', $event->order))

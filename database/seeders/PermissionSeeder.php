@@ -75,7 +75,13 @@ class PermissionSeeder extends Seeder
         ['name' => 'collection restore', 'alias' => 'Collection: restaurer'],
         ['name' => 'collection forceDelete', 'alias' => 'Collection: forcer la supréssion'],
 
-
+        ['name' => 'contactmessages viewAny', 'alias' => 'Messages Contact: voir tout'],
+        ['name' => 'contactmessages view', 'alias' => 'Messages Contact: voir'],
+        ['name' => 'contactmessages create', 'alias' => 'Messages Contact: crée'],
+        ['name' => 'contactmessages update', 'alias' => 'Messages Contact: modifier'],
+        ['name' => 'contactmessages delete', 'alias' => 'Messages Contact: suprimer'],
+        ['name' => 'contactmessages restore', 'alias' => 'Messages Contact: restaurer'],
+        ['name' => 'contactmessages forceDelete', 'alias' => 'Messages Contact: forcer la supréssion'],
 
     ];
 

@@ -24,6 +24,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123')
         ]);
 
+        $user2 = \App\Models\User::factory()->create([
+            'name' => 'supAdmin',
+            'email' => 'supadmin@admin.com',
+            'password' => Hash::make('123')
+        ]);
+
         $user->assignRole('admin');
+        $user->givePermissionTo('dashboard access');
+        $user2->assignRole('super admin');
     }
 }

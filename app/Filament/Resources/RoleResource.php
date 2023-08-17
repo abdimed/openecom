@@ -29,6 +29,11 @@ class RoleResource extends Resource
 
     protected static ?string $navigationGroup = 'administration';
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereNot('name', 'super admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
