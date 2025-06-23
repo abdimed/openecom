@@ -21,33 +21,31 @@
         <div>
             <img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-36">
             <p class="mt-5">
-                Distributeur Exclusif de la gamme Samet et Mesan et MDF HIGH LOSS STAR PAN
+                lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Quisquam, voluptatum.
             </p>
         </div>
 
         <div>
             <h3 class="font-bold text-xl">Address</h3>
-            <address class="mt-5">Cité GETAL n° 15 Dar El Beida – Oran</address>
+            <address class="mt-5">Adress</address>
         </div>
 
         <div class="">
             <h3 class="font-bold text-xl">Contact</h3>
-            <a href="tel:+213560236871" class="font-semibold mt-5 block"><span class="font-normal">+213 560 236
-                    871</span>
+            <a href="tel:+XXXXXXXXXX" class="font-semibold mt-5 block"><span class="font-normal">XXXXXXXXXX</span>
                 </span> </a>
-            <a href="tel:+213561925002" class="font-semibold mt-2 block"><span class="font-normal">+213 561 925
-                    002</span>
+            <a href="tel:+XXXXXXXXXX" class="font-semibold mt-2 block"><span class="font-normal">XXXXXXXXXX</span>
                 </span> </a>
-            <a href="tel:+213552829656" class="font-semibold mt-2 block"><span class="font-normal">+213 552 829
-                    656</span>
+            <a href="tel:+213561925002" class="font-semibold mt-2 block"><span class="font-normal">XXXXXXXXXX</span>
                 </span> </a>
 
-            <a href="mailto:detail@ccbo-dz.com" class="font-semibold mt-5 block"> marketing@ccbo-dz.com</a>
+            <a href="mailto:example@example.com" class="font-semibold mt-5 block"> example@example.com</a>
         </div>
 
         <div>
             <h4 class="font-bold text-xl">Suivez nous</h4>
-            <a href="https://www.facebook.com/ccbomarket" class="block mt-5">
+            <a href="" class="block mt-5">
                 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                 <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44" viewBox="0 0 60.734 60.733"

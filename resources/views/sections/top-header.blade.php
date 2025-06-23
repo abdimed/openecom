@@ -1,5 +1,4 @@
-<div class="flex flex-wrap justify-between items-center py-4 px-5 max-w-screen-xl m-auto text-lg"
-    x-data="{ mobileMenu: false, categoryMenu: false }">
+<div class="flex flex-wrap justify-between items-center py-4 px-5 max-w-screen-xl m-auto text-lg" x-data="{ mobileMenu: false, categoryMenu: false }">
     <div class="text-primary lg:hidden block justify-self-end">
         <button x-on:click="mobileMenu = !mobileMenu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
@@ -22,10 +21,10 @@
 
     <div class="flex lg:space-x-5 items-center text-primary order-3">
 
-        <a href="tel:+213560236871" class="lg:flex items-center space-x-2 hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="36" height="36"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="#7f5345" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
+        <a href="tel:+xxxxxxxxxx" class="lg:flex items-center space-x-2 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="36"
+                height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7f5345" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path
                     d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
@@ -34,8 +33,7 @@
             <div class="flex flex-col">
                 <span class="text-gray-400 text-xs">Appellez nous sur :</span>
                 <span class="font-bold text-base">
-                    0560 236 871
-                </span>
+                    +xxxxxxxxxx </span>
             </div>
         </a>
 
@@ -57,10 +55,10 @@
                     x-on:click="categoryMenu = !categoryMenu">categories</button>
                 <div class="ml-2" x-show="categoryMenu">
                     @foreach ($categories as $category)
-                    <a href="{{ route('category.products', $category) }}"
-                        class="text-base font-semibold uppercase block py-2">
-                        {{ $category->name }}
-                    </a>
+                        <a href="{{ route('category.products', $category) }}"
+                            class="text-base font-semibold uppercase block py-2">
+                            {{ $category->name }}
+                        </a>
                     @endforeach
                 </div>
             </li>
